@@ -32,6 +32,11 @@ class Login extends MY_Controller{
 			$this->load->view('public/public_signup');
 		}
 
+	public function testing()
+		{
+			$this->load->view('recycler/homepag');
+		}
+
 
 	public function verifyLogin()
 		{
