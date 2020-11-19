@@ -34,7 +34,12 @@ class Login extends MY_Controller{
 
 	public function testing()
 		{
-			$this->load->view('recycler/homepag');
+			$this->load->view('service/request_service');
+		}
+
+	public function service_status()
+		{
+			$this->load->view('service/status_service');
 		}
 
 
