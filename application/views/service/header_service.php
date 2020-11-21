@@ -15,7 +15,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
+  <div class="collapse navbar-collapse" id="navbarColor01" style="margin-left: 10px;">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('user/dashboard')?>">Home</a>
@@ -37,8 +37,8 @@
       </li>
     </ul>
     <?= form_open('user/search',['class'=>'form-inline my-2 my-lg-0']) ?>     
-      <?php echo form_input(['name'=>'search','type'=>'text','class'=>'form-control mr-sm-2','placeholder'=>'Search','value'=>set_value('search')]); ?>      
-      <?php echo form_submit(['name'=>'submit','class'=>'btn btn-outline-secondary','value'=>'Search']); ?>      
+      <?php echo form_input(['name'=>'search','type'=>'text','class'=>'form-control mr-sm-2','style'=>'margin-bottom:7px;','placeholder'=>'Search','value'=>set_value('search')]); ?>      
+      <?php echo form_submit(['name'=>'submit','class'=>'btn btn-outline-secondary','style'=>'color:white;','value'=>'Search']); ?>      
     <?= form_close(); ?>
     <?php echo form_error('search',"<p class='navbar-text text-danger'",'</p>');?>
     
