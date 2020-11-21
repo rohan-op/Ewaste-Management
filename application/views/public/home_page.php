@@ -26,8 +26,6 @@
 	    <a class="btn btn-primary btn-lg" href="<?= base_url('login/publicLogin')?>" role="button">Login</a>
 	    <a class="btn btn-primary btn-lg" href="<?= base_url('login/publicSignup')?>" role="button">Sign Up</a>
 	    <a class="btn btn-primary btn-lg" href="<?= base_url('login/testing')?>" role="button">Testing</a>
-		<a class="btn btn-primary btn-lg" href="<?= base_url('login/service_status')?>" role="button">Testing</a>
-
 	  </p>
 	</div>
 	<br>

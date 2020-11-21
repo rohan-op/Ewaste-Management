@@ -1,6 +1,14 @@
-<?php  
+<?php   
 class Login extends MY_Controller{
 
+
+
+	//TESTING PURPOSE ONLY
+	public function testing()
+		{
+			$this->load->view('service/request_service');
+		}
+	//TEST YOUR VIEWS USING THE ABOVE FUNCTION
 
 	public function index()
 		{
@@ -31,17 +39,6 @@ class Login extends MY_Controller{
 			$this->load->helper('form');
 			$this->load->view('public/public_signup');
 		}
-
-	public function testing()
-		{
-			$this->load->view('service/request_service');
-		}
-
-	public function service_status()
-		{
-			$this->load->view('service/status_service');
-		}
-
 
 	public function verifyLogin()
 		{

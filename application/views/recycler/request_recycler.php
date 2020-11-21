@@ -1,4 +1,4 @@
-<?php include('header_service.php');?>
+<?php include('header_recycler.php');?>
 <html>
 
 <br>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                         <div>
-                            <button class="btn btn-primary btn-lg" style="margin-left: 200px;">Accept</button>
+                            <button class="btn btn-primary btn-lg" style="margin-left: 50px;">Accept</button>
                         </div>
                             
         </div>
