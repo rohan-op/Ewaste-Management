@@ -18,7 +18,7 @@
                         <p>Quantity:<strong>3</strong></p>
                     </div>
                     <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="120px" width="120px">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
                     </div>
                 </div>
                 <div>
@@ -37,7 +37,7 @@
                         <p>Quantity:<strong>3</strong></p>
                     </div>
                     <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="120px" width="120px">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
                     </div>
                 </div>
                 <div>
@@ -56,7 +56,7 @@
                         <p>Quantity:<strong>3</strong></p>
                     </div>
                     <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="120px" width="120px">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
                     </div>
                 </div>
                 <div>
@@ -75,7 +75,7 @@
                         <p>Quantity:<strong>3</strong></p>
                     </div>
                     <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="120px" width="120px">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
                     </div>
                 </div>
                 <div>
@@ -94,7 +94,7 @@
                         <p>Quantity:<strong>3</strong></p>
                     </div>
                     <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="120px" width="120px">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
                     </div>
                 </div>
                 <div>
