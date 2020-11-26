@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                    <div class="mycol4">
                         <p>ID:<strong> #1234ASD</strong></p>
                         <p>Device Type:<strong> Laptop</strong></p>
                         <p>Date:<strong> 3/11/2020</strong></p>
@@ -30,7 +30,7 @@
         </div>
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                    <div class="mycol4">
                         <p>ID:<strong> #1234ASD</strong></p>
                         <p>Device Type:<strong> Laptop</strong></p>
                         <p>Date:<strong> 3/11/2020</strong></p>
@@ -48,7 +48,7 @@
         </div>
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                    <div class="mycol4">
                         <p>ID:<strong> #1234ASD</strong></p>
                         <p>Device Type:<strong> Laptop</strong></p>
                         <p>Date:<strong> 3/11/2020</strong></p>
@@ -66,7 +66,7 @@
         </div>
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                    <div class="mycol4">
                         <p>ID:<strong> #1234ASD</strong></p>
                         <p>Device Type:<strong> Laptop</strong></p>
                         <p>Date:<strong> 3/11/2020</strong></p>
@@ -84,7 +84,7 @@
         </div>
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                    <div class="mycol4">
                         <p>ID:<strong> #1234ASD</strong></p>
                         <p>Device Type:<strong> Laptop</strong></p>
                         <p>Date:<strong> 3/11/2020</strong></p>

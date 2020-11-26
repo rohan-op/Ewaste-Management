@@ -1,6 +1,17 @@
 <!DOCTYPE html> 
 <html>
 <head>
+  <style type="text/css">
+  .mycol4{
+            margin-right: 10px; 
+            padding-left: 20px; 
+            padding-bottom: 10px; 
+            padding-top: 10px;
+            -ms-flex: 0 0 33.333333%;
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+          }
+  </style>
   <title></title>
   <?= link_tag('assets/css/bootstrap.min.css'); ?>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

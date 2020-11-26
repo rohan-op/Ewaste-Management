@@ -12,7 +12,44 @@
     <div class="row">
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                    <div class="mycol4">
+                        <p>Device Type:<strong> Laptop</strong></p>
+                        <p>Date:<strong> 3/11/2020</strong></p>
+                        <p>Quantity:<strong>3</strong></p>
+                    </div>
+                    <div class="col-4" style="margin-right: 10px;">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
+                    </div>
+                </div>
+                <div>
+                    <div >    <button class="btn btn-info">More Info</button>   </div>
+                    <br>
+                    <button class="btn btn-primary">Accept</button>
+                    <button class="btn btn-danger">Decline</button>
+                </div>  
+        </div>
+        <div class="col-6" style="margin-bottom: 50px;">
+                <div class="row">
+                    <div class="mycol4">
+                        <p>Device Type:<strong> Laptop</strong></p>
+                        <p>Date:<strong> 3/11/2020</strong></p>
+                        <p>Quantity:<strong>3</strong></p>
+                    </div>
+                    <div class="col-4" style="margin-right: 10px;">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
+                    </div>
+                </div>
+                <div>
+                    <div>    <button class="btn btn-info">More Info</button>   </div>
+                    <br>
+                    <button class="btn btn-primary">Accept</button>
+                    <button class="btn btn-danger">Decline</button>
+                </div>
+            
+        </div>
+        <div class="col-6" style="margin-bottom: 50px;">
+                <div class="row">
+                    <div class="mycol4">
                         <p>Device Type:<strong> Laptop</strong></p>
                         <p>Date:<strong> 3/11/2020</strong></p>
                         <p>Quantity:<strong>3</strong></p>
@@ -31,7 +68,7 @@
         </div>
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                    <div class="mycol4">
                         <p>Device Type:<strong> Laptop</strong></p>
                         <p>Date:<strong> 3/11/2020</strong></p>
                         <p>Quantity:<strong>3</strong></p>
@@ -50,45 +87,7 @@
         </div>
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
-                        <p>Device Type:<strong> Laptop</strong></p>
-                        <p>Date:<strong> 3/11/2020</strong></p>
-                        <p>Quantity:<strong>3</strong></p>
-                    </div>
-                    <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
-                    </div>
-                </div>
-                <div>
-                    <div >    <button class="btn btn-info">More Info</button>   </div>
-                    <br>
-                    <button class="btn btn-primary">Accept</button>
-                    <button class="btn btn-danger">Decline</button>
-                </div>
-            
-        </div>
-        <div class="col-6" style="margin-bottom: 50px;">
-                <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
-                        <p>Device Type:<strong> Laptop</strong></p>
-                        <p>Date:<strong> 3/11/2020</strong></p>
-                        <p>Quantity:<strong>3</strong></p>
-                    </div>
-                    <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
-                    </div>
-                </div>
-                <div>
-                    <div >    <button class="btn btn-info">More Info</button>   </div>
-                    <br>
-                    <button class="btn btn-primary">Accept</button>
-                    <button class="btn btn-danger">Decline</button>
-                </div>
-            
-        </div>
-        <div class="col-6" style="margin-bottom: 50px;">
-                <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                    <div class="mycol4">
                         <p>Device Type:<strong> Laptop</strong></p>
                         <p>Date:<strong> 3/11/2020</strong></p>
                         <p>Quantity:<strong>3</strong></p>
