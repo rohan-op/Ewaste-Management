@@ -6,7 +6,7 @@ class Login extends MY_Controller{
 	//TESTING PURPOSE ONLY
 	public function testing()
 		{
-			$this->load->view('service/request_service');
+			$this->load->view('recycler/status_recycler');
 		}
 	//TEST YOUR VIEWS USING THE ABOVE FUNCTION
 

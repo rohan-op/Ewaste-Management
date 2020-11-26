@@ -1,8 +1,6 @@
 <?php include('header_service.php');?>
-<html>
 <br>
 <body>
-
 <div class="container">
     <ol class="breadcrumb" style="width: 250px;">
         <li class="breadcrumb-item"><a href="#">Service Center</a></li>
@@ -135,5 +133,4 @@
             </div>
 </div>
 </body>
-</html>
 <?php include('footer.php');

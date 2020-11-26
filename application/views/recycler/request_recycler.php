@@ -1,91 +1,109 @@
 <?php include('header_recycler.php');?>
-<html>
-
 <br>
-
-
 <body>
 <div class="container">
+    <ol class="breadcrumb" style="width: 250px;">
+        <li class="breadcrumb-item"><a href="#">Recycler</a></li>
+        <li class="breadcrumb-item active">Requests</li>
+    </ol>
+    <br>
+    <h2 class="text-primary">Pending Requests</h2>
+    <br><br>
     <div class="row">
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px; margin-left: 50px;">
-                        <p>Name of the device : Laptop</p>
-                        <p>No. of years 3</p>
-                        <p>Quantity 3</p>
+                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                        <p>Device Type:<strong> Laptop</strong></p>
+                        <p>Date:<strong> 3/11/2020</strong></p>
+                        <p>Quantity:<strong>3</strong></p>
                     </div>
                     <div class="col-4" style="margin-right: 10px;">
-                        <img src="images/test1.png" alt="testing image" height="200px" width="200px">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
                     </div>
                 </div>
-                    <div>
-                        <button class="btn btn-primary btn-lg" style="margin-left: 200px;">Accept</button>
-                    </div>
+                <div>
+                    <div >    <button class="btn btn-info">More Info</button>   </div>
+                    <br>
+                    <button class="btn btn-primary">Accept</button>
+                    <button class="btn btn-danger">Decline</button>
+                </div>
             
         </div>
-        <div class="col-6" style="  margin-bottom: 50px; " >
+        <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 20px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px; margin-left: 50px;">
-                        <p>Name of the device : Laptop</p>
-                        <p>No. of years 3</p>
-                        <p>Quantity 3</p>
+                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                        <p>Device Type:<strong> Laptop</strong></p>
+                        <p>Date:<strong> 3/11/2020</strong></p>
+                        <p>Quantity:<strong>3</strong></p>
                     </div>
                     <div class="col-4" style="margin-right: 10px;">
-                        <img src="images/test1.png" alt="testing image" height="200px" width="200">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
                     </div>
                 </div>
                 <div>
-                    <button class="btn btn-primary btn-lg" style="margin-left: 200px;">Accept</button>
+                    <div >    <button class="btn btn-info">More Info</button>   </div>
+                    <br>
+                    <button class="btn btn-primary">Accept</button>
+                    <button class="btn btn-danger">Decline</button>
                 </div>
-                
+            
         </div>
-        <div class="col-6" style="  margin-bottom: 50px; " >
+        <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px;  padding-left: 20px; padding-bottom: 10px; padding-top: 10px; margin-left: 50px;">
-                        <p>Name of the device : Laptop</p>
-                        <p>No. of years 3</p>
-                        <p>Quantity 3</p>
+                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                        <p>Device Type:<strong> Laptop</strong></p>
+                        <p>Date:<strong> 3/11/2020</strong></p>
+                        <p>Quantity:<strong>3</strong></p>
                     </div>
                     <div class="col-4" style="margin-right: 10px;">
-                        <img src="images/test1.png" alt="testing image" height="200px" width="200px">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
                     </div>
                 </div>
                 <div>
-                    <button class="btn btn-primary btn-lg" style="margin-left: 200px;">Accept</button>
+                    <div >    <button class="btn btn-info">More Info</button>   </div>
+                    <br>
+                    <button class="btn btn-primary">Accept</button>
+                    <button class="btn btn-danger">Decline</button>
                 </div>
-                    
+            
         </div>
-        <div class="col-6" style=" margin-bottom: 50px; "  >
+        <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
-                    <div class="col-4" style= "margin-right: 10px;  padding-left: 20px; padding-bottom: 10px; padding-top: 10px; margin-left: 50px;">
-                        <p>Name of the device : Laptop</p>
-                        <p>No. of years 3</p>
-                        <p>Quantity 3</p>
+                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                        <p>Device Type:<strong> Laptop</strong></p>
+                        <p>Date:<strong> 3/11/2020</strong></p>
+                        <p>Quantity:<strong>3</strong></p>
                     </div>
                     <div class="col-4" style="margin-right: 10px;">
-                        <img src="images/test1.png" alt="testing image" height="200px" width="200px">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
                     </div>
                 </div>
-                    <div>
-                        <button class="btn btn-primary btn-lg" style="margin-left: 200px;">Accept</button>
-                    </div>
-                        
+                <div>
+                    <div >    <button class="btn btn-info">More Info</button>   </div>
+                    <br>
+                    <button class="btn btn-primary">Accept</button>
+                    <button class="btn btn-danger">Decline</button>
+                </div>
+            
         </div>
-        <div class="col-6" style="  margin-bottom: 50px; " >
-                    <div class="row">
-                        <div class="col-4" style= "margin-right: 10px;  padding-left: 20px; padding-bottom: 10px; padding-top: 10px; margin-left: 50px;">
-                            <p>Name of the device : Laptop</p>
-                            <p>No. of years 3</p>
-                            <p>Quantity 3</p>
-                        </div>
-                        <div class="col-4" style="margin-right: 10px;">
-                             <img src="images/test1.png" alt="testing image" height="200px" width="200px">
-                        </div>
+        <div class="col-6" style="margin-bottom: 50px;">
+                <div class="row">
+                    <div class="col-4" style= "margin-right: 10px; padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
+                        <p>Device Type:<strong> Laptop</strong></p>
+                        <p>Date:<strong> 3/11/2020</strong></p>
+                        <p>Quantity:<strong>3</strong></p>
                     </div>
-                        <div>
-                            <button class="btn btn-primary btn-lg" style="margin-left: 50px;">Accept</button>
-                        </div>
-                            
+                    <div class="col-4" style="margin-right: 10px;">
+                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
+                    </div>
+                </div>
+                <div>
+                    <div >    <button class="btn btn-info">More Info</button>   </div>
+                    <br>
+                    <button class="btn btn-primary">Accept</button>
+                    <button class="btn btn-danger">Decline</button>
+                </div>
+            
         </div>
 
      </div>
@@ -115,11 +133,6 @@
                     </li>
                 </ul>
             </div>
-        
-
-
 </div>
-
 </body>
-</html>
 <?php include('footer.php');
