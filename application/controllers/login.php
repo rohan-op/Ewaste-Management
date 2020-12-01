@@ -6,7 +6,7 @@ class Login extends MY_Controller{
 	//TESTING PURPOSE ONLY
 	public function testing()
 		{
-			$this->load->view('user/profile_user');
+			$this->load->view('user/prodhist_user');
 		}
 	//TEST YOUR VIEWS USING THE ABOVE FUNCTION
 
