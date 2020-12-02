@@ -11,12 +11,22 @@ class User extends MY_Controller{
 		$this->load->helper('form');
 	}
 
-	//testing
-	public function page()
+	//Profile
+	public function profilePage()
 	{
-		$this->load->view("user/profile_user");
+		$this->load->model('usermodel');
+	 	$user = $this->usermodel->profile();
+		$this->load->view("user/profile_user",compact('user'));
 	}
-	//testing ends
+	//Profile Ends
+ 
+
+
+
+
+
+
+
 
 
 	//SHOW ARTICLES STARTS

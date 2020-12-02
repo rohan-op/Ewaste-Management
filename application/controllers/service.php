@@ -11,10 +11,12 @@ class Service extends MY_Controller{
 		$this->load->helper('form');
 	}
 
-	//testing
-	public function page()
+	//Profile
+	public function profilePage()
 	{
-		$this->load->view("service/profile_service");
+		$this->load->model('servicemodel');
+	 	$service = $this->servicemodel->profile();
+		$this->load->view("service/profile_service",compact('service'));
 	}
 
 }

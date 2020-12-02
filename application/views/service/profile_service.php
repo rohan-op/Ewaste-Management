@@ -12,28 +12,33 @@
     		<tr>
 		      <th>Role:&nbsp;</th>
 		      <td>User</td>
-		      <td rowspan="5"><img src="http://[::1]/CI_EWM/uploads/profilepic/img_avatar.png" alt="laptop image" height="158px" width="158px" style="border-radius: 50%;"> </td>
+		      <td rowspan="5"><img src="<?= $service->profile_img ?>" alt="Profile image" height="158px" width="158px" style="border-radius: 50%;"> </td>
     		</tr>
     		<tr>
 		      <th>Name:&nbsp;</th>
-		      <td>Rohan Bhupen Shah</td>
+		      <td><?= $service->fname ?></td>
 		      <td> </td>
     		</tr>
     		<tr>
 		      <th>Company:&nbsp;</th>
-		      <td>Cnamefeuhfuhsiufhius</td>
+		      <td><?= $service->cname ?></td>
 		      <td> </td>
     		</tr >
     		<tr>
 		      <th>Contact:&nbsp;</th>
-		      <td>8169885434</td>
+		      <td><?= $service->contact ?></td>
 		      <td> </td>
     		</tr>
     		<tr>
 		      <th>Email:&nbsp;</th>
-		      <td>rohan27@somaiya.edu</td>
+		      <td><?= $service->email ?></td>
 		      <td> </td>
     		</tr>
+            <tr>
+              <th>Address:&nbsp;</th>
+              <td><?= $service->address ?></td>
+              <td> </td>
+            </tr>
     	</table>
 	</div>
 </body>

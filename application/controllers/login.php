@@ -6,7 +6,7 @@ class Login extends MY_Controller{
 	//TESTING PURPOSE ONLY
 	public function testing()
 		{
-			$this->load->view('user/prodhist_user');
+			$this->load->view('user/profile_user');
 		}
 	//TEST YOUR VIEWS USING THE ABOVE FUNCTION
 
@@ -26,7 +26,7 @@ class Login extends MY_Controller{
 			if($this->session->userdata('id'))
 			{
 				$role = $this->session->userdata('role');
-				return redirect($role.'/page');
+				return redirect($role.'/profilePage');
 			}
 			$this->load->helper('form');
 			$this->load->view('public/public_login');
@@ -37,7 +37,7 @@ class Login extends MY_Controller{
 			if($this->session->userdata('id'))
 			{
 				$role = $this->session->userdata('role');
-				return redirect($role.'/page');
+				return redirect($role.'/profilePage');
 			}
 			$this->load->helper('form');
 			$this->load->view('public/public_signup');
@@ -64,11 +64,11 @@ class Login extends MY_Controller{
 											'role' => $role
 										);
 						$this->session->set_userdata($newdata);
-						return redirect($role.'/page');
+						return redirect($role.'/profilePage');
 					}
 				else
 					{
-						$this->_flashNredirect(0,'Accounted Created Successfully ,Try Logging In','Email or Password did not match, Please Try Again');
+						$this->_flashNredirect(0,'Login Successful','Email or Password did not match, Please Try Again');
 						return redirect('login');
 					} 
 			}
@@ -83,7 +83,7 @@ class Login extends MY_Controller{
 		$config = [
 			'upload_path' => './uploads/profilepic',
 			'allowed_types' => 'jpg|png|jpeg'
-		];
+					];
 
 		$this->load->library('upload',$config);
 		$this->load->library('form_validation');
@@ -127,7 +127,7 @@ class Login extends MY_Controller{
 				$this->session->set_flashdata('class','success');
 				return redirect('login/index');
 			}
-			else
+		else
 			{
 				$this->session->set_flashdata('feedback',$errm);
 				$this->session->set_flashdata('class','danger');

@@ -11,10 +11,12 @@ class Recycler extends MY_Controller{
 		$this->load->helper('form');
 	}
 
-	//testing
-	public function page()
+	//Profile
+	public function profilePage()
 	{
-		$this->load->view("recycler/profile_recycler");
+		$this->load->model('recyclermodel');
+	 	$recycler = $this->recyclermodel->profile();
+		$this->load->view("recycler/profile_recycler",compact('recycler'));
 	}
 
 }
