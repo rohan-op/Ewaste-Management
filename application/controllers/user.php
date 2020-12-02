@@ -11,6 +11,13 @@ class User extends MY_Controller{
 		$this->load->helper('form');
 	}
 
+	//testing
+	public function page()
+	{
+		$this->load->view("user/profile_user");
+	}
+	//testing ends
+
 
 	//SHOW ARTICLES STARTS
 	public function dashboard()

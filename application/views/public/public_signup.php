@@ -48,7 +48,7 @@
 	<div class="col-lg-6">
 	    <div class="form-group">
 	      <label for="exampleInputEmail1">Role</label>      
-	      <?php $options = array('User'=>'User','Service'=>'Service','Recycler'=>'Recycler');?>
+	      <?php $options = array('user'=>'User','service'=>'Service Center','recycler'=>'Recycler');?>
 	      <?php echo form_dropdown('role',$options,'Role',['class'=>'custom-select']); ?>
 	    </div>
 	</div>
@@ -78,6 +78,18 @@
 	</div>
 	<div class="col-lg-6">
 		<?php echo form_error('email');?>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+	    <div class="form-group">
+	      <label for="exampleInputEmail1">Address</label>
+	      <?php echo form_input(['name'=>'address','type'=>'text','class'=>'form-control','placeholder'=>'Enter Address','value'=>set_value('address')]); ?>
+	    </div>
+	</div>
+	<div class="col-lg-6">
+		<?php echo form_error('address');?>
 	</div>
 </div>
 

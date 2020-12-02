@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2020 at 01:46 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.28
+-- Generation Time: Dec 02, 2020 at 02:00 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,92 +52,96 @@ CREATE TABLE `products` (
 --
 
 CREATE TABLE `recycler` (
-  `Recycler_Id` int(10) NOT NULL,
-  `RecyclerName` varchar(100) NOT NULL,
-  `Address` varchar(500) NOT NULL,
-  `Contact` bigint(10) NOT NULL,
-  `EmailId` varchar(100) NOT NULL,
-  `Password` varchar(30) NOT NULL,
-  `ProfilePic` varchar(100) NOT NULL,
-  `Ratings` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `service_center`
---
-
-CREATE TABLE `service_center` (
-  `Service_Id` int(5) NOT NULL,
-  `ServiceCenterName` varchar(100) NOT NULL,
-  `Address` varchar(500) NOT NULL,
-  `Email_id` varchar(100) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `Contact` bigint(10) NOT NULL,
-  `Ratings` int(10) NOT NULL,
-  `ProfilePic` varchar(1000) NOT NULL,
-  `Credits` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `User_Id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `fname` varchar(200) NOT NULL,
   `cname` varchar(100) NOT NULL,
   `role` varchar(10) NOT NULL,
   `contact` bigint(20) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `address` text NOT NULL,
   `pword` varchar(50) NOT NULL,
-  `profile_img` varchar(100) NOT NULL,
-  `CreditPoints` int(11) DEFAULT NULL
+  `profile_img` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `recycler`
 --
 
-INSERT INTO `users` (`User_Id`, `fname`, `cname`, `role`, `contact`, `email`, `pword`, `profile_img`, `CreditPoints`) VALUES
-(1, 'Rohan Shah', 'Good', 'User', 8169885434, 'rohan27@somaiya.edu', 'rohan', 'http://[::1]/CodeIgniter_EWM/uploads/profilepic/photo_2020-07-24_15-56-53.jpg', NULL),
-(2, 'dolphin', 'Somaiya', 'User', 9453627231, 'pb@gmail.com', '123456', 'http://[::1]/codeigniter/EWM/uploads/profilepic/E-Waste_logo.jpg', NULL);
+INSERT INTO `recycler` (`id`, `fname`, `cname`, `role`, `contact`, `email`, `address`, `pword`, `profile_img`) VALUES
+(1, 'Vandit Popat', 'Vandit Private LTD', 'recycler', 9876543219, 'vandit@gmail.com', 'Charni Road', 'vandit', 'http://[::1]/CI_EWM/uploads/profilepic/img_avatar.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service`
+--
+
+CREATE TABLE `service` (
+  `id` int(11) NOT NULL,
+  `fname` varchar(200) NOT NULL,
+  `cname` varchar(100) NOT NULL,
+  `role` varchar(10) NOT NULL,
+  `contact` bigint(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `address` text NOT NULL,
+  `pword` varchar(50) NOT NULL,
+  `profile_img` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `service`
+--
+
+INSERT INTO `service` (`id`, `fname`, `cname`, `role`, `contact`, `email`, `address`, `pword`, `profile_img`) VALUES
+(1, 'Pranav Bhat', 'Pranav Ent', 'service', 1234567891, 'pranav@gmail.com', 'Mulund', 'pranav', 'http://[::1]/CI_EWM/uploads/profilepic/img_avatar.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `fname` varchar(200) NOT NULL,
+  `cname` varchar(100) NOT NULL,
+  `role` varchar(10) NOT NULL,
+  `contact` bigint(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `address` text NOT NULL,
+  `pword` varchar(50) NOT NULL,
+  `profile_img` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `fname`, `cname`, `role`, `contact`, `email`, `address`, `pword`, `profile_img`) VALUES
+(1, 'Rohan Shah', 'Rohan Corps', 'user', 8169885434, 'rohan27@somaiya.edu', 'Byculla, Mumbai', 'rohan', 'http://[::1]/CodeIgniter_EWM/uploads/profilepic/photo_2020-07-24_15-56-53.jpg');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`Product_ID`),
-  ADD KEY `fk_user` (`User_Id`),
-  ADD KEY `fk_recycler` (`Recycler_Id`),
-  ADD KEY `fk_service` (`Service_Id`);
-
---
 -- Indexes for table `recycler`
 --
 ALTER TABLE `recycler`
-  ADD PRIMARY KEY (`Recycler_Id`),
-  ADD UNIQUE KEY `UNIQUE` (`EmailId`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `service_center`
+-- Indexes for table `service`
 --
-ALTER TABLE `service_center`
-  ADD PRIMARY KEY (`Service_Id`),
-  ADD UNIQUE KEY `UNIQUE` (`Email_id`);
+ALTER TABLE `service`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `Email_id` (`email`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `user`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`User_Id`),
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
@@ -145,28 +149,22 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT for table `recycler`
 --
-ALTER TABLE `products`
-  MODIFY `Product_ID` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `recycler`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `service`
 --
-ALTER TABLE `users`
-  MODIFY `User_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT for table `user`
 --
-
---
--- Constraints for table `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `fk_recycler` FOREIGN KEY (`Recycler_ID`) REFERENCES `recycler` (`Recycler_Id`),
-  ADD CONSTRAINT `fk_service` FOREIGN KEY (`Service_Id`) REFERENCES `service_center` (`service_id`),
-  ADD CONSTRAINT `fk_user` FOREIGN KEY (`User_ID`) REFERENCES `users` (`User_ID`);
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
