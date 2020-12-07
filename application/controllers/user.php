@@ -20,6 +20,7 @@ class User extends MY_Controller{
 	}
 	//Profile Ends
  	
+
  	//Donate E-waste
 	public function donatePage()
 	{
@@ -63,6 +64,23 @@ class User extends MY_Controller{
 	}
  	//Donate E-waste Ends
 
+
+ 	//Buy RF Products
+ 	public function buyPage()
+ 	{
+ 		$this->load->view("user/buy_user");
+ 	}
+ 	//Buy RF Product Ends
+
+
+ 	//CART
+ 	public function cartPage()
+ 	{
+ 		$this->load->view("user/cart_user");
+ 	}
+ 	//CART Ends
+
+
 	//FEEDBACK FUNCTION
 	private function _flashNredirect($tf,$succm,$errm,$page1,$page2)
 	{
@@ -80,9 +98,6 @@ class User extends MY_Controller{
 			}
 	}
 	//FEEDBACK ENDS
-
-
-
 
 
 

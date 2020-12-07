@@ -40,6 +40,14 @@
               <td> </td>
             </tr>
     	</table>
+        <br>
+        <div>
+                    <div >    <?= anchor("user/change_password",'Edit Profile',['class'=>'btn btn-warning']);?>   </div>
+                    <br>
+                    <?= anchor("user/change_password",'Your Orders',['class'=>'btn btn-info']);?>
+                    <?= anchor("user/change_password",'Your Donations',['class'=>'btn btn-info']);?>
+                </div>
+        <br>
 	</div>
 </body>
 <br>
