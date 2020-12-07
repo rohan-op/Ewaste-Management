@@ -46,10 +46,14 @@ class User extends MY_Controller{
 			if($this->form_validation->run() && $this->upload->do_upload())
 			{
 				$data = $this->upload->data();
+				$id = $this->session->userdata('id');
+				//$data['orig_name'] = $post['date'].$id.$data['file_ext'];
+				//$data['file_name'] = $post['date'].$id.$data['file_ext'];
+				//file name problem to be solved
 				$image_path = base_url("uploads/ewaste/".$data['orig_name']);
 				$post['e_img'] = $image_path;
 				$post['u_id'] = $this->session->userdata('id');
-				$this->_flashNredirect($this->usermodel->addEwaste($post),'Congratulations! E-waste Uploaded Successfully','Oh Snap! Failed to Upload E-waste, Please Try Again');
+				$this->_flashNredirect($this->usermodel->addEwaste($post),'Congratulations! E-waste Uploaded Successfully','Oh Snap! Failed to Upload E-waste, Please Try Again','donatePage','donatePage');
 			}
 			else
 			{
@@ -60,19 +64,19 @@ class User extends MY_Controller{
  	//Donate E-waste Ends
 
 	//FEEDBACK FUNCTION
-	private function _flashNredirect($tf,$succm,$errm)
+	private function _flashNredirect($tf,$succm,$errm,$page1,$page2)
 	{
 		if($tf)
 			{
 				$this->session->set_flashdata('feedback',$succm);
 				$this->session->set_flashdata('class','success');
-				return redirect('user/donatePage');
+				return redirect('user/'.$page1);
 			}
 			else
 			{
 				$this->session->set_flashdata('feedback',$errm);
 				$this->session->set_flashdata('class','danger');
-				return redirect('user/donatePage');
+				return redirect('user/'.$page2);
 			}
 	}
 	//FEEDBACK ENDS
