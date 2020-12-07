@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2020 at 04:46 PM
+-- Generation Time: Dec 07, 2020 at 06:09 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -51,9 +51,7 @@ CREATE TABLE `ewaste` (
 --
 
 INSERT INTO `ewaste` (`e_id`, `u_id`, `s_id`, `r_id`, `e_type`, `e_name`, `e_age`, `e_quantity`, `e_specs`, `e_img`, `date`, `s_stars`, `s_info`, `r_stars`, `r_info`) VALUES
-(1, 1, 0, 0, 'laptop/pc', 'dell xps', 12, 1, 'good pc', 'http://[::1]/CI_EWM/uploads/ewaste/img_avatar.png', '2020-12-07 15:51:48', 0, '', 0, ''),
-(2, 1, 0, 0, 'laptop/pc', 'lenovo', 12, 2, 'they are fine', 'http://[::1]/CI_EWM/uploads/ewaste/img_avatar.png', '2020-12-07 15:52:08', 0, '', 0, ''),
-(3, 1, 0, 0, 'laptop/pc', 'MSI gf638rc', 11, 1, 'amazing gaming laptop', 'http://[::1]/CI_EWM/uploads/ewaste/img_avatar.png', '2020-12-07 15:55:14', 0, '', 0, '');
+(9, 1, 0, 0, 'laptop/pc', 'IphoneX', 12, 1, 'Apple A11 Bionic (10 nm)\r\nCPU	Hexa-core 2.39 GHz (2x Monsoon + 4x Mistral)', 'http://[::1]/CI_EWM/uploads/ewaste/iphone.jpg', '2020-12-07 17:38:09', 0, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -191,7 +189,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `ewaste`
 --
 ALTER TABLE `ewaste`
-  MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `recycler`
