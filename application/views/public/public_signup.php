@@ -85,7 +85,7 @@
 	<div class="col-lg-6">
 	    <div class="form-group">
 	      <label for="exampleInputEmail1">Address</label>
-	      <?php echo form_input(['name'=>'address','type'=>'text','class'=>'form-control','placeholder'=>'Enter Address','value'=>set_value('address')]); ?>
+	      <?php echo form_textarea(['name'=>'address','type'=>'text','class'=>'form-control','placeholder'=>'Enter Address','value'=>set_value('address')]); ?>
 	    </div>
 	</div>
 	<div class="col-lg-6">

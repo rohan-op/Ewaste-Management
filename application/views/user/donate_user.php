@@ -1,102 +1,107 @@
 <?php include('header_user.php');?>
-
-<style>
-form{
-  margin-left: 25%;
-}
-</style>
-<br>
-<body>
-    <div class="container">
-    <ol class="breadcrumb" style="width: 250px;">
+<br><br>
+<div class="container">
+    <ol class="breadcrumb" style="width: 300px;">
         <li class="breadcrumb-item"><a href="#">User/Organisation</a></li>
         <li class="breadcrumb-item active">Donate E-waste</li>
     </ol>
     <br>
-    <h2 class="text-primary" style="padding-bottom: 10px; margin-left:25%;">Donate Your E-waste Here</h2>
-    <form>
-  <fieldset>
-   <div class="container"> 
-    
-    <div class="form-group">
+    <?php echo form_open_multipart('user/donateEwaste'); ?>
+    <?= form_hidden('date',date('Y-m-d H:i:s')) ?>
+    <fieldset>
+      
+      <h2 class="text-primary">Enter Details of E-waste</h2>
+      <br>
+
+      <?php if($error = $this->session->flashdata('feedback')): ?>    
       <div class="row">
-      <div class="col-3">
-      <label for="Select Product">Select Your Product</label>
-      </div>
-      <div class="col-3">
-      <select id="Productselect"  style=" width: 200px ,height:200px ,padding: 16px; font-size: 15px">
-        <option>Laptop</option>
-        <option>Microcontroller</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-      </div>
-      </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-        <div class="col-3">
-        <label class="col-form-label" for="ModelName">Company/Model Name</label>
+        <div class="col-lg-6">
+           <div class="alert alert-dismissible alert-<?=$this->session->flashdata('class')?>">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <a href="#" class="alert-link">
+              <?= $error ?>
+            </a>
+          </div>
         </div>
-        <div class="col-3">
-        <input type="text"  placeholder="Name" id="Companyname">
+      </div>
+      <?php endif; ?>
+
+      <div class="row">
+      <div class="col-lg-6">
+          <div class="form-group">
+            <label for="TypeOfProduct">E-waste Type</label>      
+            <?php $options = array('laptop/pc'=>'Laptop/PC','mobile'=>'Mobile','tv'=>'TV','others'=>'Others');?>
+            <?php echo form_dropdown('e_type',$options,'Type',['class'=>'custom-select']); ?>
+          </div>
+      </div>
+      <div class="col-lg-6">
+        <?php echo form_error('e_type');?>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+          <div class="form-group">
+            <label for="EwasteName">Model Name</label>
+            <?php echo form_input(['name'=>'e_name','type'=>'text','class'=>'form-control','placeholder'=>'Enter E-waste Model Name','value'=>set_value('e_name')]); ?>
+          </div>
+      </div>
+      <div class="col-lg-6">
+        <?php echo form_error('e_name');?>
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+          <label for="EwasteAge">Age of E-waste</label>
+          <?php echo form_input(['name'=>'e_age','type'=>'number','class'=>'form-control','placeholder'=>'Enter Age (In months)','value'=>set_value('e_age')]); ?>
         </div>
-        </div>
     </div>
-    <div class="form-group">
-      <div class="row">
-      <div class="col-3">
-      <label for="Reason">Reason For Discarding/Selling</label>
-      </div>
-      <div class="col-3">
-      <select id="reason" style=" width: 200px ,height:200px ,padding: 16px; font-size: 15px" >
-        <option>Worn out parts</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-      </div>
+    <div class="col-lg-6">
+      <?php echo form_error('e_age');?>
     </div>
-    </div>
-    <div class="form-group">
-      <div class="row">
-      <div class="col-3">
-      <label for="Details">Details/Specifications</label>
-      </div>
-      <div class="col-3">
-      <textarea id="exampleTextarea" rows="4" placeholder="Type your message"></textarea>
-      </div>
-    </div>
-    </div>
-    <div class="form-group">
-      <div class="row">
-      <div class="col-3">
-      <label for="howold">How Old the product is?</label>
-      </div>
-      <div class="col-3">
-      <select id="years" style=" width: 200px ,height:200px ,padding: 16px; font-size: 15px">
-        <option>10 years</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    </div>
-    </div>
-    <div class="form-group">
-      <label for="Picture">Picture of the product</label>
-      <input type="file" class="form-control-file" id="productpicture" aria-describedby="fileHelp">
-      <small id="fileHelp" class="form-text text-muted">The Picture should be in jpg,jpeg,PNG Format.</small>
-    </div>
-    
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </fieldset>
   </div>
-</form>
+
+  <div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+          <label for="EwasteAge">Quantity of E-waste</label>
+          <?php echo form_input(['name'=>'e_quantity','type'=>'number','class'=>'form-control','placeholder'=>'Enter Quantity (In Units)','value'=>set_value('e_quantity')]); ?>
+        </div>
+    </div>
+    <div class="col-lg-6">
+      <?php echo form_error('e_quantity');?>
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+          <label for="EwasteSpecifications">Specifications/Details</label>
+          <?php echo form_textarea(['name'=>'e_specs','type'=>'text','class'=>'form-control','placeholder'=>'Enter Details','value'=>set_value('e_specs')]); ?>
+        </div>
+    </div>
+    <div class="col-lg-6">
+      <?php echo form_error('e_specs');?>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-lg-6">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Image of E-waste</label>
+        <br>
+        <?php echo form_upload(['name'=>'userfile','class'=>'custom-file']); ?>
+      </div>
+  </div>
+  <div class="col-lg-6">
+    <?php if(isset($upload_error)) echo $upload_error ?>
+  </div>
 </div>
-</body>
+    <br>
+    <?php echo form_reset(['name'=>'reset','class'=>'btn btn-primary','value'=>'Reset']); ?>
+    <?php echo form_submit(['name'=>'submit','class'=>'btn btn-primary','value'=>'Enter']); ?>
+  </fieldset>
+</div>
 <?php include('footer.php');?>

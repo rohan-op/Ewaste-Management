@@ -32,13 +32,16 @@
         <a class="nav-link" href="<?= base_url('user/dashboard')?>">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/profile')?>">Refurbished Products</a>
-      </li> 
-      <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/maintenancelist')?>">Donate</a>
+        <a class="nav-link" href="<?= base_url('user/profile')?>">Buy</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="<?= base_url('user/profile')?>">Cart</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('user/donatePage')?>">Donate</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('user/profilePage')?>">Profile</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('login/logout')?>">Logout</a>

@@ -11,6 +11,15 @@ public function profile()
 	return $user->row();
 }
 
+
+public function addEwaste($array)
+{
+	return $this->db->insert('ewaste',$array);
+}
+
+
+
+
 public function update_password($passwordold,$password,Array $user)
 {
 	$id = $this->session->userdata('id');

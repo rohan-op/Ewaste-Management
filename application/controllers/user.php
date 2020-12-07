@@ -19,9 +19,63 @@ class User extends MY_Controller{
 		$this->load->view("user/profile_user",compact('user'));
 	}
 	//Profile Ends
- 
+ 	
+ 	//Donate E-waste
+	public function donatePage()
+	{
+		$this->load->view("user/donate_user");	
+	}
 
+	public function donateEwaste()
+	{
+		$this->load->model('usermodel');
+		$config = [
+				'upload_path' => './uploads/ewaste',
+				'allowed_types' => 'jpg|gif|png|jpeg'
+			];
+			$this->load->library('upload',$config);
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('e_type','Type','required');
+			$this->form_validation->set_rules('e_name','Model Name','required|max_length[100]');
+			$this->form_validation->set_rules('e_age','Age of E-waste','required|is_natural_no_zero');
+			$this->form_validation->set_rules('e_quantity','Quantity of E-waste','required|is_natural_no_zero');
+			$this->form_validation->set_rules('e_specs','Specification','required|max_length[400]');
+			$this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
+			$post = $this->input->post();
+			unset($post['submit']);
+			if($this->form_validation->run() && $this->upload->do_upload())
+			{
+				$data = $this->upload->data();
+				$image_path = base_url("uploads/ewaste/".$data['orig_name']);
+				$post['e_img'] = $image_path;
+				$post['u_id'] = $this->session->userdata('id');
+				$this->_flashNredirect($this->usermodel->addEwaste($post),'Congratulations! E-waste Uploaded Successfully','Oh Snap! Failed to Upload E-waste, Please Try Again');
+			}
+			else
+			{
+				$upload_error = $this->upload->display_errors();
+				$this->load->view('user/donate_user',compact('upload_error'));
+			}
+	}
+ 	//Donate E-waste Ends
 
+	//FEEDBACK FUNCTION
+	private function _flashNredirect($tf,$succm,$errm)
+	{
+		if($tf)
+			{
+				$this->session->set_flashdata('feedback',$succm);
+				$this->session->set_flashdata('class','success');
+				return redirect('user/donatePage');
+			}
+			else
+			{
+				$this->session->set_flashdata('feedback',$errm);
+				$this->session->set_flashdata('class','danger');
+				return redirect('user/donatePage');
+			}
+	}
+	//FEEDBACK ENDS
 
 
 
