@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2020 at 03:00 PM
+-- Generation Time: Dec 07, 2020 at 04:46 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -21,6 +21,39 @@ SET time_zone = "+00:00";
 --
 -- Database: `ci_ewm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ewaste`
+--
+
+CREATE TABLE `ewaste` (
+  `e_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `s_id` int(11) NOT NULL,
+  `r_id` int(11) NOT NULL,
+  `e_type` varchar(100) NOT NULL,
+  `e_name` varchar(200) NOT NULL,
+  `e_age` int(11) NOT NULL,
+  `e_quantity` int(11) NOT NULL,
+  `e_specs` text NOT NULL,
+  `e_img` text NOT NULL,
+  `date` text NOT NULL,
+  `s_stars` int(11) NOT NULL,
+  `s_info` text NOT NULL,
+  `r_stars` int(11) NOT NULL,
+  `r_info` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ewaste`
+--
+
+INSERT INTO `ewaste` (`e_id`, `u_id`, `s_id`, `r_id`, `e_type`, `e_name`, `e_age`, `e_quantity`, `e_specs`, `e_img`, `date`, `s_stars`, `s_info`, `r_stars`, `r_info`) VALUES
+(1, 1, 0, 0, 'laptop/pc', 'dell xps', 12, 1, 'good pc', 'http://[::1]/CI_EWM/uploads/ewaste/img_avatar.png', '2020-12-07 15:51:48', 0, '', 0, ''),
+(2, 1, 0, 0, 'laptop/pc', 'lenovo', 12, 2, 'they are fine', 'http://[::1]/CI_EWM/uploads/ewaste/img_avatar.png', '2020-12-07 15:52:08', 0, '', 0, ''),
+(3, 1, 0, 0, 'laptop/pc', 'MSI gf638rc', 11, 1, 'amazing gaming laptop', 'http://[::1]/CI_EWM/uploads/ewaste/img_avatar.png', '2020-12-07 15:55:14', 0, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -125,6 +158,12 @@ INSERT INTO `user` (`id`, `fname`, `cname`, `role`, `contact`, `email`, `address
 --
 
 --
+-- Indexes for table `ewaste`
+--
+ALTER TABLE `ewaste`
+  ADD PRIMARY KEY (`e_id`);
+
+--
 -- Indexes for table `recycler`
 --
 ALTER TABLE `recycler`
@@ -149,6 +188,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `ewaste`
+--
+ALTER TABLE `ewaste`
+  MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `recycler`
 --
 ALTER TABLE `recycler`
@@ -164,7 +209,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
