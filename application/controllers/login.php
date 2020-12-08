@@ -6,7 +6,11 @@ class Login extends MY_Controller{
 	//TESTING PURPOSE ONLY
 	public function testing()
 		{
+<<<<<<< HEAD
 			$this->load->view('user/buy_user');
+=======
+			$this->load->view('service/request_service');
+>>>>>>> 59ab9f17a83d497490dae1004bd50e4a213571a9
 		}
 	//TEST YOUR VIEWS USING THE ABOVE FUNCTION
 
@@ -14,7 +18,8 @@ class Login extends MY_Controller{
 		{
 			if($this->session->userdata('id'))
 			{
-				return redirect('user/dashboard');
+			 	$role = $this->session->userdata('role');
+				return redirect($role.'/page');
 			}
 			$this->load->helper('form');
 			$this->load->view('public/home_page');
@@ -24,7 +29,8 @@ class Login extends MY_Controller{
 		{
 			if($this->session->userdata('id'))
 			{
-				return redirect('user/dashboard');
+				$role = $this->session->userdata('role');
+				return redirect($role.'/profilePage');
 			}
 			$this->load->helper('form');
 			$this->load->view('public/public_login');
@@ -34,7 +40,8 @@ class Login extends MY_Controller{
 		{
 			if($this->session->userdata('id'))
 			{
-				return redirect('user/dashboard');
+				$role = $this->session->userdata('role');
+				return redirect($role.'/profilePage');
 			}
 			$this->load->helper('form');
 			$this->load->view('public/public_signup');
@@ -53,31 +60,19 @@ class Login extends MY_Controller{
 				$email = $this->input->post('email');
 				$password = $this->input->post('pword');
 				$this->load->model('loginmodel');
-
 				$id = $this->loginmodel->validate_user_login($role,$email,$password);
 				if( $id )
 					{
-						//$this->session->set_userdata('id',$id);
-						if($role='User')
-						{
-							echo "success";
-							//return redirect('user/dashboard');
-						}
-
-						else if($role='Service')
-						{
-							return redirect('service/dashboard');
-						}
-
-						else
-						{
-							return redirect('recycler/dashboard');
-						}
+						$newdata = array(
+											'id' => $id,
+											'role' => $role
+										);
+						$this->session->set_userdata($newdata);
+						return redirect($role.'/profilePage');
 					}
 				else
 					{
-						$this->_flashNredirect(0,'Accounted Created Successfully ,Try Logging In','Username or Password did not match, Please Try Again');
-						//$this->session->set_flashdata('feedback','Username or Password did not match');
+						$this->_flashNredirect(0,'Login Successful','Email or Password did not match, Please Try Again');
 						return redirect('login');
 					} 
 			}
@@ -92,7 +87,7 @@ class Login extends MY_Controller{
 		$config = [
 			'upload_path' => './uploads/profilepic',
 			'allowed_types' => 'jpg|png|jpeg'
-		];
+					];
 
 		$this->load->library('upload',$config);
 		$this->load->library('form_validation');
@@ -100,8 +95,9 @@ class Login extends MY_Controller{
 		$this->form_validation->set_rules('pword','Password','required|max_length[50]');
 		$this->form_validation->set_rules('cname','Company Name','required|max_length[100]');
 		$this->form_validation->set_rules('role','Role','required|max_length[10]');
-		$this->form_validation->set_rules('email','Email ID','required|max_length[100]|valid_email|is_unique[users.email]');
-		$this->form_validation->set_rules('contact','Contact Number','required|exact_length[10]|is_unique[users.contact]');
+		$this->form_validation->set_rules('email','Email ID','required|max_length[100]|valid_email|is_unique[user.email]|is_unique[service.email]|is_unique[recycler.email]');
+		$this->form_validation->set_rules('address','Address','required|max_length[250]');
+		$this->form_validation->set_rules('contact','Contact Number','required|exact_length[10]|is_unique[user.contact]|is_unique[service.contact]|is_unique[recycler.contact]');
 		$this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
 		$post = $this->input->post();
 		unset($post['submit']);
@@ -123,7 +119,7 @@ class Login extends MY_Controller{
 	public function logout()
 	{
 		$this->load->helper('url');
-		$this->session->unset_userdata('id');
+		$this->session->unset_userdata('id','role');
 		return redirect('login');
 	}
 
@@ -135,7 +131,7 @@ class Login extends MY_Controller{
 				$this->session->set_flashdata('class','success');
 				return redirect('login/index');
 			}
-			else
+		else
 			{
 				$this->session->set_flashdata('feedback',$errm);
 				$this->session->set_flashdata('class','danger');

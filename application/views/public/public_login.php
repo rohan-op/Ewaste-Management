@@ -24,7 +24,7 @@
 	<div class="col-lg-6">
 	    <div class="form-group">
 	      <label for="exampleInputEmail1">Role</label>      
-	      <?php $options = array('User'=>'User','Service'=>'Service','Recycler'=>'Recycler');?>
+	      <?php $options = array('user'=>'User','service'=>'Service Center','recycler'=>'Recycler');?>
 	      <?php echo form_dropdown('role',$options,'Role',['class'=>'custom-select']); ?>
 	    </div>
 	</div>

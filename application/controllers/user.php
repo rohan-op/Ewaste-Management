@@ -11,6 +11,96 @@ class User extends MY_Controller{
 		$this->load->helper('form');
 	}
 
+	//Profile
+	public function profilePage()
+	{
+		$this->load->model('usermodel');
+	 	$user = $this->usermodel->profile();
+		$this->load->view("user/profile_user",compact('user'));
+	}
+	//Profile Ends
+ 	
+
+ 	//Donate E-waste
+	public function donatePage()
+	{
+		$this->load->view("user/donate_user");	
+	}
+
+	public function donateEwaste()
+	{
+		$this->load->model('usermodel');
+		$config = [
+				'upload_path' => './uploads/ewaste',
+				'allowed_types' => 'jpg|gif|png|jpeg'
+			];
+			$this->load->library('upload',$config);
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('e_type','Type','required');
+			$this->form_validation->set_rules('e_name','Model Name','required|max_length[100]');
+			$this->form_validation->set_rules('e_age','Age of E-waste','required|is_natural_no_zero');
+			$this->form_validation->set_rules('e_quantity','Quantity of E-waste','required|is_natural_no_zero');
+			$this->form_validation->set_rules('e_specs','Specification','required|max_length[400]');
+			$this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
+			$post = $this->input->post();
+			unset($post['submit']);
+			if($this->form_validation->run() && $this->upload->do_upload())
+			{
+				$data = $this->upload->data();
+				$id = $this->session->userdata('id');
+				//$data['orig_name'] = $post['date'].$id.$data['file_ext'];
+				//$data['file_name'] = $post['date'].$id.$data['file_ext'];
+				//file name problem to be solved
+				$image_path = base_url("uploads/ewaste/".$data['orig_name']);
+				$post['e_img'] = $image_path;
+				$post['u_id'] = $this->session->userdata('id');
+				$this->_flashNredirect($this->usermodel->addEwaste($post),'Congratulations! E-waste Uploaded Successfully','Oh Snap! Failed to Upload E-waste, Please Try Again','donatePage','donatePage');
+			}
+			else
+			{
+				$upload_error = $this->upload->display_errors();
+				$this->load->view('user/donate_user',compact('upload_error'));
+			}
+	}
+ 	//Donate E-waste Ends
+
+
+ 	//Buy RF Products
+ 	public function buyPage()
+ 	{
+ 		$this->load->view("user/buy_user");
+ 	}
+ 	//Buy RF Product Ends
+
+
+ 	//CART
+ 	public function cartPage()
+ 	{
+ 		$this->load->view("user/cart_user");
+ 	}
+ 	//CART Ends
+
+
+	//FEEDBACK FUNCTION
+	private function _flashNredirect($tf,$succm,$errm,$page1,$page2)
+	{
+		if($tf)
+			{
+				$this->session->set_flashdata('feedback',$succm);
+				$this->session->set_flashdata('class','success');
+				return redirect('user/'.$page1);
+			}
+			else
+			{
+				$this->session->set_flashdata('feedback',$errm);
+				$this->session->set_flashdata('class','danger');
+				return redirect('user/'.$page2);
+			}
+	}
+	//FEEDBACK ENDS
+
+
+
 
 	//SHOW ARTICLES STARTS
 	public function dashboard()

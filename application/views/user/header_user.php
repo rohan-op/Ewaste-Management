@@ -29,16 +29,19 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/dashboard')?>">Home</a>
+        <a class="nav-link" href="#">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/profile')?>">Refurbished Products</a>
+        <a class="nav-link" href="<?= base_url('user/buyPage')?>">Buy</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('user/cartPage')?>">Cart</a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/maintenancelist')?>">Donate</a>
+        <a class="nav-link" href="<?= base_url('user/donatePage')?>">Donate</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="<?= base_url('user/profilePage')?>">Profile</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('login/logout')?>">Logout</a>

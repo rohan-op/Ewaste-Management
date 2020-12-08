@@ -4,12 +4,21 @@ class Usermodel extends MY_Model{
 public function profile()
 {
 	$id = $this->session->userdata('id');
-	$user = $this->db->select(['firstname','lastname','aadharpath','uname','mobile','email','sqfeet'])
+	$user = $this->db->select(['fname','cname','contact','email','address','profile_img'])
 					->where('id',$id)
-					->get('users');
+					->get('user');
 					//print_r($user->result());exit;
 	return $user->row();
 }
+
+
+public function addEwaste($array)
+{
+	return $this->db->insert('ewaste',$array);
+}
+
+
+
 
 public function update_password($passwordold,$password,Array $user)
 {
