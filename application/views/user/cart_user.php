@@ -1,6 +1,7 @@
 <?php include('header_user.php');?>
 <br>
 <body>
+  <div class="container">
 <!--Section: Block Content-->
 <section>
 
@@ -21,13 +22,8 @@
               <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                 <img class="img-fluid w-100"
                   src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
-                <a href="#!">
-                  <div class="mask">
-                    <img class="img-fluid w-100"
-                      src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg">
-                    <div class="mask rgba-black-slight"></div>
-                  </div>
-                </a>
+                
+             
               </div>
             </div>
             <div class="col-md-7 col-lg-9 col-xl-9">
@@ -70,13 +66,7 @@
               <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                 <img class="img-fluid w-100"
                   src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg" alt="Sample">
-                <a href="#!">
-                  <div class="mask">
-                    <img class="img-fluid w-100"
-                      src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg">
-                    <div class="mask rgba-black-slight"></div>
-                  </div>
-                </a>
+                
               </div>
             </div>
             <div class="col-md-7 col-lg-9 col-xl-9">
@@ -217,6 +207,7 @@
   <!-- Grid row -->
 
 </section>
+</div>
 <body>
 <!--Section: Block Content-->
 <?php include('footer.php');?>
