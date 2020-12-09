@@ -21,7 +21,7 @@
             <div class="col-md-5 col-lg-3 col-xl-3">
               <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                 <img class="img-fluid w-100"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
+                  src="http://[::1]/CI_EWM/uploads/user/download.png" alt="Sample">
                 
              
               </div>
@@ -31,9 +31,9 @@
                 <div class="d-flex justify-content-between">
                   <div>
                     <h5>Blue denim shirt</h5>
-                    <p class="mb-3 text-muted text-uppercase small">Shirt - blue</p>
-                    <p class="mb-2 text-muted text-uppercase small">Color: blue</p>
-                    <p class="mb-3 text-muted text-uppercase small">Size: M</p>
+                    <p class="mb-3 text-muted text-uppercase small">Dell Windows 7</p>
+                    <p class="mb-2 text-muted text-uppercase small">Laptop</p>
+                    <p class="mb-3 text-muted text-uppercase small">Serviced by: Mek Peripheral</p>
                   </div>
                   <div>
                     <div class="def-number-input number-input safari_only mb-0 w-100">
@@ -65,7 +65,7 @@
             <div class="col-md-5 col-lg-3 col-xl-3">
               <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                 <img class="img-fluid w-100"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg" alt="Sample">
+                  src="http://[::1]/CI_EWM/uploads/user/download.png" alt="Sample">
                 
               </div>
             </div>
@@ -74,9 +74,9 @@
                 <div class="d-flex justify-content-between">
                   <div>
                     <h5>Red hoodie</h5>
-                    <p class="mb-3 text-muted text-uppercase small">Shirt - red</p>
-                    <p class="mb-2 text-muted text-uppercase small">Color: red</p>
-                    <p class="mb-3 text-muted text-uppercase small">Size: M</p>
+                    <p class="mb-3 text-muted text-uppercase small">Dell Windows 10</p>
+                    <p class="mb-2 text-muted text-uppercase small">Laptop</p>
+                    <p class="mb-3 text-muted text-uppercase small">Serviced by: Mek Peripheral</p>
                   </div>
                   <div>
                     <div class="def-number-input number-input safari_only mb-0 w-100">
