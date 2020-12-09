@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>  
 <html>
 <head>
   <style type="text/css">
@@ -41,7 +41,7 @@
         <a class="nav-link" href="<?= base_url('user/maintenancelist')?>">Report Status</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="<?= base_url('service/profilePage')?>">Profile</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('login/logout')?>">Logout</a>
