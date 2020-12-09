@@ -11,6 +11,14 @@ class User extends MY_Controller{
 		$this->load->helper('form');
 	}
 
+
+	//Home Page
+	public function homePage()
+	{
+		$this->load->view("user/home_page");
+	}
+	//Home Page Ends
+
 	//Profile
 	public function profilePage()
 	{

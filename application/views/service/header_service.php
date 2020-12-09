@@ -29,16 +29,16 @@
   <div class="collapse navbar-collapse" id="navbarColor01" style="margin-left: 10px;">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/dashboard')?>">Home</a>
+        <a class="nav-link" href="<?= base_url('service/homePage')?>">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/profile')?>">Requests</a>
+        <a class="nav-link" href="<?= base_url('service/requestPage')?>">Requests</a>
       </li> 
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('user/maintenancelist')?>">Sell Refurbished Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/maintenancelist')?>">Report Status</a>
+        <a class="nav-link" href="<?= base_url('service/statusPage')?>">Report Status</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('service/profilePage')?>">Profile</a>

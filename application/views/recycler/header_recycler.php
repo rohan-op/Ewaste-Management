@@ -29,16 +29,16 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/dashboard')?>">Home</a>
+        <a class="nav-link" href="<?= base_url('recycler/homePage')?>">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/profile')?>">Requests</a>
+        <a class="nav-link" href="<?= base_url('recycler/requestPage')?>">Requests</a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/maintenancelist')?>">Report Status</a>
+        <a class="nav-link" href="<?= base_url('recycler/statusPage')?>">Report Status</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="<?= base_url('recycler/profilePage')?>">Profile</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('login/logout')?>">Logout</a>

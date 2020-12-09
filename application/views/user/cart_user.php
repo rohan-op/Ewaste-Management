@@ -30,8 +30,7 @@
               <div>
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h5>Blue denim shirt</h5>
-                    <p class="mb-3 text-muted text-uppercase small">Dell Windows 7</p>
+                    <h5>Dell Windows 7</h5>
                     <p class="mb-2 text-muted text-uppercase small">Laptop</p>
                     <p class="mb-3 text-muted text-uppercase small">Serviced by: Mek Peripheral</p>
                   </div>
@@ -73,8 +72,7 @@
               <div>
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h5>Red hoodie</h5>
-                    <p class="mb-3 text-muted text-uppercase small">Dell Windows 10</p>
+                    <h5>Dell Windows 10</h5>
                     <p class="mb-2 text-muted text-uppercase small">Laptop</p>
                     <p class="mb-3 text-muted text-uppercase small">Serviced by: Mek Peripheral</p>
                   </div>
