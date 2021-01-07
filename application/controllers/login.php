@@ -83,26 +83,45 @@ class Login extends MY_Controller{
 	{
 		$config = [
 			'upload_path' => './uploads/profilepic',
-			'allowed_types' => 'jpg|png|jpeg'
+			'allowed_types' => 'jpg|png|jpeg',
+			'max_size' => '1000',
+			'max_width' => '500',
+			'max_height' => '500'
 					];
 
-		$this->load->library('upload',$config);
+		
 		$this->load->library('form_validation');
+		$post = $this->input->post();
 		$this->form_validation->set_rules('fname','Fullname','required|alpha_numeric_spaces|max_length[100]');
 		$this->form_validation->set_rules('pword','Password','required|max_length[50]');
 		$this->form_validation->set_rules('cname','Company Name','required|max_length[100]');
 		$this->form_validation->set_rules('role','Role','required|max_length[10]');
-		$this->form_validation->set_rules('email','Email ID','required|max_length[100]|valid_email|is_unique[user.email]|is_unique[service.email]|is_unique[recycler.email]');
 		$this->form_validation->set_rules('address','Address','required|max_length[250]');
-		$this->form_validation->set_rules('contact','Contact Number','required|exact_length[10]|is_unique[user.contact]|is_unique[service.contact]|is_unique[recycler.contact]');
+		if($post['role']=='user')
+		{
+			$this->form_validation->set_rules('email','Email ID','required|max_length[100]|valid_email|is_unique[user.email]');
+			$this->form_validation->set_rules('contact','Contact Number','required|exact_length[10]|is_unique[user.contact]');
+		}
+		else if($post['role']=='service')
+		{
+			$this->form_validation->set_rules('email','Email ID','required|max_length[100]|valid_email|is_unique[service.email]');
+			$this->form_validation->set_rules('contact','Contact Number','required|exact_length[10]|is_unique[service.contact]');
+		}
+		else
+		{
+			$this->form_validation->set_rules('email','Email ID','required|max_length[100]|valid_email|is_unique[recycler.email]');
+			$this->form_validation->set_rules('contact','Contact Number','required|exact_length[10]|is_unique[recycler.contact]');
+		}
+
 		$this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
-		$post = $this->input->post();
+		
 		unset($post['submit']);
+		$this->load->library('upload',$config);
 		if($this->form_validation->run() && $this->upload->do_upload())
 		{
 			$this->load->model('loginmodel');
 			$data = $this->upload->data();
-			$image_path = base_url("uploads/profilepic/".$data['orig_name']);
+			$image_path = base_url("uploads/profilepic/".$data['file_name']);
 			$post['profile_img'] = $image_path;
 			$this->_flashNredirect($this->loginmodel->add_user($post),'Accounted Created Successfully ,Try Logging In','Failed to Create Account, Please Try Again');
 		}

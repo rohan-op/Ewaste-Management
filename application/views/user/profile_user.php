@@ -2,6 +2,18 @@
 <br><br>
 <body>
 	<div class="container">
+    <?php if($feedback = $this->session->flashdata('feedback')): ?>    
+      <div class="row">
+        <div class="col-lg-6">
+           <div class="alert alert-dismissible alert-<?=$this->session->flashdata('class')?>">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong></strong> <a href="#" class="alert-link">
+              <?= $feedback ?>
+            </a>
+          </div>
+        </div>
+      </div>
+      <?php endif; ?>
     <ol class="breadcrumb" style="width: 250px;">
         <li class="breadcrumb-item"><a href="#">User/Organisation</a></li>
         <li class="breadcrumb-item active">Profile</li>
@@ -42,8 +54,9 @@
     	</table>
         <br>
         <div>
-                    <div >    <?= anchor("user/change_password",'Edit Profile',['class'=>'btn btn-warning']);?>   </div>
-                    <br>
+                      <?= anchor("user/change_password",'Edit Profile',['class'=>'btn btn-warning']);?>   
+                      <?= anchor("user/change_password",'Change Password',['class'=>'btn btn-warning']);?>   
+                    <br><br>
                     <?= anchor("user/change_password",'Your Orders',['class'=>'btn btn-info']);?>
                     <?= anchor("user/change_password",'Your Donations',['class'=>'btn btn-info']);?>
                 </div>

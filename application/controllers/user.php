@@ -26,6 +26,32 @@ class User extends MY_Controller{
 	 	$user = $this->usermodel->profile();
 		$this->load->view("user/profile_user",compact('user'));
 	}
+
+	public function change_password()
+	{
+		$this->load->view("user/changepassword_user");
+	}
+
+	public function update_password()
+	{
+	 	$this->load->model('usermodel');
+	 	$this->load->library('form_validation');
+	 	$this->form_validation->set_rules('password','Password','required|alpha_dash|max_length[50]');
+	 	$this->form_validation->set_rules('passwordold','Password','required|alpha_dash|max_length[50]');
+	 	$post = $this->input->post();
+				unset($post['submit']);
+	 	if($this->form_validation->run())
+			{
+				$password = $this->input->post('password');
+				$passwordold = $this->input->post('passwordold');
+
+				$this->_flashNredirect($this->usermodel->update_password($passwordold,$password,$post),'Password Updated Successfully','Failed to Update Password, Please Try Again','profilePage','profilePage');
+			}
+		else
+			{
+				$this->load->view('public/change_password');
+			}
+	}
 	//Profile Ends
  	
 
@@ -194,40 +220,7 @@ class User extends MY_Controller{
 	}
 	//SHOW ARTICLES ENDS
 
-	//USER PROFILE STARTS
-	public function profile()
-	{
-	 	$this->load->model('usermodel');
-	 	$user = $this->usermodel->profile();
-	 	$this->load->view('public/user_profile',compact('user'));
-	}
 
-	public function change_password()
-	{
-	 	$this->load->view('public/change_password');
-	}
-
-	public function update_password()
-	{
-	 	$this->load->model('usermodel');
-	 	$this->load->library('form_validation');
-	 	$this->form_validation->set_rules('password','Password','required|alpha_dash|max_length[20]');
-	 	$this->form_validation->set_rules('passwordold','Password','required|alpha_dash|max_length[20]');
-	 	$post = $this->input->post();
-				unset($post['submit']);
-	 	if($this->form_validation->run())
-			{
-				$password = $this->input->post('password');
-				$passwordold = $this->input->post('passwordold');
-
-				$this->_flashNredirect2($this->usermodel->update_password($passwordold,$password,$post),'Password Updated Successfully','Failed to Update Password, Please Try Again');
-			}
-		else
-			{
-				$this->load->view('public/change_password');
-			}
-	}
-	//USER PROFILE ENDS
 
 	//MAINTENANCE LIST STARTS
 		public function maintenancelist()
