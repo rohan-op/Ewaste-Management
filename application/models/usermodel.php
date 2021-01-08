@@ -12,13 +12,6 @@ public function profile()
 }
 
 
-public function addEwaste($array)
-{
-	return $this->db->insert('ewaste',$array);
-}
-
-
-
 public function update_password($passwordold,$password,Array $user)
 {
 	$id = $this->session->userdata('id');
@@ -39,5 +32,32 @@ public function update_password($passwordold,$password,Array $user)
 		return FALSE;
 	}
 }
+
+
+public function findProfile()
+{
+	$id = $this->session->userdata('id');
+	$q = $this->db->select(['cname','contact','email','address'])
+					->where('id',$id)
+					->get('user');
+	return $q->row();
+}
+
+public function editProfile($user)
+{
+	$id = $this->session->userdata('id');
+	return $this->db->where('id',$id)
+						->update('user',$user);
+}
+
+
+public function addEwaste($array)
+{
+	return $this->db->insert('ewaste',$array);
+}
+
+
+
+
 }
 ?>

@@ -1,9 +1,10 @@
 <?php include('header_service.php');?>
 <br><br>
 <div class="container">
-    <ol class="breadcrumb" style="width: 300px;">
-        <li class="breadcrumb-item"><a href="#">Service/Sell refurbished products</a></li>
-        <li class="breadcrumb-item active">Sell product</li>
+    <ol class="breadcrumb" style="width: 430px;">
+        <li class="breadcrumb-item"><a href="#">Service</a></li>
+        <li class="breadcrumb-item"><a href="#">Sell refurbished products</a></li>
+        <li class="breadcrumb-item active">Product Details</li>
     </ol>
     <br>
     <?php echo form_open_multipart('Service/sellEwaste'); ?>

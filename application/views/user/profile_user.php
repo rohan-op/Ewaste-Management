@@ -54,7 +54,7 @@
     	</table>
         <br>
         <div>
-                      <?= anchor("user/change_password",'Edit Profile',['class'=>'btn btn-warning']);?>   
+                      <?= anchor("user/editProfile",'Edit Profile',['class'=>'btn btn-warning']);?>   
                       <?= anchor("user/change_password",'Change Password',['class'=>'btn btn-warning']);?>   
                     <br><br>
                     <?= anchor("user/change_password",'Your Orders',['class'=>'btn btn-info']);?>

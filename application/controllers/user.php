@@ -52,6 +52,33 @@ class User extends MY_Controller{
 				$this->load->view('public/change_password');
 			}
 	}
+
+	public function editProfile()
+	{
+		$this->load->model('usermodel');
+		$profile = $this->usermodel->findProfile();
+		$this->load->view('user/editprofile_user',compact('profile'));
+	}
+
+	public function updateProfile()
+	{
+		$this->load->model('usermodel');
+	 	$this->load->library('form_validation');
+	 	$this->form_validation->set_rules('email','Email','required|max_length[100]|valid_email');
+	 	$this->form_validation->set_rules('contact','Contact No','required|exact_length[10]');
+	 	$this->form_validation->set_rules('cname','Company Name','required|max_length[100]');
+	 	$this->form_validation->set_rules('address','Address','required|max_length[250]');
+	 	$post = $this->input->post();
+	 	unset($post['submit']);
+	 	if($this->form_validation->run())
+	 	{
+	 		$this->_flashNredirect($this->usermodel->editProfile($post),'Profile Updated Successfully','Failed to Update Profile, Please Try Again','profilePage','profilePage');
+	 	}
+	 	else
+	 	{
+	 		$this->load->view('user/editprofile_user');
+	 	}
+	}
 	//Profile Ends
  	
 
