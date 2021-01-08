@@ -27,12 +27,12 @@ class User extends MY_Controller{
 		$this->load->view("user/profile_user",compact('user'));
 	}
 
-	public function change_password()
+	public function changePassword()
 	{
 		$this->load->view("user/changepassword_user");
 	}
 
-	public function update_password()
+	public function updatePassword()
 	{
 	 	$this->load->model('usermodel');
 	 	$this->load->library('form_validation');
@@ -68,6 +68,7 @@ class User extends MY_Controller{
 	 	$this->form_validation->set_rules('contact','Contact No','required|exact_length[10]');
 	 	$this->form_validation->set_rules('cname','Company Name','required|max_length[100]');
 	 	$this->form_validation->set_rules('address','Address','required|max_length[250]');
+	 	$this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
 	 	$post = $this->input->post();
 	 	unset($post['submit']);
 	 	if($this->form_validation->run())
@@ -76,7 +77,8 @@ class User extends MY_Controller{
 	 	}
 	 	else
 	 	{
-	 		$this->load->view('user/editprofile_user');
+	 		$profile = $this->usermodel->findProfile();
+	 		$this->load->view('user/editprofile_user',compact('profile'));
 	 	}
 	}
 	//Profile Ends
@@ -112,7 +114,7 @@ class User extends MY_Controller{
 				//$data['orig_name'] = $post['date'].$id.$data['file_ext'];
 				//$data['file_name'] = $post['date'].$id.$data['file_ext'];
 				//file name problem to be solved
-				$image_path = base_url("uploads/ewaste/".$data['orig_name']);
+				$image_path = base_url("uploads/ewaste/".$data['file_name']);
 				$post['e_img'] = $image_path;
 				$post['u_id'] = $this->session->userdata('id');
 				$this->_flashNredirect($this->usermodel->addEwaste($post),'Congratulations! E-waste Uploaded Successfully','Oh Snap! Failed to Upload E-waste, Please Try Again','donatePage','donatePage');
@@ -148,7 +150,7 @@ class User extends MY_Controller{
 		if($tf)
 			{
 				$this->session->set_flashdata('feedback',$succm);
-				$this->session->set_flashdata('class','success');
+				$this->session->set_flashdata('class','primary');
 				return redirect('user/'.$page1);
 			}
 			else

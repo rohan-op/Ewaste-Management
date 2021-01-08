@@ -1,9 +1,9 @@
-<?php include('header_user.php'); ?> 
+<?php include('header_service.php'); ?> 
 <br>
 <div class="container">
-	<?php echo form_open('user/updateProfile'); ?>
+	<?php echo form_open('service/updateProfile'); ?>
 	<ol class="breadcrumb" style="width: 410px;">
-        <li class="breadcrumb-item"><a href="#">User/Organisation</a></li>
+        <li class="breadcrumb-item"><a href="#">Service Center</a></li>
         <li class="breadcrumb-item"><a href="#">Profile</a></li>
         <li class="breadcrumb-item active">Edit Profile</li>
     </ol>

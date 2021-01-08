@@ -1,15 +1,14 @@
-<?php include('header_user.php'); ?> 
+<?php include('header_recycler.php'); ?> 
 <br>
 <div class="container">
-	<?php echo form_open('user/updateProfile'); ?>
+	<?php echo form_open('recycler/updateProfile'); ?>
 	<ol class="breadcrumb" style="width: 410px;">
-        <li class="breadcrumb-item"><a href="#">User/Organisation</a></li>
+        <li class="breadcrumb-item"><a href="#">Recycler</a></li>
         <li class="breadcrumb-item"><a href="#">Profile</a></li>
         <li class="breadcrumb-item active">Edit Profile</li>
     </ol>
-    <br>
   <fieldset>
-  	<br><br>
+  	<br>
     <h1 class="text-primary">Edit Profile</h1>
     <br>
 

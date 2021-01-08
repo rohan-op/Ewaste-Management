@@ -1,10 +1,10 @@
-<?php include('header_user.php'); ?>
+<?php include('header_recycler.php'); ?>
 <br>
 <div class="container">
-	<?php echo form_open("user/updatePassword"); ?> 
+	<?php echo form_open("recycler/updatePassword"); ?> 
 
 	<ol class="breadcrumb" style="width: 410px;">
-        <li class="breadcrumb-item"><a href="#">User/Organisation</a></li>
+        <li class="breadcrumb-item"><a href="#">Recycler</a></li>
         <li class="breadcrumb-item"><a href="#">Profile</a></li>
         <li class="breadcrumb-item active">Change Password</li>
     </ol>
