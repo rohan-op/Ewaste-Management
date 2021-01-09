@@ -54,12 +54,14 @@
     	</table>
         <br>
         <div>
-                      <?= anchor("service/editProfile",'Edit Profile',['class'=>'btn btn-warning']);?>   
-                      <?= anchor("service/changePassword",'Change Password',['class'=>'btn btn-warning']);?>   
-                    <br><br>
-                    <?= anchor("service/",'Your Orders',['class'=>'btn btn-info']);?>
-                    <?= anchor("service/",'Your Donations',['class'=>'btn btn-info']);?>
-                </div>
+            <?= anchor("service/updateProfilePhoto",'Update Profile Photo',['class'=>'btn btn-primary']);?>
+            <br><br>
+            <?= anchor("service/editProfile",'Edit Profile',['class'=>'btn btn-warning']);?>   
+            <?= anchor("service/changePassword",'Change Password',['class'=>'btn btn-warning']);?>   
+            <br><br>
+            <?= anchor("service/",'Your Orders',['class'=>'btn btn-info']);?>
+            <?= anchor("service/",'Your Donations',['class'=>'btn btn-info']);?>
+       </div>
         <br>
     </div>
 	</div>

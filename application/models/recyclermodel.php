@@ -47,5 +47,21 @@ class Recyclermodel extends MY_Model{
 			return $this->db->where('id',$id)
 								->update('recycler',$recycler);
 		}
+
+		public function getPhoto()
+		{
+			$id = $this->session->userdata('id');
+			$data = $this->db->select('profile_img')
+						->where('id',$id)
+						->get('recycler');
+			return $data->row();
+		}
+
+		public function updatePhoto($post)
+		{
+			$id = $this->session->userdata('id');
+			return $this->db->where('id',$id)
+								->update('recycler',$post);
+		}
 }
 ?>

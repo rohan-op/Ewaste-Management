@@ -82,6 +82,43 @@ class Service extends MY_Controller{
 	 		$this->load->view('service/editprofile_service',compact('profile'));
 	 	}
 	}
+
+	public function updateProfilePhoto()
+	{
+		$this->load->model('servicemodel');
+		$data = $this->servicemodel->getPhoto();
+		$this->load->view('service/updateprofilephoto_service',compact('data'));
+	}
+
+	public function updatePhoto()
+	{
+		$config = [
+			'upload_path' => './uploads/profilepic/service',
+			'allowed_types' => 'jpg|png|jpeg',
+			'max_size' => '1000',
+			'max_width' => '500',
+			'max_height' => '500'
+					];
+		$this->load->library('upload',$config);
+		$this->load->model('servicemodel');
+		if($this->upload->do_upload())
+		{
+			$this->load->helper("file");
+			$path = $this->servicemodel->getPhoto();
+			unlink(".".substr($path->profile_img,19));
+			//print_r(".".substr($path->profile_img,19));exit;
+			$data = $this->upload->data();
+			$image_path = base_url("uploads/profilepic/service/".$data['file_name']);
+			$post['profile_img'] = $image_path;
+			$this->_flashNredirect($this->servicemodel->updatePhoto($post),'Profile Photo Updated Successfully','Failed to Update Profile Photo, Please Try Again','profilePage','profilePage');
+		}
+		else
+		{
+			$data = $this->servicemodel->getPhoto();
+			$upload_error = $this->upload->display_errors();
+			$this->load->view('service/updateprofilephoto_service',compact('upload_error','data'));
+		}
+	}
 	//Profile Ends
 
 

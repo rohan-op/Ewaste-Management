@@ -81,6 +81,43 @@ class Recycler extends MY_Controller{
 	 		$this->load->view('recycler/editprofile_recycler',compact('profile'));
 	 	}
 	}
+
+	public function updateProfilePhoto()
+	{
+		$this->load->model('recyclermodel');
+		$data = $this->recyclermodel->getPhoto();
+		$this->load->view('recycler/updateprofilephoto_recycler',compact('data'));
+	}
+
+	public function updatePhoto()
+	{
+		$config = [
+			'upload_path' => './uploads/profilepic/recycler',
+			'allowed_types' => 'jpg|png|jpeg',
+			'max_size' => '1000',
+			'max_width' => '500',
+			'max_height' => '500'
+					];
+		$this->load->library('upload',$config);
+		$this->load->model('recyclermodel');
+		if($this->upload->do_upload())
+		{
+			$this->load->helper("file");
+			$path = $this->recyclermodel->getPhoto();
+			unlink(".".substr($path->profile_img,19));
+			//print_r(".".substr($path->profile_img,19));exit;
+			$data = $this->upload->data();
+			$image_path = base_url("uploads/profilepic/recycler/".$data['file_name']);
+			$post['profile_img'] = $image_path;
+			$this->_flashNredirect($this->recyclermodel->updatePhoto($post),'Profile Photo Updated Successfully','Failed to Update Profile Photo, Please Try Again','profilePage','profilePage');
+		}
+		else
+		{
+			$data = $this->recyclermodel->getPhoto();
+			$upload_error = $this->upload->display_errors();
+			$this->load->view('recycler/updateprofilephoto_recycler',compact('upload_error','data'));
+		}
+	}
 	//Profile Ends
 
 

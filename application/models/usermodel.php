@@ -51,6 +51,22 @@ public function editProfile($user)
 }
 
 
+public function getPhoto()
+{
+	$id = $this->session->userdata('id');
+	$data = $this->db->select('profile_img')
+				->where('id',$id)
+				->get('user');
+	return $data->row();
+}
+
+public function updatePhoto($post)
+{
+	$id = $this->session->userdata('id');
+	return $this->db->where('id',$id)
+						->update('user',$post);
+}
+
 public function addEwaste($array)
 {
 	return $this->db->insert('ewaste',$array);

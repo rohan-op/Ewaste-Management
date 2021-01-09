@@ -24,7 +24,8 @@
     		<tr>
 		      <th>Role:&nbsp;</th>
 		      <td>User</td>
-		      <td rowspan="5"><img src="<?= $user->profile_img ?>" alt="Profile Image" height="158px" width="158px" style="border-radius: 50%;"> </td>
+		      <td rowspan="5"><img src="<?= $user->profile_img ?>" alt="Profile Image" height="158px" width="158px" style="border-radius: 50%;"> 
+          </td>
     		</tr>
     		<tr>
 		      <th>Name:&nbsp;</th>
@@ -41,25 +42,27 @@
 		      <td><?= $user->contact ?></td>
 		      <td> </td>
     		</tr>
-    		<tr>
-		      <th>Email:&nbsp;</th>
-		      <td><?= $user->email ?></td>
-		      <td> </td>
-    		</tr>
-            <tr>
-              <th>Address:&nbsp;</th>
-              <td><?= $user->address ?></td>
-              <td> </td>
-            </tr>
+        <tr>
+          <th>Email:&nbsp;</th>
+          <td><?= $user->email ?></td>
+          <td> </td>
+        </tr>
+        <tr>
+          <th>Address:&nbsp;</th>
+          <td><?= $user->address ?></td>
+          <td> </td>
+        </tr>
     	</table>
         <br>
         <div>
-                      <?= anchor("user/editProfile",'Edit Profile',['class'=>'btn btn-warning']);?>   
-                      <?= anchor("user/changePassword",'Change Password',['class'=>'btn btn-warning']);?>   
-                    <br><br>
-                    <?= anchor("user/",'Your Orders',['class'=>'btn btn-info']);?>
-                    <?= anchor("user/",'Your Donations',['class'=>'btn btn-info']);?>
-                </div>
+            <?= anchor("user/updateProfilePhoto",'Update Profile Photo',['class'=>'btn btn-primary']);?>
+            <br><br>
+            <?= anchor("user/editProfile",'Edit Profile',['class'=>'btn btn-warning']);?>   
+            <?= anchor("user/changePassword",'Change Password',['class'=>'btn btn-warning']);?>   
+            <br><br>
+            <?= anchor("user/",'Your Orders',['class'=>'btn btn-info']);?>
+            <?= anchor("user/",'Your Donations',['class'=>'btn btn-info']);?>
+        </div>
         <br>
 	</div>
 </body>

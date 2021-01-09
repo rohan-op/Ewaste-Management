@@ -101,16 +101,19 @@ class Login extends MY_Controller{
 		{
 			$this->form_validation->set_rules('email','Email ID','required|max_length[100]|valid_email|is_unique[user.email]');
 			$this->form_validation->set_rules('contact','Contact Number','required|exact_length[10]|is_unique[user.contact]');
+			$config['upload_path'] = './uploads/profilepic/user';
 		}
 		else if($post['role']=='service')
 		{
 			$this->form_validation->set_rules('email','Email ID','required|max_length[100]|valid_email|is_unique[service.email]');
 			$this->form_validation->set_rules('contact','Contact Number','required|exact_length[10]|is_unique[service.contact]');
+			$config['upload_path'] = './uploads/profilepic/service';
 		}
 		else
 		{
 			$this->form_validation->set_rules('email','Email ID','required|max_length[100]|valid_email|is_unique[recycler.email]');
 			$this->form_validation->set_rules('contact','Contact Number','required|exact_length[10]|is_unique[recycler.contact]');
+			$config['upload_path'] = './uploads/profilepic/recycler';
 		}
 
 		$this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
@@ -121,7 +124,7 @@ class Login extends MY_Controller{
 		{
 			$this->load->model('loginmodel');
 			$data = $this->upload->data();
-			$image_path = base_url("uploads/profilepic/".$data['file_name']);
+			$image_path = base_url("uploads/profilepic/".$post['role']."/".$data['file_name']);
 			$post['profile_img'] = $image_path;
 			$this->_flashNredirect($this->loginmodel->add_user($post),'Accounted Created Successfully ,Try Logging In','Failed to Create Account, Please Try Again');
 		}
