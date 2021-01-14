@@ -63,5 +63,43 @@ class Servicemodel extends MY_Model{
 			return $this->db->where('id',$id)
 								->update('service',$post);
 		}
+
+		public function request($offset,$limit,$bool)
+		{
+			 
+			 if($bool==true)
+			 {
+			 	$query=$this->db->get_where('ewaste',array('s_id'=>'0'));
+			 }
+			 else
+			 {
+			 	$this->db->limit($limit, $offset);
+			 	$query=$this->db->get_where('ewaste',array('s_id'=>'0'));
+
+			 }
+			
+			return $query->result();
+		}
+		public function status($offset,$limit,$bool)
+		{
+			if($bool==true)
+			 {
+			 	$query=$this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id')));
+			 }
+			 else
+			 {
+			 	$this->db->limit($limit, $offset);
+			 	$query=$this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id')));
+
+			 }
+			
+			return $query->result();
+		}
+		public function acceptProduct($post)
+		{
+			 $this->db->update('ewaste',
+        array('s_id'=>$this->session->userdata('id')),array('e_id'=>$post['hiddenAccept'])) ;
+		}
+
 }
 ?>

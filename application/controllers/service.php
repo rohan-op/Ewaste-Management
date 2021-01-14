@@ -125,15 +125,62 @@ class Service extends MY_Controller{
 	//Request
 	public function requestPage()
 	{
-		$this->load->view("service/request_service");
+		$this->load->model('servicemodel');
+		if(isset($_GET['pageno']))
+    	{
+    		$pageno=$_GET['pageno'];
+    	}
+    	else
+    	{
+    		$pageno=1;
+    	}
+    	$no_of_records_per_page=4;
+    	$offset=($pageno-1)*$no_of_records_per_page;
+    	$bool=true;
+    	$total_records=$this->servicemodel->request($offset,$no_of_records_per_page,$bool);
+    	$bool=false;
+		$request=$this->servicemodel->request($offset,$no_of_records_per_page,$bool);
+		$total_pages=ceil(count($total_records)/$no_of_records_per_page);
+
+		$this->load->view("service/request_service",compact('request','total_pages','pageno'));
+
 	}
 	//Request Ends
+    
+    public function accept()
+    {
+    	$this->load->model('servicemodel');
+    	
 
+    	$post=$this->input->post();
+    	$this->servicemodel->acceptProduct($post);
+    	return redirect('service/requestPage');
+    	
+    }
 
 	//Status
 	public function statusPage()
 	{
-		$this->load->view("service/status_service");
+		$this->load->model('servicemodel');
+
+		if(isset($_GET['pageno']))
+    	{
+    		$pageno=$_GET['pageno'];
+    	}
+    	else
+    	{
+    		$pageno=1;
+    	}
+    	$no_of_records_per_page=4;
+    	$offset=($pageno-1)*$no_of_records_per_page;
+    	$bool=true;
+    	$total_records=$this->servicemodel->status($offset,$no_of_records_per_page,$bool);
+    	$bool=false;
+		$status=$this->servicemodel->status($offset,$no_of_records_per_page,$bool);
+		$total_pages=ceil(count($total_records)/$no_of_records_per_page);
+        
+		$this->load->view("service/status_service",compact('status','total_pages','pageno'));
+
 	}
 	//Status Ends
 
