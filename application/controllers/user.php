@@ -166,9 +166,25 @@ class User extends MY_Controller{
 
 
  	//Buy RF Products
- 	public function buyPage()
+ 	public function buyPage($pageno)
  	{
- 		$this->load->view("user/buy_user");
+ 		$this->load->model('usermodel');
+ 	if(isset($_GET['pageno']))
+    	{
+    		$pageno=$_GET['pageno'];
+    	}
+    	else
+    	{
+    		$pageno=1;
+    	}
+    	$no_of_records_per_page=4;
+    	$offset=($pageno-1)*$no_of_records_per_page;
+    	$bool=true;
+    	$total_records=$this->usermodel->buy($offset,$no_of_records_per_page,$bool);
+    	$bool=false;
+		$buy=$this->usermodel->buy($offset,$no_of_records_per_page,$bool);
+		$total_pages=ceil(count($total_records)/$no_of_records_per_page);
+ 		$this->load->view("user/buy_user",compact('buy','total_pages','pageno'));
  	}
  	//Buy RF Product Ends
 
@@ -179,7 +195,39 @@ class User extends MY_Controller{
  		$this->load->view("user/cart_user");
  	}
  	//CART Ends
-
+    
+    public function addToCart($pageno)
+    {
+    	if(isset($_POST["add_to_cart"]))
+{
+	if(isset($_SESSION["shopping_cart"]))
+	{
+		$item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
+		if(!in_array($_POST["addCart"], $item_array_id))
+		{
+			$count = count($_SESSION["shopping_cart"]);
+			$item_array = array(
+				'item_id'			=>	$_POST["hidden_id"],
+				'item_name'			=>	$_POST["hidden_name"]
+			);
+			$_SESSION["shopping_cart"][$count] = $item_array;
+		}
+		else
+		{
+			echo '<script>alert("Item Already Added")</script>';
+		}
+	}
+	else
+	{
+		$item_array = array(
+			'item_id'			=>	$_POST["hidden_id"],
+			'item_name'			=>	$_POST["hidden_name"]
+		);
+		$_SESSION["shopping_cart"][0] = $item_array;
+	}
+}
+  return redirect("user/buyPage/$pageno");
+    }
 
 	//FEEDBACK FUNCTION
 	private function _flashNredirect($tf,$succm,$errm,$page1,$page2)

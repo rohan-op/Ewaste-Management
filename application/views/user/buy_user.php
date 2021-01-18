@@ -46,84 +46,82 @@
     <h2 class="text-primary">Refurbished Product</h2>
     <br><br>
         <div class="row">
+          <?php
+         
+           if(!empty($buy))
+           {
+            foreach($buy as $row)
+            {
+              
+         ?>
             
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
                     <div class="mycol4">
-                        <p><strong>Dell Windows 10</strong>
+                        <p><strong><?php echo $row->e_name; ?></strong>
                         <p>Service By:<strong> Laptop</strong></p>
                         <p>Date:<strong> 3/11/2020</strong></p>
                         <p>Price:<strong>3</strong></p>
                     </div>
                     <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
+                        <img src="<?= $row->e_img ?>" alt="laptop image" height="135px" width="135px">
                     </div>
                 </div>
                 <div>
+                  <form action="<?= base_url('user/addToCart/$pageno') ?>" method="post">
                     <div >    <button class="btn btn-info">Details</button> 
-                              <button type="button" class="btn btn-success">Add to Cart</button>  
+                              <input type="submit" name="add_to_cart" class="btn btn-success" value="Add to Cart"/>
+                              <input type="hidden" name="hidden_id" value="<?= $row->e_id ?>">
+                              <input type="hidden" name="hidden_name" value="<?php echo $row->e_name; ?>" />
                     </div>
+                  </form>
         
+                </div> 
         </div> 
-        </div> 
-        <div class="col-6" style="margin-bottom: 50px;">
-                <div class="row">
-                    <div class="mycol4">
-                        <p><strong>Dell Windows 10</strong>
-                        <p>Service By:<strong> Laptop</strong></p>
-                        <p>Date:<strong> 3/11/2020</strong></p>
-                        <p>Price:<strong>3</strong></p>
-                    </div>
-                    <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
-                    </div>
-                </div>
-                <div>
-                    <div >    <button class="btn btn-info">Details</button> 
-                              <button type="button" class="btn btn-success">Add to Cart</button>  
-                    </div>
+        <?php
+        }
+        }
+       else{
+       echo "No result found";
+        }
+        ?>
         
-        </div>
-        </div>
-        <div class="col-6" style="margin-bottom: 50px;">
-                <div class="row">
-                    <div class="mycol4">
-                        <p><strong>Dell Windows 10</strong>
-                        <p>Service By:<strong> Laptop</strong></p>
-                        <p>Date:<strong> 3/11/2020</strong></p>
-                        <p>Price:<strong>3</strong></p>
-                    </div>
-                    <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
-                    </div>
-                </div>
-                <div>
-                    <div >    <button class="btn btn-info">Details</button> 
-                              <button type="button" class="btn btn-success">Add to Cart</button>  
-                    </div>
-        
-        </div>
-        </div>
-        <div class="col-6" style="margin-bottom: 50px;">
-                <div class="row">
-                    <div class="mycol4">
-                        <p><strong>Dell Windows 10</strong>
-                        <p>Service By:<strong> Laptop</strong></p>
-                        <p>Date:<strong> 3/11/2020</strong></p>
-                        <p>Price:<strong>3</strong></p>
-                    </div>
-                    <div class="col-4" style="margin-right: 10px;">
-                        <img src="http://[::1]/CI_EWM/uploads/user/download.png" alt="laptop image" height="135px" width="135px">
-                    </div>
-                </div>
-                <div>
-                    <div >    <button class="btn btn-info">Details</button> 
-                              <button type="button" class="btn btn-success">Add to Cart</button>  
-                    </div>
-        
-        </div>  
-        </div>
     </div>
-    </div>
+    <div>
+                <ul class="pagination">
+                    <li class="page-item <?php if($pageno <= 1){ echo 'disabled'; } ?>">
+                        <a class="page-link" href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">&laquo;</a>
+                    </li>
+                    <?php 
+                     $i=1;
+                     while($i<=$total_pages)
+                     {
+                        if($i==$pageno)
+                        {
+                    ?>
+                     
+                    <li class="page-item active">
+                        <a class="page-link" href="<?php echo "?pageno=".($i);?>"><?= $i;?></a>
+                    </li>
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                     <li class="page-item">
+                        <a class="page-link" href="<?php echo "?pageno=".($i);?>"><?= $i;?></a>
+                    </li>
+                    <?php
+                       }
+                        $i++;
+                       }
+                    ?>
+                    <li class="page-item <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+                        <a class="page-link" href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+  </div>
+     
 </body>
 <?php include('footer.php');?>

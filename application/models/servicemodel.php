@@ -1,6 +1,6 @@
 <?php
 class Servicemodel extends MY_Model{
-
+     
 		public function profile()
 		{
 			$id = $this->session->userdata('id');

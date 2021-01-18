@@ -70,8 +70,25 @@ public function updatePhoto($post)
 public function addEwaste($array)
 {
 	return $this->db->insert('ewaste',$array);
+
 }
 
+public function buy($offset,$limit,$bool)
+{
+	
+	if($bool==true)
+			 {
+			 	$query=$this->db->get_where('ewaste',array('buy_nobuy'=>'1'));
+			 }
+			 else
+			 {
+			 	$this->db->limit($limit, $offset);
+			 	$query=$this->db->get_where('ewaste',array('buy_nobuy'=>'1'));
+			 }
+			
+			return $query->result();
+	return $query->result();
+}
 
 
 

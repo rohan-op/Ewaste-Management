@@ -1,6 +1,6 @@
 <?php
 class Service extends MY_Controller{
-
+	 
 	public function __construct()
 	{
 		parent::__construct();
@@ -146,7 +146,6 @@ class Service extends MY_Controller{
 
 	}
 	//Request Ends
-    
     public function accept()
     {
     	$this->load->model('servicemodel');
