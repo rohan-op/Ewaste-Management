@@ -46,81 +46,37 @@
     <h2 class="text-primary">Refurbished Product</h2>
     <br><br>
         <div class="row">
-          <?php
-         
-           if(!empty($buy))
-           {
-            foreach($buy as $row)
-            {
-              
-         ?>
-            
+        <?php if( count($products) ):
+        $count=$this->uri->segment(3);
+        foreach ($products as $products): ?>
         <div class="col-6" style="margin-bottom: 50px;">
                 <div class="row">
                     <div class="mycol4">
-                        <p><strong><?php echo $row->e_name; ?></strong>
-                        <p>Service By:<strong> Laptop</strong></p>
+                        <p><strong><?= $products->p_name; ?></strong>
+                        <p>Type:<strong><?= $products->p_type; ?></strong></p>
                         <p>Date:<strong> 3/11/2020</strong></p>
-                        <p>Price:<strong>3</strong></p>
+                        <p>Price:<strong><?= $products->p_price; ?></strong></p>
                     </div>
-                    <div class="col-4" style="margin-right: 10px;">
-                        <img src="<?= $row->e_img ?>" alt="laptop image" height="135px" width="135px">
+                    <div class="col-4" style="margin-left: 10px;">
+                        <img src="<?= $products->photo1 ?>" alt="laptop image" height="120px" width="120px">
                     </div>
                 </div>
                 <div>
-                  <form action="<?= base_url('user/addToCart/$pageno') ?>" method="post">
-                    <div >    <button class="btn btn-info">Details</button> 
-                              <input type="submit" name="add_to_cart" class="btn btn-success" value="Add to Cart"/>
-                              <input type="hidden" name="hidden_id" value="<?= $row->e_id ?>">
-                              <input type="hidden" name="hidden_name" value="<?php echo $row->e_name; ?>" />
-                    </div>
-                  </form>
-        
+                  <?= anchor("user/productDetails/{$products->p_id}",'Details',['class'=>'btn btn-info']);?>
+                  <?= anchor("user/addtoCart/{$products->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
                 </div> 
-        </div> 
-        <?php
-        }
-        }
-       else{
-       echo "No result found";
-        }
-        ?>
-        
-    </div>
-    <div>
-                <ul class="pagination">
-                    <li class="page-item <?php if($pageno <= 1){ echo 'disabled'; } ?>">
-                        <a class="page-link" href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">&laquo;</a>
-                    </li>
-                    <?php 
-                     $i=1;
-                     while($i<=$total_pages)
-                     {
-                        if($i==$pageno)
-                        {
-                    ?>
-                     
-                    <li class="page-item active">
-                        <a class="page-link" href="<?php echo "?pageno=".($i);?>"><?= $i;?></a>
-                    </li>
-                    <?php
-                  }
-                  else
-                  {
-                    ?>
-                     <li class="page-item">
-                        <a class="page-link" href="<?php echo "?pageno=".($i);?>"><?= $i;?></a>
-                    </li>
-                    <?php
-                       }
-                        $i++;
-                       }
-                    ?>
-                    <li class="page-item <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
-                        <a class="page-link" href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
+            </div> 
+            <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                  <td colspan="3">No records found.</td>
+                </tr>
+            <?php endif; ?>   
+        </div>
+
+      <div>
+        <?= $this->pagination->create_links(); ?>
+      </div>
   </div>
      
 </body>

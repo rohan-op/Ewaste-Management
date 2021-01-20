@@ -166,25 +166,14 @@ class User extends MY_Controller{
 
 
  	//Buy RF Products
- 	public function buyPage($pageno)
+ 	public function buyPage()
  	{
- 		$this->load->model('usermodel');
- 	if(isset($_GET['pageno']))
-    	{
-    		$pageno=$_GET['pageno'];
-    	}
-    	else
-    	{
-    		$pageno=1;
-    	}
-    	$no_of_records_per_page=4;
-    	$offset=($pageno-1)*$no_of_records_per_page;
-    	$bool=true;
-    	$total_records=$this->usermodel->buy($offset,$no_of_records_per_page,$bool);
-    	$bool=false;
-		$buy=$this->usermodel->buy($offset,$no_of_records_per_page,$bool);
-		$total_pages=ceil(count($total_records)/$no_of_records_per_page);
- 		$this->load->view("user/buy_user",compact('buy','total_pages','pageno'));
+	 	$this->load->model('usermodel');
+	 	$this->load->library('pagination');
+	 	$config = $this->getConfig("user/buyPage",6,$this->usermodel->countProducts());
+	 	$this->pagination->initialize($config);
+	 	$products = $this->usermodel->getProducts($config['per_page'] ,$this->uri->segment(3));
+	 	$this->load->view("user/buy_user",compact('products'));
  	}
  	//Buy RF Product Ends
 
@@ -246,6 +235,33 @@ class User extends MY_Controller{
 			}
 	}
 	//FEEDBACK ENDS
+
+	//Config for pagination
+	public function getConfig($url,$perpage,$totalrows)
+		{
+			$config = [
+						'base_url' => base_url($url),
+						'per_page' => $perpage,
+						'total_rows' => $totalrows,
+						'full_tag_open' => "<ul class='pagination'>",
+						'full_tag_close' => "</ul>",
+						'first_tag_open' => "<li class='page-item'>",
+						'first_tag_close' => "</li>",
+						'last_tag_open' => "<li class='page-item'>",
+						'last_tag_close' => "</li>",
+						'next_tag_open' => "<li class='page-item'>",
+						'next_tag_close' => "</li>",
+						'prev_tag_open' => "<li class='page-item'>",
+						'prev_tag_close' => "</li>",
+						'num_tag_open' => "<li class='page-item'>",
+						'num_tag_close' => "</li>",
+						'cur_tag_open' => "<li class='page-item active'><a class='page-link'>",
+						'cur_tag_close' => "</a></li>",
+						'attributes' => array('class' => 'page-link'),
+			];
+			return $config;
+		}
+	// Config ends
 
 }
 ?>

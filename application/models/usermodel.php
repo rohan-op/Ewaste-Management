@@ -73,6 +73,21 @@ public function addEwaste($array)
 
 }
 
+public function countProducts()
+{
+	$x = $this->db->select('p_id')
+					->get('products');
+	return $x->num_rows();
+}
+
+public function getProducts($limit,$offset)
+{
+	$products = $this->db->select(['p_id','p_price','photo1','photo2','photo3','photo4','p_name','p_type'])
+							->limit($limit,$offset)
+							->get('products');
+	return  $products->result();
+}
+
 public function buy($offset,$limit,$bool)
 {
 	

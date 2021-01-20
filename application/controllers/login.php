@@ -6,8 +6,35 @@ class Login extends MY_Controller{
 	//TESTING PURPOSE ONLY
 	public function testing()
 		{
-			$this->load->view('service/sell_refurbish_service');
+			//$this->load->view('service/sell_refurbish_service');
 			//$this->load->view('service/request_service');
+			$config = $this->getConfig("hello",4,6);
+			print_r($config) ; exit;
+		}
+
+	public function getConfig($url,$perpage,$totalrows)
+		{
+			$config = [
+						'base_url' => base_url($url),
+						'per_page' => $perpage,
+						'total_rows' => $totalrows,
+						'full_tag_open' => "<ul class='pagination'>",
+						'full_tag_close' => "</ul>",
+						'first_tag_open' => "<li class='page-item'>",
+						'first_tag_close' => "</li>",
+						'last_tag_open' => "<li class='page-item'>",
+						'last_tag_close' => "</li>",
+						'next_tag_open' => "<li class='page-item'>",
+						'next_tag_close' => "</li>",
+						'prev_tag_open' => "<li class='page-item'>",
+						'prev_tag_close' => "</li>",
+						'num_tag_open' => "<li class='page-item'>",
+						'num_tag_close' => "</li>",
+						'cur_tag_open' => "<li class='page-item active'><a class='page-link'>",
+						'cur_tag_close' => "</a></li>",
+						'attributes' => array('class' => 'page-link'),
+			];
+			return $config;
 		}
 	//TEST YOUR VIEWS USING THE ABOVE FUNCTION
 
