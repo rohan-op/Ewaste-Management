@@ -94,7 +94,7 @@
               </div>
               <div class="card-body">
                 <h4 class="card-title"><?= $products->p_name; ?></h4>
-                <p class="card-text">Type:<strong><?= $products->p_type; ?></strong></p>
+                <p class="card-text">Type:<strong><?= $products->p_type; ?></strong> </p>
                 <p class="card-text">Date:<strong> 3/11/2020</strong></p>
                 <p class="card-text">Price:<strong><?= $products->p_price; ?></strong></p>
                 <div>
@@ -189,6 +189,6 @@
         <?= $this->pagination->create_links(); ?>
       </div>
   </div>
-     
+</div>    
 </body>
 <?php include('footer.php');?>
