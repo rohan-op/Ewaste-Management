@@ -48,24 +48,41 @@
         $count=$this->uri->segment(3);
         foreach ($products as $products): ?>
 
-        <div class="col-6" style="margin-bottom: 50px;">
-                <div class="row">
-                    <div class="mycol4">
-                        <p><strong><?= $products->p_name; ?></strong>
-                        <p>Type:<strong><?= $products->p_type; ?></strong></p>
-                        <p>Date:<strong> 3/11/2020</strong></p>
-                        <p>Price:<strong><?= $products->p_price; ?></strong></p>
-                    </div>
-                    <div class="col-4" style="margin-left: 10px;">
-                        <img src="<?= $products->photo1 ?>" alt="laptop image" height="120px" width="120px">
-                    </div>
+        <div class="col-6" style="margin-bottom: 40px;">    
+            <div class="card border-primary mb-3" style="max-width: 25rem;border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;">        
+              <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="First slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="Second slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="Third slide">
+                  </div>
                 </div>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title"><?= $products->p_name; ?></h4>
+                <p class="card-text">Type:<strong><?= $products->p_type; ?></strong></p>
+                <p class="card-text">Date:<strong> 3/11/2020</strong></p>
+                <p class="card-text">Price:<strong><?= $products->p_price; ?></strong></p>
                 <div>
-                  <?= anchor("user/productDetails/{$products->p_id}",'Details',['class'=>'btn btn-info']);?>
-                  <?= anchor("user/addtoCart/{$products->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
+                  <table>
+                    <tr>
+                      <td>
+                        <?= anchor("user/productDetails/{$products->p_id}",'More Details',['class'=>'btn btn-info']);?>
+                      </td>
+                      <td>
+                        <?= anchor("user/addtoCart/{$products->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
+                      </td>
+                    </tr>
+                  </table>
                 </div> 
-            </div> 
-
+              </div>
+            </div>
+          </div>
 
             <?php endforeach; ?>
             <?php else: ?>
@@ -74,116 +91,6 @@
                 </tr>
             <?php endif; ?>   
         </div>
-
-        <!-- TEST CARD VIEW FOR PRODUCTS -->
-        <div class="row">
-          <div class="col-6" style="margin-bottom: 40px;">    
-            <div class="card border-primary mb-3" style="max-width: 25rem;border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;">        
-              <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="Second slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="Third slide">
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <h4 class="card-title"><?= $products->p_name; ?></h4>
-                <p class="card-text">Type:<strong><?= $products->p_type; ?></strong> </p>
-                <p class="card-text">Date:<strong> 3/11/2020</strong></p>
-                <p class="card-text">Price:<strong><?= $products->p_price; ?></strong></p>
-                <div>
-                  <table>
-                    <tr>
-                      <td>
-                        <?= anchor("user/productDetails/{$products->p_id}",'More Details',['class'=>'btn btn-info']);?>
-                      </td>
-                      <td>
-                        <?= anchor("user/addtoCart/{$products->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
-                      </td>
-                    </tr>
-                  </table>
-                </div> 
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6" style="margin-bottom: 40px;">    
-            <div class="card border-primary mb-3" style="max-width: 25rem;border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;">        
-              <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="Second slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="Third slide">
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <h4 class="card-title"><?= $products->p_name; ?></h4>
-                <p class="card-text">Type:<strong><?= $products->p_type; ?></strong></p>
-                <p class="card-text">Date:<strong> 3/11/2020</strong></p>
-                <p class="card-text">Price:<strong><?= $products->p_price; ?></strong></p>
-                <div>
-                  <table>
-                    <tr>
-                      <td>
-                        <?= anchor("user/productDetails/{$products->p_id}",'More Details',['class'=>'btn btn-info']);?>
-                      </td>
-                      <td>
-                        <?= anchor("user/addtoCart/{$products->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
-                      </td>
-                    </tr>
-                  </table>
-                </div> 
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6" style="margin-bottom: 40px;">    
-            <div class="card border-primary mb-3" style="max-width: 25rem;border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;">        
-              <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="Second slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="Third slide">
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <h4 class="card-title"><?= $products->p_name; ?></h4>
-                <p class="card-text">Type:<strong><?= $products->p_type; ?></strong></p>
-                <p class="card-text">Date:<strong> 3/11/2020</strong></p>
-                <p class="card-text">Price:<strong><?= $products->p_price; ?></strong></p>
-                <div>
-                  <table>
-                    <tr>
-                      <td>
-                        <?= anchor("user/productDetails/{$products->p_id}",'More Details',['class'=>'btn btn-info']);?>
-                      </td>
-                      <td>
-                        <?= anchor("user/addtoCart/{$products->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
-                      </td>
-                    </tr>
-                  </table>
-                </div> 
-              </div>
-            </div>
-          </div>
 
       <div>
         <?= $this->pagination->create_links(); ?>
