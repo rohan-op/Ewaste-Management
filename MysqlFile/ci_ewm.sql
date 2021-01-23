@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2021 at 05:29 PM
+-- Generation Time: Jan 23, 2021 at 02:41 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -70,17 +70,16 @@ CREATE TABLE `products` (
   `p_price` int(10) NOT NULL,
   `photo1` varchar(200) NOT NULL,
   `photo2` varchar(200) NOT NULL,
-  `photo3` varchar(200) NOT NULL,
-  `photo4` varchar(100) NOT NULL
+  `photo3` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`p_id`, `s_id`, `p_name`, `p_type`, `p_specs`, `p_quantity`, `p_price`, `photo1`, `photo2`, `photo3`, `photo4`) VALUES
-(1, 1, 'IphoneX', 'Mobile Phone', 'Iphone', 5, 30000, 'http://[::1]/CI_EWM/uploads/service/products/iphone.jpg', 'http://[::1]/CI_EWM/uploads/service/products/iphone.jpg', 'http://[::1]/CI_EWM/uploads/service/products/iphone.jpg', 'http://[::1]/CI_EWM/uploads/service/products/iphone.jpg'),
-(2, 1, 'One Plus', 'Mobile Phone', 'one plus', 5, 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus.jpg', '', '', '');
+INSERT INTO `products` (`p_id`, `s_id`, `p_name`, `p_type`, `p_specs`, `p_quantity`, `p_price`, `photo1`, `photo2`, `photo3`) VALUES
+(1, 1, 'IphoneX', 'Mobile Phone', 'Iphone', 5, 30000, 'http://[::1]/CI_EWM/uploads/service/products/iphonex.png', '', ''),
+(2, 1, 'One Plus', 'Mobile Phone', 'one plus', 5, 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', '');
 
 -- --------------------------------------------------------
 

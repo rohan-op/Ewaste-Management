@@ -82,7 +82,7 @@ public function countProducts()
 
 public function getProducts($limit,$offset)
 {
-	$products = $this->db->select(['p_id','p_price','photo1','photo2','photo3','photo4','p_name','p_type'])
+	$products = $this->db->select(['p_id','p_price','photo1','photo2','photo3','p_name','p_type'])
 							->limit($limit,$offset)
 							->get('products');
 	return  $products->result();
@@ -103,6 +103,14 @@ public function buy($offset,$limit,$bool)
 			
 			return $query->result();
 	return $query->result();
+}
+
+public function getProduct($p_id)
+{
+	$x = $this->db->select(['p_id','p_quantity','p_price','p_name'])
+					->where('p_id',$p_id)
+					->get('products');
+	return $x->result();
 }
 
 
