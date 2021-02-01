@@ -181,6 +181,7 @@ class User extends MY_Controller{
  	//CART
  	public function cartPage()
  	{
+ 		$this->load->library('cart');
  		$this->load->view("user/cart_user");
  	}
  	//CART Ends
@@ -190,7 +191,17 @@ class User extends MY_Controller{
     	$this->load->library('cart');
     	$this->load->model('usermodel');
     	$product = $this->usermodel->getProduct($p_id);
-    	print_r($product);exit;
+    	$data = array(
+					    'id'      => $product[0]->p_id,
+					    'qty'     => 1,
+				        'price'   => $product[0]->p_price,
+				        'name'    => $product[0]->p_name,
+				        'photo1'  => $product[0]->photo1,
+				        'type'    => $product[0]->p_type
+					);
+    	$this->cart->insert($data);
+    	$this->cartPage();
+    	//print_r($data);exit;
     	//$data = array('id' => $this->$, );
     }
 

@@ -14,30 +14,22 @@
       <!-- Card -->
       <div class="mb-3">
         <div class="pt-4 wish-list">
-
           <h5 class="mb-4">Cart (<span>2</span> items)</h5>
-          <?php
-          if(!empty($_SESSION["shopping_cart"]))
-          {
-            $total = 0;
-            foreach($_SESSION["shopping_cart"] as $keys => $values)
-            {
-          ?>
           <div class="row mb-4">
+          <?php foreach ($this->cart->contents() as $items): ?>
             <div class="col-md-5 col-lg-3 col-xl-3">
               <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                 <img class="img-fluid w-100"
-                  src="http://[::1]/CI_EWM/uploads/user/download.png" alt="Sample">
-                
-             
+                  src="<?= $items['photo1'] ?>" alt="Product Image">
               </div>
             </div>
+
             <div class="col-md-7 col-lg-9 col-xl-9">
               <div>
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h5><?php echo $values["item_name"]; ?></h5>
-                    <p class="mb-2 text-muted text-uppercase small">Laptop</p>
+                    <h5><?php echo $items['name']; ?></h5>
+                    <p class="mb-2 text-muted text-uppercase small"><?php echo $items['type']; ?></p>
                     <p class="mb-3 text-muted text-uppercase small">Serviced by: Mek Peripheral</p>
                   </div>
                   <div>
@@ -48,9 +40,7 @@
                       <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                         class="plus increase"></button>
                     </div>
-                    <small id="passwordHelpBlock" class="form-text text-muted text-center">
-                      (Note, 1 piece)
-                    </small>
+                    <small id="passwordHelpBlock" class="form-text text-muted text-center">Unit</small>
                   </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
@@ -60,19 +50,16 @@
                     <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
                         class="fas fa-heart mr-1"></i> Move to wish list </a>
                   </div>
-                  <p class="mb-0"><span><strong id="summary">$17.99</strong></span></p class="mb-0">
+                  <p class="mb-0"><span><strong id="summary"><?php echo $this->cart->format_number($items['price']); ?></strong></span></p class="mb-0">
                 </div>
               </div>
             </div>
+            
+            <?php endforeach; ?>
           </div>
           <hr class="mb-4">
-          <?php
-        }
-          }
-          ?>
           <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
             items to your cart does not mean booking them.</p>
-
         </div>
       </div>
       <!-- Card -->
@@ -124,8 +111,8 @@
 
           <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-              Temporary amount
-              <span>$25.98</span>
+              Sub Total
+              <span>RS <?php echo $this->cart->format_number($this->cart->total()); ?></span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
               Shipping
@@ -138,7 +125,7 @@
                   <p class="mb-0">(including VAT)</p>
                 </strong>
               </div>
-              <span><strong>$53.98</strong></span>
+              <span><strong><?php echo $this->cart->format_number($this->cart->total()); ?></strong></span>
             </li>
           </ul>
 
