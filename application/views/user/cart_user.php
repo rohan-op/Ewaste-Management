@@ -2,6 +2,13 @@
 <br>
 <body>
   <div class="container">
+  <ol class="breadcrumb" style="width: 200px;">
+        <li class="breadcrumb-item"><a href="#">User</a></li>
+        <li class="breadcrumb-item active">Cart</li>
+    </ol>
+    <br>
+    <h2 class="text-primary">Your Cart (<?php echo $this->cart->total_items()?> items)</h2>
+    <br>
 <!--Section: Block Content-->
 <section>
 
@@ -14,7 +21,6 @@
       <!-- Card -->
       <div class="mb-3">
         <div class="pt-4 wish-list">
-          <h5 class="mb-4">Cart (<?php echo $this->cart->total_items()?> items)</h5>
           <div class="row mb-4">
           <?php foreach ($this->cart->contents() as $items): ?>
             <div class="col-md-5 col-lg-3 col-xl-3">
@@ -36,18 +42,16 @@
                     <div class="def-number-input number-input safari_only mb-0 w-100">
                       
                       <?= anchor("user/updateItemM/".$items['rowid'],'-',['class'=>'btn btn-danger btn-sm']);?>
-                      <?php echo $items['qty']?>
+                      <?php echo $items['qty']." Units"?>
                       <?= anchor("user/updateItemP/".$items['rowid'],'+',['class'=>'btn btn-primary btn-sm']);?>
                       
                     </div>
-                    <small id="passwordHelpBlock" class="form-text text-muted text-center">Unit</small>
+                    
                   </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                   <div>
                     <?= anchor("user/deleteItem/".$items['rowid'],'Remove Item',['class'=>'btn btn-danger btn-sm']);?>
-                    <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
-                        class="fas fa-heart mr-1"></i> Move to wish list </a>
                   </div>
                   <p class="mb-0"><span><strong id="summary"><?php echo $this->cart->format_number($items['price']); ?></strong></span></p class="mb-0">
                 </div>

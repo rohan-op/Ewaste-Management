@@ -199,7 +199,7 @@ class User extends MY_Controller{
 				        'type'    => $product[0]->p_type
 					);
     	$this->cart->insert($data);
-    	$this->cartPage();
+    	return redirect("user/cartPage");
     	//print_r($data);exit;
     	//$data = array('id' => $this->$, );
     }
@@ -208,7 +208,7 @@ class User extends MY_Controller{
  	{
  		$this->load->library('cart');
  		$this->cart->remove($rowid);
- 		$this->load->view("user/cart_user");
+ 		return redirect("user/cartPage");
  	}
 
 
@@ -222,7 +222,7 @@ class User extends MY_Controller{
  			'qty' => $data['qty'] 
  		);
  		$this->cart->update($update);
- 		return $this->cartPage();
+ 		return redirect("user/cartPage");
  		//print_r($data);
  	}
 
@@ -236,7 +236,7 @@ class User extends MY_Controller{
  			'qty' => $data['qty'] 
  		);
  		$this->cart->update($update);
- 		return $this->cartPage();
+ 		return redirect("user/cartPage");
  		//print_r($data);
  	}
     //CART Ends
