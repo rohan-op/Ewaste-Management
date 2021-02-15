@@ -14,7 +14,7 @@
       <!-- Card -->
       <div class="mb-3">
         <div class="pt-4 wish-list">
-          <h5 class="mb-4">Cart (<span>2</span> items)</h5>
+          <h5 class="mb-4">Cart (<?php echo $this->cart->total_items()?> items)</h5>
           <div class="row mb-4">
           <?php foreach ($this->cart->contents() as $items): ?>
             <div class="col-md-5 col-lg-3 col-xl-3">
@@ -34,19 +34,18 @@
                   </div>
                   <div>
                     <div class="def-number-input number-input safari_only mb-0 w-100">
-                      <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                        class="minus decrease"></button>
-                      <input class="quantity" min="0" name="quantity" value="1" type="number">
-                      <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                        class="plus increase"></button>
+                      
+                      <?= anchor("user/updateItemM/".$items['rowid'],'-',['class'=>'btn btn-danger btn-sm']);?>
+                      <?php echo $items['qty']?>
+                      <?= anchor("user/updateItemP/".$items['rowid'],'+',['class'=>'btn btn-primary btn-sm']);?>
+                      
                     </div>
                     <small id="passwordHelpBlock" class="form-text text-muted text-center">Unit</small>
                   </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                   <div>
-                    <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                        class="fas fa-trash-alt mr-1"></i> Remove item </a>
+                    <?= anchor("user/deleteItem/".$items['rowid'],'Remove Item',['class'=>'btn btn-danger btn-sm']);?>
                     <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
                         class="fas fa-heart mr-1"></i> Move to wish list </a>
                   </div>

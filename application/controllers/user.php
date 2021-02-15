@@ -184,8 +184,7 @@ class User extends MY_Controller{
  		$this->load->library('cart');
  		$this->load->view("user/cart_user");
  	}
- 	//CART Ends
-    
+
     public function addToCart($p_id)
     {
     	$this->load->library('cart');
@@ -204,6 +203,43 @@ class User extends MY_Controller{
     	//print_r($data);exit;
     	//$data = array('id' => $this->$, );
     }
+
+    public function deleteItem($rowid)
+ 	{
+ 		$this->load->library('cart');
+ 		$this->cart->remove($rowid);
+ 		$this->load->view("user/cart_user");
+ 	}
+
+
+ 	public function updateItemP($rowid)
+ 	{
+ 		$this->load->library('cart');
+ 		$data = $this->cart->get_item($rowid);
+ 		$data['qty'] = $data['qty']+1;
+ 		$update = array(
+ 			'rowid' => $rowid,
+ 			'qty' => $data['qty'] 
+ 		);
+ 		$this->cart->update($update);
+ 		return $this->cartPage();
+ 		//print_r($data);
+ 	}
+
+ 	public function updateItemM($rowid)
+ 	{
+ 		$this->load->library('cart');
+ 		$data = $this->cart->get_item($rowid);
+ 		$data['qty'] = $data['qty']-1;
+ 		$update = array(
+ 			'rowid' => $rowid,
+ 			'qty' => $data['qty'] 
+ 		);
+ 		$this->cart->update($update);
+ 		return $this->cartPage();
+ 		//print_r($data);
+ 	}
+    //CART Ends
 
 	//FEEDBACK FUNCTION
 	private function _flashNredirect($tf,$succm,$errm,$page1,$page2)
