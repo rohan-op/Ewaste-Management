@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2021 at 02:41 PM
+-- Generation Time: Feb 25, 2021 at 03:46 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -53,6 +53,22 @@ CREATE TABLE `ewaste` (
 INSERT INTO `ewaste` (`e_id`, `u_id`, `s_id`, `r_id`, `e_type`, `e_name`, `e_age`, `e_quantity`, `e_specs`, `e_img`, `date`, `s_stars`, `s_info`, `r_stars`, `r_info`) VALUES
 (9, 1, 0, 0, 'laptop/pc', 'IphoneX', 12, 1, 'Apple A11 Bionic (10 nm)\r\nCPU	Hexa-core 2.39 GHz (2x Monsoon + 4x Mistral)', 'http://[::1]/CI_EWM/uploads/ewaste/iphone.jpg', '2020-12-07 17:38:09', 0, '', 0, ''),
 (10, 2, 0, 0, 'laptop/pc', 'iphoneX', 12, 1, 'its a phone with A11 bionic chipset', 'http://[::1]/CI_EWM/uploads/ewaste/img_avatar.png', '2020-12-10 15:13:38', 0, '', 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `o_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `s_id` int(11) NOT NULL,
+  `p_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
