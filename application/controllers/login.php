@@ -6,10 +6,10 @@ class Login extends MY_Controller{
 	//TESTING PURPOSE ONLY
 	public function testing()
 		{
-			//$this->load->view('service/sell_refurbish_service');
+			$this->load->view('user/productdetail_user');
 			//$this->load->view('service/request_service');
-			$config = $this->getConfig("hello",4,6);
-			print_r($config) ; exit;
+			//$config = $this->getConfig("hello",4,6);
+			//print_r($config) ; exit;
 		}
 
 	public function getConfig($url,$perpage,$totalrows)
