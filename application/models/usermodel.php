@@ -113,6 +113,14 @@ public function getProduct($p_id)
 	return $x->result();
 }
 
+public function getDetails($p_id)
+{
+	$x = $this->db->select(['p_name','p_quantity','p_price','p_type','photo1','photo2','photo3','service.cname','p_specs'])
+					->join('service','service.id = products.s_id')
+					->where('p_id',$p_id)
+					->get('products');
+	return $x->row();
+}
 
 
 }

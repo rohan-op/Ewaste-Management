@@ -175,6 +175,14 @@ class User extends MY_Controller{
 	 	$products = $this->usermodel->getProducts($config['per_page'] ,$this->uri->segment(3));
 	 	$this->load->view("user/buy_user",compact('products'));
  	}
+
+ 	public function productDetails($pid)
+ 	{
+ 		$this->load->model('usermodel');
+ 		$details = $this->usermodel->getDetails($pid);
+ 		//print_r($details[0]->p_name);exit;
+ 		$this->load->view("user/productdetail_user",compact('details'));
+ 	}
  	//Buy RF Product Ends
 
 
@@ -285,6 +293,5 @@ class User extends MY_Controller{
 			return $config;
 		}
 	// Config ends
-
 }
 ?>
