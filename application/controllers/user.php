@@ -183,6 +183,16 @@ class User extends MY_Controller{
  		//print_r($details[0]->p_name);exit;
  		$this->load->view("user/productdetail_user",compact('details'));
  	}
+
+ 	public function search()
+ 	{
+ 		$this->load->model('usermodel');
+	 	$this->load->library('pagination');
+	 	$config = $this->getConfig("user/search",6,$this->usermodel->countProducts());
+	 	$this->pagination->initialize($config);
+	 	$products = $this->usermodel->getProducts($config['per_page'] ,$this->uri->segment(3));
+	 	$this->load->view("user/search_user",compact('products'));
+ 	}
  	//Buy RF Product Ends
 
 

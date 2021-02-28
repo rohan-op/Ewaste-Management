@@ -7,42 +7,30 @@
         <li class="breadcrumb-item active">Buying</li>
     </ol>
     <br>
-    <ul class="nav nav-pills">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Brand</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Price</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Review</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-      </li>
-    </ul>
-    <br>
     <br>
     <h2 class="text-primary">Refurbished Product</h2>
-    <br><br>
+    <table>
+      <tr>
+        <td>
+          <select class="custom-select">
+            <option selected="">Sort By</option>
+            <option value="1">Price:Highest to Lowest</option>
+            <option value="2">Price:Lowest to Highest</option>
+            <option value="3">Best Reviews</option>
+          </select>
+        </td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td>
+        <?= form_open('user/search',['class'=>'form-inline my-2 my-lg-0']) ?>     
+          <?php echo form_input(['name'=>'search','type'=>'text','class'=>'form-control mr-sm-2','placeholder'=>'Search','value'=>set_value('search')]); ?>      
+          <?php echo form_submit(['name'=>'submit','class'=>'btn btn-outline-secondary','style'=>'color:black;','value'=>'Submit']); ?>      
+        <?= form_close(); ?>
+        </td>
+      </tr>
+    </table>
+    <br>
         <div class="row">
         <?php if( count($products) ):
         $count=$this->uri->segment(3);
