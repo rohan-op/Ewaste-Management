@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 03:46 PM
+-- Generation Time: Mar 01, 2021 at 06:37 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -64,10 +64,23 @@ CREATE TABLE `orders` (
   `o_id` int(11) NOT NULL,
   `u_id` int(11) NOT NULL,
   `s_id` int(11) NOT NULL,
-  `p_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(11) NOT NULL,
+  `o_id` int(11) NOT NULL,
+  `p_id` int(11) NOT NULL,
+  `s_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -95,7 +108,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`p_id`, `s_id`, `p_name`, `p_type`, `p_specs`, `p_quantity`, `p_price`, `photo1`, `photo2`, `photo3`) VALUES
 (1, 1, 'IphoneX', 'Mobile Phone', 'Iphone', 5, 30000, 'http://[::1]/CI_EWM/uploads/service/products/iphonex.png', '', ''),
-(2, 1, 'One Plus', 'Mobile Phone', 'one plus', 5, 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', '');
+(2, 1, 'OnePlus', 'Mobile Phone', 'one plus', 5, 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', '');
 
 -- --------------------------------------------------------
 
@@ -181,6 +194,18 @@ INSERT INTO `user` (`id`, `fname`, `cname`, `role`, `contact`, `email`, `address
 --
 ALTER TABLE `ewaste`
   ADD PRIMARY KEY (`e_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`o_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `products`
