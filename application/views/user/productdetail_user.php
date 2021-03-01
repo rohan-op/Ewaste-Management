@@ -38,8 +38,7 @@
         			<br>
         			<p><strong>Seller:<?= $details->cname ?></strong></p>
         			<br>
-        			<button type="button" class="btn btn-primary btn-md mr-1 mb-2"><i
-          			class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
+        			<?= anchor("user/addtoCart/{$details->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
 	    			</div>
 			    </td>
 	    	</tr>

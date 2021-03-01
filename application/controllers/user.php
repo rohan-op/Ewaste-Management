@@ -11,7 +11,6 @@ class User extends MY_Controller{
 		$this->load->helper('form');
 	}
 
-
 	//Home Page
 	public function homePage()
 	{
@@ -187,14 +186,18 @@ class User extends MY_Controller{
  	public function search()
  	{
  		$this->load->model('usermodel');
-	 	$this->load->library('pagination');
 	 	$post = $this->input->post();
-	 	unset($post['submit']);
 	 	$string = $post['search'];
-	 	//print_r($string);exit;
-	 	$config = $this->getConfig("user/search",6,$this->usermodel->countSearchProducts($string));
+	 	return redirect("user/searchResults/$string/");
+ 	}
+
+ 	public function searchResults($string)
+ 	{
+ 		$this->load->model('usermodel');
+	 	$this->load->library('pagination');
+ 		$config = $this->getConfig("user/searchResults/$string",1,$this->usermodel->countSearchProducts($string));
 	 	$this->pagination->initialize($config);
-	 	$products = $this->usermodel->getSearchProducts($config['per_page'] ,$this->uri->segment(3),$string);
+	 	$products = $this->usermodel->getSearchProducts($config['per_page'] ,$this->uri->segment(4),$string);
 	 	$this->load->view("user/search_user",compact('products'));
  	}
  	//Buy RF Product Ends
