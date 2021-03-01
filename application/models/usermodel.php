@@ -88,6 +88,25 @@ public function getProducts($limit,$offset)
 	return  $products->result();
 }
 
+public function countSearchProducts($string)
+{
+	$x = $this->db->select('p_id')
+					->like('p_name',$string)
+					->or_like('p_type',$string)
+					->get('products');
+	return $x->num_rows();
+}
+
+public function getSearchProducts($limit,$offset,$string)
+{
+	$products = $this->db->select(['p_id','p_price','photo1','photo2','photo3','p_name','p_type'])
+							->like('p_name',$string)
+							->or_like('p_type',$string)
+							->limit($limit,$offset)
+							->get('products');
+	return  $products->result();
+}
+
 public function buy($offset,$limit,$bool)
 {
 	

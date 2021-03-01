@@ -188,9 +188,13 @@ class User extends MY_Controller{
  	{
  		$this->load->model('usermodel');
 	 	$this->load->library('pagination');
-	 	$config = $this->getConfig("user/search",6,$this->usermodel->countProducts());
+	 	$post = $this->input->post();
+	 	unset($post['submit']);
+	 	$string = $post['search'];
+	 	//print_r($string);exit;
+	 	$config = $this->getConfig("user/search",6,$this->usermodel->countSearchProducts($string));
 	 	$this->pagination->initialize($config);
-	 	$products = $this->usermodel->getProducts($config['per_page'] ,$this->uri->segment(3));
+	 	$products = $this->usermodel->getSearchProducts($config['per_page'] ,$this->uri->segment(3),$string);
 	 	$this->load->view("user/search_user",compact('products'));
  	}
  	//Buy RF Product Ends
