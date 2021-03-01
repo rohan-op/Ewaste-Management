@@ -195,7 +195,7 @@ class User extends MY_Controller{
  	{
  		$this->load->model('usermodel');
 	 	$this->load->library('pagination');
- 		$config = $this->getConfig("user/searchResults/$string",1,$this->usermodel->countSearchProducts($string));
+ 		$config = $this->getConfig("user/searchResults/$string",6,$this->usermodel->countSearchProducts($string));
 	 	$this->pagination->initialize($config);
 	 	$products = $this->usermodel->getSearchProducts($config['per_page'] ,$this->uri->segment(4),$string);
 	 	$this->load->view("user/search_user",compact('products'));
