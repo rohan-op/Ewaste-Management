@@ -9,6 +9,7 @@
     <br>
     <br>
     <h2 class="text-primary">Refurbished Product</h2>
+    <h3 class="text-primary">Search Results</h3>
     <table>
       <tr>
         <td>

@@ -15,13 +15,13 @@
 			    		<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 			                <div class="carousel-inner">
 			                  <div class="carousel-item active">
-			                    <img class="d-block w-100" src="http://[::1]/CI_EWM/uploads/service/products/iphonex.png" alt="First slide">
+			                    <img class="d-block w-100" src="<?= $details->photo1 ?>" alt="First slide">
 			                  </div>
 			                  <div class="carousel-item">
-			                    <img class="d-block w-100" src="http://[::1]/CI_EWM/uploads/service/products/iphonex.png" alt="Second slide">
+			                    <img class="d-block w-100" src="<?= $details->photo2 ?>" alt="Second slide">
 			                  </div>
 			                  <div class="carousel-item">
-			                    <img class="d-block w-100" src="http://[::1]/CI_EWM/uploads/service/products/iphonex.png" alt="Third slide">
+			                    <img class="d-block w-100" src="<?= $details->photo3 ?>" alt="Third slide">
 			                  </div>
 			                </div>
 			            </div>
@@ -30,18 +30,15 @@
 			    </td>
 			    <td>
 			    	<div class="col-5" style="margin-left: 20px;">
-			    	<h2>Iphone X</h2>
-			    	<p>Mobile Phone</p>
-			    	<p><span class="mr-1"><strong>$12.99</strong></span></p>
+			    	<h2><?= $details->p_name ?></h2>
+			    	<p><?= $details->p_type ?></p>
+			    	<p><span class="mr-1"><strong>$<?= $details->p_price ?></strong></span></p>
 			    	<br>
-			    	<p class="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
-        			error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
-        			officia quis dolore quos sapiente tempore alias.</p>
+			    	<p class="pt-1"><?= $details->p_specs ?></p>
         			<br>
-        			<p><strong>Seller:Pranav Bhatt</strong></p>
+        			<p><strong>Seller:<?= $details->cname ?></strong></p>
         			<br>
-        			<button type="button" class="btn btn-primary btn-md mr-1 mb-2"><i
-          			class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
+        			<?= anchor("user/addtoCart/{$details->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
 	    			</div>
 			    </td>
 	    	</tr>
