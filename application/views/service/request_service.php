@@ -83,10 +83,11 @@
                     </div>
                 </div>
                 <div>
+                   <form action="<?= base_url('service/accept') ?>" method="post">
                     <div >    <button class="btn btn-info">More Info</button>   </div>
                     <br>
                     <!--  <form action="<?= base_url('service/accept') ?>" method="post"> -->
-                <form action="<?= base_url('service/accept') ?>" method="post">
+               
 
                     <input type="hidden" id="accept" name="hiddenAccept" value="<?= $row->e_id ?>">
 
@@ -109,28 +110,7 @@
      </div>
         <!--this is in div row -->
             <div>
-                <ul class="pagination">
-                    <li class="page-item <?php if($pageno <= 1){ echo 'disabled'; } ?>">
-                        <a class="page-link" href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">&laquo;</a>
-                    </li>
-                    <?php 
-                     $i=1;
-                     while($i<=$total_pages)
-                     {
-
-                    ?>
-                    
-                    <li class="page-item">
-                        <a class="page-link" href="<?php echo "?pageno=".($i);?>"><?= $i;?></a>
-                    </li>
-                    <?php
-                    $i++;
-                       }
-                    ?>
-                    <li class="page-item <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
-                        <a class="page-link" href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">&raquo;</a>
-                    </li>
-                </ul>
+                <?= $this->pagination->create_links(); ?>
             </div>
 </div>
 

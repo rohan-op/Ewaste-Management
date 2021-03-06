@@ -124,19 +124,39 @@ class Recycler extends MY_Controller{
 	//Request
 	public function requestPage()
 	{
-		$this->load->view("recycler/request_recycler");
+		$this->load->model('recyclermodel');
+		$this->load->library('pagination');
+		$config=$this->getConfig("recycler/requestPage",4,$this->recyclermodel->countProducts());
+		$this->pagination->initialize($config);
+		$request=$this->recyclermodel->request($config['per_page'],$this->uri->segment(3));
+		$this->load->view("recycler/request_recycler",compact('request'));
 	}
 	//Request Ends
+
+    //Accept Request
+    public function accept()
+    {
+        $this->load->model('recyclermodel');
+    	$post=$this->input->post();
+    	$this->recyclermodel->acceptProduct($post);
+    	return redirect('recycler/requestPage');
+    }
 
 
 	//Status
 	public function statusPage()
 	{
-		$this->load->view("recycler/status_recycler");
+		$this->load->model('recyclermodel');
+		$this->load->library('pagination');
+		$config=$this->getConfig("recycler/statusPage",4,$this->recyclermodel->countProductsStatus());
+		$this->pagination->initialize($config);
+		$status=$this->recyclermodel->status($config['per_page'],$this->uri->segment(3));
+		$this->load->view("recycler/status_recycler",compact('status'));
+
 	}
 	//Status Ends
 
-
+     
 	//FEEDBACK FUNCTION
 	private function _flashNredirect($tf,$succm,$errm,$page1,$page2)
 	{
@@ -154,5 +174,32 @@ class Recycler extends MY_Controller{
 			}
 	}
 	//FEEDBACK ENDS
+
+	//Config for pagination
+	public function getConfig($url,$perpage,$totalrows)
+		{
+			$config = [
+						'base_url' => base_url($url),
+						'per_page' => $perpage,
+						'total_rows' => $totalrows,
+						'full_tag_open' => "<ul class='pagination'>",
+						'full_tag_close' => "</ul>",
+						'first_tag_open' => "<li class='page-item'>",
+						'first_tag_close' => "</li>",
+						'last_tag_open' => "<li class='page-item'>",
+						'last_tag_close' => "</li>",
+						'next_tag_open' => "<li class='page-item'>",
+						'next_tag_close' => "</li>",
+						'prev_tag_open' => "<li class='page-item'>",
+						'prev_tag_close' => "</li>",
+						'num_tag_open' => "<li class='page-item'>",
+						'num_tag_close' => "</li>",
+						'cur_tag_open' => "<li class='page-item active'><a class='page-link'>",
+						'cur_tag_close' => "</a></li>",
+						'attributes' => array('class' => 'page-link'),
+			];
+			return $config;
+		}
+	// Config ends
 }
 ?>

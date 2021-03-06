@@ -126,23 +126,12 @@ class Service extends MY_Controller{
 	public function requestPage()
 	{
 		$this->load->model('servicemodel');
-		if(isset($_GET['pageno']))
-    	{
-    		$pageno=$_GET['pageno'];
-    	}
-    	else
-    	{
-    		$pageno=1;
-    	}
-    	$no_of_records_per_page=4;
-    	$offset=($pageno-1)*$no_of_records_per_page;
-    	$bool=true;
-    	$total_records=$this->servicemodel->request($offset,$no_of_records_per_page,$bool);
-    	$bool=false;
-		$request=$this->servicemodel->request($offset,$no_of_records_per_page,$bool);
-		$total_pages=ceil(count($total_records)/$no_of_records_per_page);
+		$this->load->library('pagination');
+		$config=$this->getConfig("service/requestPage",4,$this->servicemodel->countProducts());
+		$this->pagination->initialize($config);
+		$request=$this->servicemodel->request($config['per_page'],$this->uri->segment(3));
 
-		$this->load->view("service/request_service",compact('request','total_pages','pageno'));
+		$this->load->view("service/request_service",compact('request'));
 
 	}
 	//Request Ends
@@ -162,28 +151,31 @@ class Service extends MY_Controller{
 	{
 		$this->load->model('servicemodel');
 
-		if(isset($_GET['pageno']))
-    	{
-    		$pageno=$_GET['pageno'];
-    	}
-    	else
-    	{
-    		$pageno=1;
-    	}
-    	$no_of_records_per_page=4;
-    	$offset=($pageno-1)*$no_of_records_per_page;
-    	$bool=true;
-    	$total_records=$this->servicemodel->status($offset,$no_of_records_per_page,$bool);
-    	$bool=false;
-		$status=$this->servicemodel->status($offset,$no_of_records_per_page,$bool);
-		$total_pages=ceil(count($total_records)/$no_of_records_per_page);
+		$this->load->library('pagination');
+		$config=$this->getConfig("service/statusPage",4,$this->servicemodel->countProductsStatus());
+		$this->pagination->initialize($config);
+		$status=$this->servicemodel->status($config['per_page'],$this->uri->segment(3));
         
-		$this->load->view("service/status_service",compact('status','total_pages','pageno'));
+		$this->load->view("service/status_service",compact('status'));
 
 	}
 	//Status Ends
 
+    //Sell Refurbish
+    public function sellrefurbish()
+    {
+    	$this->load->view("service/sell_refurbish_service");
 
+    }
+//Forward Request
+	public  function forwardRequest()
+	{
+		$this->load->model('servicemodel');
+		$post=$this->input->post();
+		$this->servicemodel->requestForward($post);
+		
+		return redirect('service/statusPage');
+	}
 	//FEEDBACK FUNCTION
 	private function _flashNredirect($tf,$succm,$errm,$page1,$page2)
 	{
@@ -201,5 +193,32 @@ class Service extends MY_Controller{
 			}
 	}
 	//FEEDBACK ENDS
+
+	//Config for pagination
+	public function getConfig($url,$perpage,$totalrows)
+		{
+			$config = [
+						'base_url' => base_url($url),
+						'per_page' => $perpage,
+						'total_rows' => $totalrows,
+						'full_tag_open' => "<ul class='pagination'>",
+						'full_tag_close' => "</ul>",
+						'first_tag_open' => "<li class='page-item'>",
+						'first_tag_close' => "</li>",
+						'last_tag_open' => "<li class='page-item'>",
+						'last_tag_close' => "</li>",
+						'next_tag_open' => "<li class='page-item'>",
+						'next_tag_close' => "</li>",
+						'prev_tag_open' => "<li class='page-item'>",
+						'prev_tag_close' => "</li>",
+						'num_tag_open' => "<li class='page-item'>",
+						'num_tag_close' => "</li>",
+						'cur_tag_open' => "<li class='page-item active'><a class='page-link'>",
+						'cur_tag_close' => "</a></li>",
+						'attributes' => array('class' => 'page-link'),
+			];
+			return $config;
+		}
+	// Config ends
 }
 ?>

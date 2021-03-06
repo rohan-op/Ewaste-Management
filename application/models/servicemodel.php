@@ -64,34 +64,19 @@ class Servicemodel extends MY_Model{
 								->update('service',$post);
 		}
 
-		public function request($offset,$limit,$bool)
+		public function request($limit,$offset)
 		{
 			 
-			 if($bool==true)
-			 {
-			 	$query=$this->db->get_where('ewaste',array('s_id'=>'0'));
-			 }
-			 else
-			 {
 			 	$this->db->limit($limit, $offset);
 			 	$query=$this->db->get_where('ewaste',array('s_id'=>'0'));
-
-			 }
 			
 			return $query->result();
 		}
-		public function status($offset,$limit,$bool)
+		public function status($limit,$offset)
 		{
-			if($bool==true)
-			 {
-			 	$query=$this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id')));
-			 }
-			 else
-			 {
+			
 			 	$this->db->limit($limit, $offset);
-			 	$query=$this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id')));
-
-			 }
+			 	$query=$this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'buy_nobuy'=>'1'));
 			
 			return $query->result();
 		}
@@ -100,6 +85,20 @@ class Servicemodel extends MY_Model{
 			 $this->db->update('ewaste',
         array('s_id'=>$this->session->userdata('id')),array('e_id'=>$post['hiddenAccept'])) ;
 		}
+		public function requestForward($post)
+		{
+			$this->db->update('ewaste',array('buy_nobuy'=>'0'),array('e_id'=>$post['forward']));
+		}
+		public function countProducts()
+        {
+	        $x = $this->db->get_where('ewaste',array('s_id'=>'0'));
+	        return $x->num_rows();
+        }
+        public function countProductsStatus()
+        {
+	        $x = $this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'buy_nobuy'=>'1'));
+	        return $x->num_rows();
+        }
 
 }
 ?>

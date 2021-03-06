@@ -63,5 +63,38 @@ class Recyclermodel extends MY_Model{
 			return $this->db->where('id',$id)
 								->update('recycler',$post);
 		}
+
+		public function request($limit,$offset)
+		{
+			$this->db->limit($limit, $offset);
+			$query=$this->db->get_where('ewaste',array('r_id'=>'0','buy_nobuy'=>'0'));
+			return $query->result();
+		}
+
+		public function acceptProduct($post)
+        {
+        	$this->db->update('ewaste',
+        array('r_id'=>$this->session->userdata('id')),array('e_id'=>$post['accept'])) ;
+        }
+
+
+		public function status($limit,$offset)
+		{
+			$this->db->limit($limit, $offset);
+			$query=$this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id')));
+			return $query->result();
+		}
+		public function countProducts()
+        {
+	        $x = $this->db->get_where('ewaste',array('r_id'=>'0','buy_nobuy'=>'0'));
+	        return $x->num_rows();
+        }
+        public function countProductsStatus()
+        {
+	        $x = $this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id')));
+	        return $x->num_rows();
+        }
+
+        
 }
 ?>
