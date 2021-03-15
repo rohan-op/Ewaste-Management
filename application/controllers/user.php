@@ -221,7 +221,8 @@ class User extends MY_Controller{
 				        'price'   => $product[0]->p_price,
 				        'name'    => $product[0]->p_name,
 				        'photo1'  => $product[0]->photo1,
-				        'type'    => $product[0]->p_type
+				        'type'    => $product[0]->p_type,
+				        'cname'   => $product[0]->cname
 					);
     	$this->cart->insert($data);
     	return redirect("user/cartPage");
@@ -263,6 +264,15 @@ class User extends MY_Controller{
  		$this->cart->update($update);
  		return redirect("user/cartPage");
  		//print_r($data);
+ 	}
+
+ 	public function order()
+ 	{
+ 		$data = $this->cart->contents();
+ 		$data1 = array('u_id' => $this->session->userdata('id'),
+ 						'amount' => ,
+ 						'date' => ,			);
+ 		$data2 = array('' => , );
  	}
     //CART Ends
 

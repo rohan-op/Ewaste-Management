@@ -23,45 +23,47 @@
         <div class="pt-4 wish-list">
           <div class="row mb-4">
           <?php foreach ($this->cart->contents() as $items): ?>
-            <div class="col-md-5 col-lg-3 col-xl-3">
-              <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-                <img class="img-fluid w-100"
-                  src="<?= $items['photo1'] ?>" alt="Product Image">
+            <br>
+              <div class="col-md-5 col-lg-3 col-xl-3">
+                <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                  <img class="img-fluid w-100"
+                    src="<?= $items['photo1'] ?>" alt="Product Image">
+                </div>
               </div>
-            </div>
 
-            <div class="col-md-7 col-lg-9 col-xl-9">
-              <div>
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h5><?php echo $items['name']; ?></h5>
-                    <p class="mb-2 text-muted text-uppercase small"><?php echo $items['type']; ?></p>
-                    <p class="mb-3 text-muted text-uppercase small">Serviced by: Mek Peripheral</p>
-                  </div>
-                  <div>
-                    <div class="def-number-input number-input safari_only mb-0 w-100">
-                      
-                      <?= anchor("user/updateItemM/".$items['rowid'],'-',['class'=>'btn btn-danger btn-sm']);?>
-                      <?php echo $items['qty']." Units"?>
-                      <?= anchor("user/updateItemP/".$items['rowid'],'+',['class'=>'btn btn-primary btn-sm']);?>
+              <div class="col-md-7 col-lg-9 col-xl-9">
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <h5><?php echo $items['name']; ?></h5>
+                      <p class="mb-2 text-muted text-uppercase small">TYPE: <strong><?php echo $items['type']; ?></strong></p>
+                      <p class="mb-3 text-muted text-uppercase small">Provided by: <strong><?php echo $items['cname']; ?></strong></p>
+                    </div>
+                    <div>
+                      <div class="def-number-input number-input safari_only mb-0 w-100">
+                        
+                        <?= anchor("user/updateItemM/".$items['rowid'],'-',['class'=>'btn btn-danger btn-sm']);?>
+                        <?php echo $items['qty']." Unit/s"?>
+                        <?= anchor("user/updateItemP/".$items['rowid'],'+',['class'=>'btn btn-primary btn-sm']);?>
+                        
+                      </div>
                       
                     </div>
-                    
                   </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <?= anchor("user/deleteItem/".$items['rowid'],'Remove Item',['class'=>'btn btn-danger btn-sm']);?>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <?= anchor("user/deleteItem/".$items['rowid'],'Remove Item',['class'=>'btn btn-danger btn-sm']);?>
+                    </div>
+                    <p class="mb-0"><span>PRICE: <strong id="summary"><?php echo $this->cart->format_number($items['price']); ?></strong></span></p class="mb-0">
+                    <p class="mb-0"><span>SUB TOTAL: <strong id="summary"><?php echo $this->cart->format_number($items['subtotal']); ?></strong></span></p class="mb-0">
                   </div>
-                  <p class="mb-0"><span><strong id="summary"><?php echo $this->cart->format_number($items['price']); ?></strong></span></p class="mb-0">
                 </div>
               </div>
-            </div>
-            
+              
             <?php endforeach; ?>
           </div>
           <hr class="mb-4">
-          <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
+          <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i>NOTE: Do not delay the purchase, adding
             items to your cart does not mean booking them.</p>
         </div>
       </div>
@@ -110,11 +112,11 @@
       <div class="mb-3">
         <div class="pt-4">
 
-          <h5 class="mb-3">The total amount of</h5>
+          <h5 class="mb-3">The Total Amount</h5>
 
           <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-              Sub Total
+              Sub Total Of All Items
               <span>RS <?php echo $this->cart->format_number($this->cart->total()); ?></span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
@@ -123,9 +125,9 @@
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
               <div>
-                <strong>The total amount of</strong>
+                <strong>The Total Amount</strong>
                 <strong>
-                  <p class="mb-0">(including VAT)</p>
+                  <p class="mb-0">(including Taxes)</p>
                 </strong>
               </div>
               <span><strong><?php echo $this->cart->format_number($this->cart->total()); ?></strong></span>
