@@ -142,6 +142,17 @@ public function getDetails($p_id)
 	return $x->row();
 }
 
+//Orders
+	public function addOrderTable($data1)
+	{
+		$this->db->insert('orders',$data1);
+		return $this->db->insert_id();
+	}
 
+	public function addOrderItems($data2 = array())
+	{
+		return $this->db->insert_batch('order_items',$data2);
+	}
+//End Orders
 }
 ?>

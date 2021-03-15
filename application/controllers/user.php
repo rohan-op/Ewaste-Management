@@ -268,11 +268,37 @@ class User extends MY_Controller{
 
  	public function order()
  	{
- 		$data = $this->cart->contents();
- 		$data1 = array('u_id' => $this->session->userdata('id'),
- 						'amount' => ,
- 						'date' => ,			);
- 		$data2 = array('' => , );
+ 		$this->load->library('cart');
+ 		$this->load->model('usermodel');
+ 		if($this->cart->total()>0)
+ 		{
+	 		$data = $this->cart->contents();
+
+	 		$data1 = array('u_id' => $this->session->userdata('id'),
+	 						'amount' => $this->cart->total(),
+	 						'date' => date('Y-m-d H:i:s'));	 		
+	 		$id = $this->usermodel->addOrderTable($data1);
+	 		$i=0;
+	 		$data2 = array();
+	 		foreach ($data as &$items){
+		 		$data2[$i]['o_id'] = $id;
+		 		$data2[$i]['p_id'] = $items['id'];
+		 		$data2[$i]['quantity'] = $items['qty'];
+		 		$data2[$i]['amount'] = $items['subtotal'];
+		 		$i++;
+	 		}
+	 		$check =  $this->usermodel->addOrderItems($data2);
+	 		if($check)
+	 		{
+	 			$this->cart->destroy();
+	 			$this->_flashNredirect($check,'Congratulations! Order Placed Successfully','Oh Snap! Failed to Place Order, Please Try Again','cartPage','cartPage');
+	 		}
+	 		
+ 		}
+ 		else
+ 		{
+ 			$this->_flashNredirect(false,'Congratulations! Order Placed Successfully','Your Cart is Empty','cartPage','cartPage');
+ 		}
  	}
     //CART Ends
 

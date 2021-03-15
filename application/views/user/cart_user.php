@@ -2,6 +2,20 @@
 <br>
 <body>
   <div class="container">
+  <?php if($feedback = $this->session->flashdata('feedback')): ?> 
+      <?php $class = $this->session->flashdata('class');?>   
+    <div class="row">
+      <div class="col-lg-6">
+         <div class="alert alert-dismissible alert-<?php echo $class; ?>">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong></strong> <a href="#" class="alert-link">
+            <?= $feedback ?>
+          </a>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
+  <br>
   <ol class="breadcrumb" style="width: 200px;">
         <li class="breadcrumb-item"><a href="#">User</a></li>
         <li class="breadcrumb-item active">Cart</li>
@@ -133,9 +147,7 @@
               <span><strong><?php echo $this->cart->format_number($this->cart->total()); ?></strong></span>
             </li>
           </ul>
-
-          <button type="button" class="btn btn-primary btn-block">go to checkout</button>
-
+          <?= anchor("user/order",'Checkout',['class'=>'btn btn-primary btn-block']);?>
         </div>
       </div>
       <!-- Card -->
