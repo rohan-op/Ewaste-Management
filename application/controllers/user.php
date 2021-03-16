@@ -9,6 +9,7 @@ class User extends MY_Controller{
 				return redirect('login');
 			}
 		$this->load->helper('form');
+		$this->load->model('usermodel');
 	}
 
 	//Home Page
@@ -116,6 +117,24 @@ class User extends MY_Controller{
 			$upload_error = $this->upload->display_errors();
 			$this->load->view('user/updateprofilephoto_user',compact('upload_error','data'));
 		}
+	}
+
+	public function yourOrders()
+	{
+		$this->load->library('pagination');
+		$config = $this->getConfig("user/yourOrders",10,$this->usermodel->countUserOrders());
+	 	$this->pagination->initialize($config);
+	 	$orders = $this->usermodel->getUserOrders($config['per_page'] ,$this->uri->segment(3));
+	 	$this->load->view("user/your_orders_user",compact('orders'));
+	}
+
+	public function yourDonations()
+	{
+		$this->load->library('pagination');
+		$config = $this->getConfig("user/yourDonations",10,$this->usermodel->countUserDonations());
+	 	$this->pagination->initialize($config);
+	 	$donations = $this->usermodel->getUserDonations($config['per_page'] ,$this->uri->segment(3));
+	 	$this->load->view("user/your_donations_user",compact('donations'));
 	}
 	//Profile Ends
  	

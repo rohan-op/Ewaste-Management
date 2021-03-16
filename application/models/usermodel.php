@@ -1,6 +1,7 @@
 <?php
 class Usermodel extends MY_Model{
 
+//Profile
 public function profile()
 {
 	$id = $this->session->userdata('id');
@@ -10,7 +11,6 @@ public function profile()
 					//print_r($user->result());exit;
 	return $user->row();
 }
-
 
 public function update_password($passwordold,$password,Array $user)
 {
@@ -32,7 +32,6 @@ public function update_password($passwordold,$password,Array $user)
 		return FALSE;
 	}
 }
-
 
 public function findProfile()
 {
@@ -67,12 +66,59 @@ public function updatePhoto($post)
 						->update('user',$post);
 }
 
+public function countUserOrders()
+{
+	$id = $this->session->userdata('id');
+	$x = $this->db->select(['o_id'])
+				->where('u_id',$id)
+				->get('orders');
+	return $x->num_rows();
+}
+
+public function getUserOrders($limit,$offset)
+{
+	$id = $this->session->userdata('id');
+	$x = $this->db->select(['o_id','amount','date'])
+				->where('u_id',$id)
+				->limit($limit,$offset)
+				->order_by('date','DESC')
+				->get('orders');
+	return $x->result();	
+}
+
+public function countUserDonations()
+{
+	$id = $this->session->userdata('id');
+	$x = $this->db->select(['e_id'])
+				->where('u_id',$id)
+				->get('ewaste');
+	return $x->num_rows();
+}
+
+public function getUserDonations($limit,$offset)
+{
+	$id = $this->session->userdata('id');
+	$x = $this->db->select(['e_id','e_name','date'])
+				->where('u_id',$id)
+				->limit($limit,$offset)
+				->order_by('date','DESC')
+				->get('ewaste');
+	return $x->result();	
+}
+
+//Profile Ends
+
+
+// E-waste Donations
 public function addEwaste($array)
 {
 	return $this->db->insert('ewaste',$array);
 
 }
+//E-waste Ends
 
+
+//Buying RF Products
 public function countProducts()
 {
 	$x = $this->db->select('p_id')
@@ -141,6 +187,8 @@ public function getDetails($p_id)
 					->get('products');
 	return $x->row();
 }
+//Buying RF Ends
+
 
 //Orders
 	public function addOrderTable($data1)
