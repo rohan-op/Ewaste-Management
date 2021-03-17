@@ -144,7 +144,12 @@ class User extends MY_Controller{
 	 	$this->load->view("user/your_donations_user",compact('donations'));
 	}
 
-
+	public function donationDetails($e_id)
+	{
+		$donation = $this->usermodel->getDonationDetails($e_id);
+		//print_r($donation);exit;
+		$this->load->view("user/donation_detail_user",compact('donation'));
+	}
 	//Profile Ends
  	
 

@@ -24,7 +24,7 @@
 			<?php foreach($donations as $donations): ?>
 			<tr>
 				<td><?= ++$count ?></td>
-				<td><?= anchor("user/viewOrder/{$donations->e_id}",$donations->e_name) ?></td>
+				<td><?= anchor("user/donationDetails/{$donations->e_id}",$donations->e_name) ?></td>
 				<td><?= date('d M y H:i:s',strtotime($donations->date)) ?></td>
 			</tr>
 		<?php endforeach; ?>

@@ -115,6 +115,16 @@ public function getUserDonations($limit,$offset)
 	return $x->result();	
 }
 
+public function getDonationDetails($e_id)
+{
+	$x = $this->db->select(['e_type','e_name','e_age','e_quantity','e_img','date','e_specs'])
+					->where('e_id',$e_id)
+					//->join('service','service.id = ewaste.s_id')
+					//->join('recycler','recycler.id = ewaste.r_id')					
+					->get('ewaste');
+	return $x->result();
+} 
+
 
 //Profile Ends
 
