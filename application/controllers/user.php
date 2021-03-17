@@ -128,6 +128,13 @@ class User extends MY_Controller{
 	 	$this->load->view("user/your_orders_user",compact('orders'));
 	}
 
+	public function orderDetails($o_id)
+	{
+		$order = $this->usermodel->getOrderDetails($o_id);
+		//print_r($order);exit;
+		$this->load->view("user/order_detail_user",compact('order'));
+	}
+
 	public function yourDonations()
 	{
 		$this->load->library('pagination');
@@ -136,6 +143,8 @@ class User extends MY_Controller{
 	 	$donations = $this->usermodel->getUserDonations($config['per_page'] ,$this->uri->segment(3));
 	 	$this->load->view("user/your_donations_user",compact('donations'));
 	}
+
+
 	//Profile Ends
  	
 

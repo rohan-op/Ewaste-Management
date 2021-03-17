@@ -24,7 +24,7 @@
 			<?php foreach($orders as $orders): ?>
 			<tr>
 				<td><?= ++$count ?></td>
-				<td><?= anchor("user/viewOrder/{$orders->o_id}",$orders->amount) ?></td>
+				<td><?= anchor("user/orderDetails/{$orders->o_id}",$orders->amount) ?></td>
 				<td><?= date('d M y H:i:s',strtotime($orders->date)) ?></td>
 			</tr>
 		<?php endforeach; ?>

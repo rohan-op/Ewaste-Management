@@ -86,6 +86,15 @@ public function getUserOrders($limit,$offset)
 	return $x->result();	
 }
 
+public function getOrderDetails($o_id)
+{
+	$x = $this->db->select(['quantity','amount','p_name','p_type','products.p_id','photo1'])
+					->where('o_id',$o_id)
+					->join('products','products.p_id = order_items.p_id')
+					->get('order_items');
+	return $x->result();
+}
+
 public function countUserDonations()
 {
 	$id = $this->session->userdata('id');
@@ -105,6 +114,7 @@ public function getUserDonations($limit,$offset)
 				->get('ewaste');
 	return $x->result();	
 }
+
 
 //Profile Ends
 
