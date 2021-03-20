@@ -251,9 +251,9 @@ class User extends MY_Controller{
     	$data = array(
 					    'id'      => $product[0]->p_id,
 					    'qty'     => 1,
-				        'price'   => $product[0]->p_price,
+				        'price'   => $product[0]->p_cost,
 				        'name'    => $product[0]->p_name,
-				        'photo1'  => $product[0]->photo1,
+				        'photo1'  => $product[0]->p_img1,
 				        'type'    => $product[0]->p_type,
 				        'cname'   => $product[0]->cname
 					);

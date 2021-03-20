@@ -31,9 +31,14 @@
                         <img src="<?= $row->e_img ?>" alt="testing image" height="135px" width="135px">
                     </div>
                 </div>
+                <div>
+                    <?php $option=0 ?>
                     <div>
+                        <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info']);?>
+                    </div>
+                        <br>
                         <form method="post">
-                        <button class="btn btn-info">More Info</button>
+                        
                         <button  name="forward" formaction="<?= base_url('service/forwardRequest') ?>" type="submit" class="btn btn-primary"  value="<?= $row->e_id ?>">Forward</button>
                         
                         

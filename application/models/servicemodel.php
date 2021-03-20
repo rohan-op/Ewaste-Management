@@ -41,6 +41,14 @@ class Servicemodel extends MY_Model{
 			return $q->row();
 		}
 
+		public function getDetails($e_id)
+   {
+	$x = $this->db->select(['e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs'])
+					->where('e_id',$e_id)
+					->get('ewaste');
+	  return $x->row();
+   }
+
 		public function editProfile($service)
 		{
 			$id = $this->session->userdata('id');
@@ -84,6 +92,11 @@ class Servicemodel extends MY_Model{
 		{
 			 $this->db->update('ewaste',
         array('s_id'=>$this->session->userdata('id')),array('e_id'=>$post['hiddenAccept'])) ;
+		}
+
+		public function addProduct($array)
+		{
+               return $this->db->insert('products',$array);
 		}
 		public function requestForward($post)
 		{

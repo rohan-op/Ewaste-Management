@@ -42,13 +42,13 @@
               <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="First slide">
+                    <img class="d-block w-100" src="<?= $products->p_img1 ?>" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="Second slide">
+                    <img class="d-block w-100" src="<?= $products->p_img1 ?>" alt="Second slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= $products->photo1 ?>" alt="Third slide">
+                    <img class="d-block w-100" src="<?= $products->p_img1 ?>" alt="Third slide">
                   </div>
                 </div>
               </div>
@@ -56,7 +56,7 @@
                 <h4 class="card-title"><?= $products->p_name; ?></h4>
                 <p class="card-text">Type:<strong><?= $products->p_type; ?></strong></p>
                 <p class="card-text">Date:<strong> 3/11/2020</strong></p>
-                <p class="card-text">Price:<strong><?= $products->p_price; ?></strong></p>
+                <p class="card-text">Price:<strong><?= $products->p_cost; ?></strong></p>
                 <div>
                   <table>
                     <tr>

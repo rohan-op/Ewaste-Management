@@ -83,9 +83,12 @@
                     </div>
                 </div>
                 <div>
-                   <form action="<?= base_url('service/accept') ?>" method="post">
-                    <div >    <button class="btn btn-info">More Info</button>   </div>
+                   <?php $option=1 ?>
+                  <div >   <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info']);?>   </div>
                     <br>
+                   <form action="<?= base_url('service/accept') ?>" method="post">
+                   
+                  
                     <!--  <form action="<?= base_url('service/accept') ?>" method="post"> -->
                
 
@@ -93,7 +96,7 @@
 
                     <input type="submit" name="accept"  class="btn btn-primary"  value="Accept" />      
                                  
-                    <input type="submit" name="reject" class="btn btn-danger" value="Decline">
+                    
 
                 </form>
                 </div>

@@ -15,13 +15,13 @@
 			    		<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 			                <div class="carousel-inner">
 			                  <div class="carousel-item active">
-			                    <img class="d-block w-100" src="<?= $details->photo1 ?>" alt="First slide">
+			                    <img class="d-block w-100" src="<?= $details->p_img1 ?>" alt="First slide">
 			                  </div>
 			                  <div class="carousel-item">
-			                    <img class="d-block w-100" src="<?= $details->photo2 ?>" alt="Second slide">
+			                    <img class="d-block w-100" src="<?= $details->p_img2 ?>" alt="Second slide">
 			                  </div>
 			                  <div class="carousel-item">
-			                    <img class="d-block w-100" src="<?= $details->photo3 ?>" alt="Third slide">
+			                    <img class="d-block w-100" src="<?= $details->p_img3 ?>" alt="Third slide">
 			                  </div>
 			                </div>
 			            </div>
@@ -32,7 +32,7 @@
 			    	<div class="col-5" style="margin-left: 20px;">
 			    	<h2><?= $details->p_name ?></h2>
 			    	<p><?= $details->p_type ?></p>
-			    	<p><span class="mr-1"><strong>$<?= $details->p_price ?></strong></span></p>
+			    	<p><span class="mr-1"><strong>$<?= $details->p_cost ?></strong></span></p>
 			    	<br>
 			    	<p class="pt-1"><?= $details->p_specs ?></p>
         			<br>

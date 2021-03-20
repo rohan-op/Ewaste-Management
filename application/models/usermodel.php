@@ -88,7 +88,7 @@ public function getUserOrders($limit,$offset)
 
 public function getOrderDetails($o_id)
 {
-	$x = $this->db->select(['quantity','amount','p_name','p_type','products.p_id','photo1'])
+	$x = $this->db->select(['quantity','amount','p_name','p_type','products.p_id','p_img1'])
 					->where('o_id',$o_id)
 					->join('products','products.p_id = order_items.p_id')
 					->get('order_items');
@@ -148,7 +148,7 @@ public function countProducts()
 
 public function getProducts($limit,$offset)
 {
-	$products = $this->db->select(['p_id','p_price','photo1','photo2','photo3','p_name','p_type'])
+	$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
 							->limit($limit,$offset)
 							->get('products');
 	return  $products->result();
@@ -165,7 +165,7 @@ public function countSearchProducts($string)
 
 public function getSearchProducts($limit,$offset,$string)
 {
-	$products = $this->db->select(['p_id','p_price','photo1','photo2','photo3','p_name','p_type'])
+	$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
 							->like('p_name',$string)
 							->or_like('p_type',$string)
 							->limit($limit,$offset)
@@ -192,7 +192,7 @@ public function buy($offset,$limit,$bool)
 
 public function getProduct($p_id)
 {
-	$x = $this->db->select(['p_id','p_quantity','p_price','p_name','photo1','p_type','service.cname'])
+	$x = $this->db->select(['p_id','p_quantity','p_cost','p_name','p_img1','p_type','service.cname'])
 					->where('p_id',$p_id)
 					->join('service','service.id = products.s_id')
 					->get('products');
@@ -201,7 +201,7 @@ public function getProduct($p_id)
 
 public function getDetails($p_id)
 {
-	$x = $this->db->select(['p_id','p_name','p_quantity','p_price','p_type','photo1','photo2','photo3','service.cname','p_specs'])
+	$x = $this->db->select(['p_id','p_name','p_quantity','p_cost','p_type','p_img1','p_img2','p_img3','service.cname','p_specs'])
 					->join('service','service.id = products.s_id')
 					->where('p_id',$p_id)
 					->get('products');

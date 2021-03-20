@@ -134,12 +134,19 @@ class Service extends MY_Controller{
 		$this->load->view("service/request_service",compact('request'));
 
 	}
+   
+    //More info on Products
+	public function productDetails($eid,$option)
+ 	{
+ 		$this->load->model('servicemodel');
+ 		$details = $this->servicemodel->getDetails($eid);
+ 		//print_r($details[0]->p_name);exit;
+ 		$this->load->view("service/ewasteMoreDetails",compact('details','option'));
+ 	}
 	//Request Ends
     public function accept()
     {
     	$this->load->model('servicemodel');
-    	
-
     	$post=$this->input->post();
     	$this->servicemodel->acceptProduct($post);
     	return redirect('service/requestPage');
@@ -166,6 +173,44 @@ class Service extends MY_Controller{
     {
     	$this->load->view("service/sell_refurbish_service");
 
+    }
+
+    //Upload Service Center's Product to the Page
+    public function uploadProduct()
+    {
+    	$this->load->model('servicemodel');
+    	$config = [
+				'upload_path' => './uploads/ewaste',
+				'allowed_types' => 'jpg|gif|png|jpeg'
+			];
+			$this->load->library('upload',$config);
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('p_type','Type','required');
+			$this->form_validation->set_rules('p_name','Model Name','required|max_length[100]');
+			$this->form_validation->set_rules('p_age','Age of Product','required|is_natural_no_zero');
+			$this->form_validation->set_rules('p_quantity','Quantity of Refurbished Product','required|is_natural_no_zero');
+			$this->form_validation->set_rules('p_cost','Cost of Refurbished Product','required|is_natural_no_zero');
+			$this->form_validation->set_rules('p_specs','Specification','required|max_length[400]');
+			$this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
+			$post = $this->input->post();
+			unset($post['submit']);
+			if($this->form_validation->run() && $this->upload->do_upload())
+			{
+				$data = $this->upload->data();
+				$id = $this->session->userdata('id');
+				//$data['orig_name'] = $post['date'].$id.$data['file_ext'];
+				//$data['file_name'] = $post['date'].$id.$data['file_ext'];
+				//file name problem to be solved
+				$image_path = base_url("uploads/ewaste/".$data['file_name']);
+				$post['p_img1'] = $image_path;
+				$post['s_id'] = $this->session->userdata('id');
+				$this->_flashNredirect($this->servicemodel->addProduct($post),'Congratulations! Product Uploaded Successfully','Oh Snap! Failed to Upload Product, Please Try Again','sellrefurbish','sellrefurbish');
+			}
+			else
+			{
+				$upload_error = $this->upload->display_errors();
+				$this->load->view('service/sell_refurbish_service',compact('upload_error'));
+			}
     }
 //Forward Request
 	public  function forwardRequest()
