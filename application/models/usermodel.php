@@ -192,7 +192,7 @@ public function buy($offset,$limit,$bool)
 
 public function getProduct($p_id)
 {
-	$x = $this->db->select(['p_id','p_quantity','p_cost','p_name','p_img1','p_type','service.cname'])
+	$x = $this->db->select(['p_id','s_id','p_quantity','p_cost','p_name','p_img1','p_type','service.cname'])
 					->where('p_id',$p_id)
 					->join('service','service.id = products.s_id')
 					->get('products');

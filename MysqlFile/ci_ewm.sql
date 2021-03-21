@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2021 at 10:24 PM
+-- Generation Time: Mar 21, 2021 at 07:49 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -78,7 +78,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`o_id`, `u_id`, `s_id`, `amount`, `date`) VALUES
-(0, 1, 0, 30000, '2021-03-18 12:02:44');
+(5, 1, 0, 50000, '2021-03-21 19:18:55');
 
 -- --------------------------------------------------------
 
@@ -91,16 +91,19 @@ CREATE TABLE `order_items` (
   `o_id` int(11) NOT NULL,
   `p_id` int(11) NOT NULL,
   `s_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `amount` int(11) NOT NULL
+  `amount` int(11) NOT NULL,
+  `date` varchar(20) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_items`
 --
 
-INSERT INTO `order_items` (`id`, `o_id`, `p_id`, `s_id`, `quantity`, `amount`) VALUES
-(0, 0, 1, 0, 1, 30000);
+INSERT INTO `order_items` (`id`, `o_id`, `p_id`, `s_id`, `u_id`, `quantity`, `amount`, `date`) VALUES
+(7, 5, 1, 1, 1, 1, 30000, '2021-03-21 19:18:55'),
+(8, 5, 2, 1, 1, 1, 20000, '2021-03-21 19:18:55');
 
 -- --------------------------------------------------------
 
@@ -296,6 +299,18 @@ ALTER TABLE `user`
 --
 ALTER TABLE `ewaste`
   MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`

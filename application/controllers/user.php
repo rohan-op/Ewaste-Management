@@ -250,6 +250,7 @@ class User extends MY_Controller{
     	$product = $this->usermodel->getProduct($p_id);
     	$data = array(
 					    'id'      => $product[0]->p_id,
+					    's_id'    => $product[0]->s_id,
 					    'qty'     => 1,
 				        'price'   => $product[0]->p_cost,
 				        'name'    => $product[0]->p_name,
@@ -316,8 +317,11 @@ class User extends MY_Controller{
 	 		foreach ($data as &$items){
 		 		$data2[$i]['o_id'] = $id;
 		 		$data2[$i]['p_id'] = $items['id'];
+		 		$data2[$i]['s_id']=$items['s_id'];
+		 		$data2[$i]['u_id']=$this->session->userdata('id');
 		 		$data2[$i]['quantity'] = $items['qty'];
 		 		$data2[$i]['amount'] = $items['subtotal'];
+		 		$data2[$i]['date']=date('Y-m-d H:i:s');
 		 		$i++;
 	 		}
 	 		$check =  $this->usermodel->addOrderItems($data2);

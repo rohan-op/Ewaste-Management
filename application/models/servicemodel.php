@@ -41,11 +41,22 @@ class Servicemodel extends MY_Model{
 			return $q->row();
 		}
 
-		public function getDetails($e_id)
+		public function getDetails($e_id,$table)
    {
+   	if($table=='ewaste')
+   	{
 	$x = $this->db->select(['e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs'])
 					->where('e_id',$e_id)
 					->get('ewaste');
+		}
+		else
+		{
+			$x=$this->db->select(['order_items.p_id','p_name','amount','p_type','p_img1','p_specs'])
+					->where('order_items.p_id',$e_id)
+					->join('products','products.p_id=order_items.p_id')
+					->get('order_items');
+		}
+
 	  return $x->row();
    }
 
@@ -112,6 +123,26 @@ class Servicemodel extends MY_Model{
 	        $x = $this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'buy_nobuy'=>'1'));
 	        return $x->num_rows();
         }
+
+        public function countHistoryProducts()
+        {
+	       $id = $this->session->userdata('id');
+	       $x = $this->db->select(['p_id'])
+				->where('s_id',$id)
+				->get('order_items');
+	       return $x->num_rows();
+         }
+         public function getHistoryProducts($limit,$offset)
+         {
+         	$id=$this->session->userdata('id');
+         	$x=$this->db->select(['o_id','u_id','products.p_id','p_name','amount','order_items.date'])
+         	   ->where('order_items.s_id',$id)
+         	   ->join('products','products.p_id=order_items.p_id')
+         	   ->limit($limit,$offset)
+			   ->order_by('order_items.date','DESC')
+         	   ->get('order_items');
+         	  return $x->result();
+         }
 
 }
 ?>
