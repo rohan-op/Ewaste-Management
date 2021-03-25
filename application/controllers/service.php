@@ -144,7 +144,14 @@ class Service extends MY_Controller{
  		//print_r($details[0]->p_name);exit;
  		$this->load->view("service/ewasteMoreDetails",compact('details','option'));
  	}
-
+public function servicedProductDetails($eid)
+ 	{
+ 		$this->load->model('servicemodel');
+ 		
+ 		$details = $this->servicemodel->getServicedDetails($eid);
+ 		//print_r($details[0]->p_name);exit;
+ 		$this->load->view("service/servicedProductsMoreDetails",compact('details'));
+ 	}
  	//More Info on Sold Products
  	public function moreInfoSold($pid)
  	{
@@ -194,6 +201,16 @@ class Service extends MY_Controller{
 	 	$this->pagination->initialize($config);
 	 	$orders = $this->servicemodel->getHistoryProducts($config['per_page'] ,$this->uri->segment(3));
 	 	$this->load->view("service/history",compact('orders'));
+    }
+
+    public function servicedProducts()
+    {
+    	$this->load->library('pagination');
+    	$this->load->model('servicemodel');
+		$config = $this->getConfig("service/servicedProducts",10,$this->servicemodel->countProductsStatus());
+	 	$this->pagination->initialize($config);
+	 	$serviced = $this->servicemodel->status($config['per_page'] ,$this->uri->segment(3));
+	 	$this->load->view("service/servicedProducts",compact('serviced'));
     }
 
     //Upload Service Center's Product to the Page

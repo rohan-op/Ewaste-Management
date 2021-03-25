@@ -60,7 +60,7 @@
             <?= anchor("service/changePassword",'Change Password',['class'=>'btn btn-warning']);?>   
             <br><br>
             <?= anchor("service/historyProducts",'History of Sold Products',['class'=>'btn btn-info']);?>
-            <?= anchor("service/",'Serviced Products',['class'=>'btn btn-info']);?>
+            <?= anchor("service/servicedProducts",'Serviced Products',['class'=>'btn btn-info']);?>
        </div>
         <br>
     </div>

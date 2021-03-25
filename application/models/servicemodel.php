@@ -42,23 +42,35 @@ class Servicemodel extends MY_Model{
 		}
 
 		public function getDetails($e_id,$table)
-   {
-   	if($table=='ewaste')
-   	{
-	$x = $this->db->select(['e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs'])
-					->where('e_id',$e_id)
-					->get('ewaste');
-		}
-		else
-		{
-			$x=$this->db->select(['order_items.p_id','p_name','amount','p_type','p_img1','p_specs'])
-					->where('order_items.p_id',$e_id)
-					->join('products','products.p_id=order_items.p_id')
-					->get('order_items');
-		}
+        {
+		   	if( $table=='ewaste'  )
+		   	{
+			     $x = $this->db->select(['e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs'])
+							->where('e_id',$e_id)
+							->get('ewaste');
+				}
+				else
+				{
+					$x=$this->db->select(['order_items.p_id','p_name','amount','p_type','p_img1','p_specs'])
+							->where('order_items.p_id',$e_id)
+							->join('products','products.p_id=order_items.p_id')
+							->get('order_items');
+				}
 
-	  return $x->row();
-   }
+			  return $x->row();
+         }
+         public function getServicedDetails($e_id)
+	   {
+	   	
+	  
+		     $x = $this->db->select(['e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs'])
+						->where('e_id',$e_id)
+						->get('ewaste');
+			
+
+		  return $x->row();
+	   }
+
 
 		public function editProfile($service)
 		{
@@ -123,6 +135,7 @@ class Servicemodel extends MY_Model{
 	        $x = $this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'buy_nobuy'=>'1'));
 	        return $x->num_rows();
         }
+
 
         public function countHistoryProducts()
         {
