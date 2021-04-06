@@ -11,7 +11,20 @@
     </ol>
     <br>
     <h2 class="text-primary">Set Status</h2>
-    <br><br>
+    <br>
+    <?php if($error = $this->session->flashdata('feedback')): ?>    
+      <div class="row">
+        <div class="col-lg-6">
+           <div class="alert alert-dismissible alert-<?=$this->session->flashdata('class')?>">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <a href="#" class="alert-link">
+              <?= $error ?>
+            </a>
+          </div>
+        </div>
+      </div>
+      <?php endif; ?>
+    <br>
     <div class="row">
          <?php          
            if(!empty($status))
@@ -35,6 +48,8 @@
                     <?php $option=0 ?>
                     <div>
                         <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info']);?>
+
+                          <?= anchor("service/updateStatus/{$row->e_id}",'Update Status',['class'=>'btn btn-warning']);?>
                     </div>
                         <br>
                         <form method="post">
@@ -44,6 +59,7 @@
                         
                     </form>
                     </div>
+                     
             
         </div>
          <?php

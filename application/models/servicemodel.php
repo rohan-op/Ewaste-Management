@@ -107,7 +107,7 @@ class Servicemodel extends MY_Model{
 		{
 			
 			 	$this->db->limit($limit, $offset);
-			 	$query=$this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'buy_nobuy'=>'1'));
+			 	$query=$this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'r_id'=>0,'buy_nobuy'=>1));
 			
 			return $query->result();
 		}
@@ -120,6 +120,12 @@ class Servicemodel extends MY_Model{
 		public function addProduct($array)
 		{
                return $this->db->insert('products',$array);
+		}
+
+		public function addStatus($post,$eid)
+		{
+			return $this->db->where('e_id',$eid)
+								->update('ewaste',array('problem'=>$post['problem'],'service_feedback'=>$post['service_feedback']));
 		}
 		public function requestForward($post)
 		{
