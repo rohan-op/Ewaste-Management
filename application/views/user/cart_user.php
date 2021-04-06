@@ -145,9 +145,13 @@
                 </strong>
               </div>
               <span><strong><?php echo $this->cart->format_number($this->cart->total()); ?></strong></span>
+              <?php 
+                $_SESSION["payment_total"] = $this->cart->total();
+                //echo $_SESSION["payment_total"];
+              ?>
             </li>
           </ul>
-          <?= anchor("user/order",'Checkout',['class'=>'btn btn-primary btn-block']);?>
+          <?= anchor("user/payment",'Checkout',['class'=>'btn btn-primary btn-block']);?>
         </div>
       </div>
       <!-- Card -->

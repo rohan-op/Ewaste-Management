@@ -299,6 +299,14 @@ class User extends MY_Controller{
  		return redirect("user/cartPage");
  		//print_r($data);
  	}
+	 public function payment()
+	 {
+		 $this->load->view('my_stripe',$_SESSION); 
+		 //$this->load->library('cart');
+ 		 //$this->load->model('usermodel');
+		 
+		 //$_SESSION["payment_total"]
+	 }
 
  	public function order()
  	{
@@ -306,6 +314,7 @@ class User extends MY_Controller{
  		$this->load->model('usermodel');
  		if($this->cart->total()>0)
  		{
+			
 	 		$data = $this->cart->contents();
 
 	 		$data1 = array('u_id' => $this->session->userdata('id'),
@@ -325,6 +334,7 @@ class User extends MY_Controller{
 		 		$i++;
 	 		}
 	 		$check =  $this->usermodel->addOrderItems($data2);
+			$transaction = $this->payment();
 	 		if($check)
 	 		{
 	 			$this->cart->destroy();
