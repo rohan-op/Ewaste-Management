@@ -6,7 +6,7 @@ class Login extends MY_Controller{
 	//TESTING PURPOSE ONLY
 	public function testing()
 		{
-			$this->load->view('user/productdetail_user');
+			$this->load->view('my_stripe.php');
 			//$this->load->view('service/request_service');
 			//$config = $this->getConfig("hello",4,6);
 			//print_r($config) ; exit;

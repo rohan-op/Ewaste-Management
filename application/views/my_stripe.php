@@ -48,7 +48,7 @@
                         </div>
                     <?php } ?>
      
-                    <form role="form" action="/stripePost" method="post" class="require-validation"
+                    <form role="form" action="<?=base_url('StripeController/stripePost')?>" method="post" class="require-validation"
                                                      data-cc-on-file="false"
                                                     data-stripe-publishable-key="<?php echo $this->config->item('stripe_key') ?>"
                                                     id="payment-form">

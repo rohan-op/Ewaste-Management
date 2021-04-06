@@ -37,13 +37,14 @@ class StripeController extends CI_Controller {
      
         \Stripe\Charge::create ([
                 "amount" => 100 * 100,
-                "currency" => "usd",
+                "currency" => "INR",
                 "source" => $this->input->post('stripeToken'),
                 "description" => "Test payment from itsolutionstuff.com." 
         ]);
             
         $this->session->set_flashdata('success', 'Payment made successfully.');
              
-        redirect('/my-stripe', 'refresh');
+        return redirect('/my_stripe', 'refresh');
+       // $this->load->view('my_stripe');
     }
 }
