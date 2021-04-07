@@ -55,6 +55,17 @@
     </div>
   </div>
 
+
+  <div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+        <label for="exampleInputEmail1">How many credit points would you give this E-waste out of 5?</label>      
+        <?php $options = array(1=>'1',2=>'2',3=>'3',4=>'4',5=>'5');?>
+        <?php echo form_dropdown('creditpoints',$options,'Credit Points',['class'=>'custom-select']); ?>
+      </div>
+    </div>
+  </div>
+
   <br>
     <?php echo form_reset(['name'=>'reset','class'=>'btn btn-warning','value'=>'Reset']); ?>
     <?php echo form_submit(['name'=>'submit','class'=>'btn btn-success','value'=>'Submit']); ?>

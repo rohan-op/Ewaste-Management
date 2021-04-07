@@ -160,20 +160,16 @@ class Service extends MY_Controller{
        $this->load->library('form_validation');
 			$this->form_validation->set_rules('problem','Specify the Problem','required|max_length[3000]');
 			$this->form_validation->set_rules('service_feedback','Specify What You Did','required|max_length[3000]');
-
+			$this->form_validation->set_rules('creditpoints','Credit Points','required|numeric|less_than[6]');
 	   $post = $this->input->post();
 			unset($post['submit']);
 			if($this->form_validation->run())
 			{
 			
 				$id = $this->session->userdata('id');
-				//$data['orig_name'] = $post['date'].$id.$data['file_ext'];
-				//$data['file_name'] = $post['date'].$id.$data['file_ext'];
-				//file name problem to be solved
-    //                 echo $post["e_id"];
-				// $this->servicemodel->addStatus($post,$post["e_id"]);
-				
-				$this->_flashNredirect($this->servicemodel->addStatus($post,$post["e_id"]),'Congratulations! Product Status Updated Successfully','Oh Snap! Failed to Update Status of the Product, Please Try Again','statusPage','updateStatus/{$post["e_id"]}');
+				$u_id = $this->servicemodel->getUserId($post["e_id"]);
+				//print_r($post['creditpoints']); exit;
+				$this->_flashNredirect($this->servicemodel->addStatus($post,$post["e_id"],$u_id),'Congratulations! Product Status Updated Successfully','Oh Snap! Failed to Update Status of the Product, Please Try Again','statusPage','updateStatus/{$post["e_id"]}');
 			}
 			else
 			{
