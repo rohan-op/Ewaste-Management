@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2021 at 07:49 PM
+-- Generation Time: Apr 07, 2021 at 12:10 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -39,9 +39,11 @@ CREATE TABLE `ewaste` (
   `e_img` text NOT NULL,
   `date` text NOT NULL,
   `s_id` int(11) NOT NULL,
+  `problem` varchar(4000) NOT NULL,
+  `service_feedback` varchar(4000) NOT NULL,
   `r_id` int(11) NOT NULL,
-  `s_stars` int(11) NOT NULL,
-  `r_stars` int(11) NOT NULL,
+  `s_creditpoints` int(11) NOT NULL,
+  `r_creditpoints` int(11) NOT NULL,
   `s_info` varchar(500) NOT NULL,
   `r_info` varchar(500) NOT NULL,
   `buy_nobuy` int(10) NOT NULL
@@ -51,13 +53,14 @@ CREATE TABLE `ewaste` (
 -- Dumping data for table `ewaste`
 --
 
-INSERT INTO `ewaste` (`e_id`, `u_id`, `e_type`, `e_name`, `e_age`, `e_quantity`, `e_specs`, `e_img`, `date`, `s_id`, `r_id`, `s_stars`, `r_stars`, `s_info`, `r_info`, `buy_nobuy`) VALUES
-(9, 1, 'laptop/pc', 'IphoneX', 12, 1, 'Apple A11 Bionic (10 nm)\r\nCPU	Hexa-core 2.39 GHz (2x Monsoon + 4x Mistral)', 'http://[::1]/CI_EWM/uploads/ewaste/iphone.jpg', '2020-12-07 17:38:09', 1, 0, 0, 0, '', '', 0),
-(10, 1, 'tv', 'Sony 21009', 20, 1, 'Screen blurred\r\npictures black', 'http://[::1]/CI_EWM/uploads/ewaste/tv.jpeg', '2020-12-10 11:13:25', 0, 0, 0, 0, '', '', 1),
-(11, 1, 'mobile', 'Samsung M31', 24, 1, '8gb ram\r\n20mp front camera\r\n20 mp back camera\r\nandroid 10', 'http://[::1]/CI_EWM/uploads/ewaste/m31.JPG', '2021-01-09 09:48:45', 0, 0, 0, 0, '', '', 1),
-(12, 1, 'tv', 'MI TV A4 Pro', 12, 2, 'Resolution: HD Ready Android TV (1366x768) | Refresh Rate: 60 hertz\r\nConnectivity: 3 HDMI ports to connect set top box, Blu Ray players, gaming console | 2 USB ports to connect hard drives and other USB devices', 'http://[::1]/CI_EWM/uploads/ewaste/mi.JPG', '2021-01-09 09:51:58', 0, 0, 0, 0, '', '', 1),
-(13, 1, 'mobile', 'OnePlus 7', 24, 5, '10gb ram\r\n20mp front camera\r\n30mp backcamera\r\n10W fast charging\r\nFHD+ display\r\n', 'http://[::1]/CI_EWM/uploads/ewaste/oneplus.JPG', '2021-01-14 15:58:12', 0, 0, 0, 0, '', '', 1),
-(14, 1, 'tv', 'Redmi 4A', 12, 1, '4gb ram', 'http://[::1]/CI_EWM/uploads/ewaste/m314.JPG', '2021-01-16 17:57:57', 0, 0, 0, 0, '', '', 1);
+INSERT INTO `ewaste` (`e_id`, `u_id`, `e_type`, `e_name`, `e_age`, `e_quantity`, `e_specs`, `e_img`, `date`, `s_id`, `problem`, `service_feedback`, `r_id`, `s_creditpoints`, `r_creditpoints`, `s_info`, `r_info`, `buy_nobuy`) VALUES
+(9, 1, 'laptop/pc', 'IphoneX', 12, 1, 'Apple A11 Bionic (10 nm)\r\nCPU	Hexa-core 2.39 GHz (2x Monsoon + 4x Mistral)', 'http://[::1]/CI_EWM/uploads/ewaste/iphone.jpg', '2020-12-07 17:38:09', 1, '', '', 1, 0, 0, '', '', 1),
+(10, 1, 'tv', 'Sony 21009', 20, 1, 'Screen blurred\r\npictures black', 'http://[::1]/CI_EWM/uploads/ewaste/tv.jpeg', '2021-04-06 12:24:18', 1, 'chalo', 'chalo', 0, 0, 0, '', '', 0),
+(11, 1, 'mobile', 'Samsung M31', 24, 1, '8gb ram\r\n20mp front camera\r\n20 mp back camera\r\nandroid 10', 'http://[::1]/CI_EWM/uploads/ewaste/m31.JPG', '2021-01-09 09:48:45', 1, 'display', 'replaced display', 0, 0, 0, '', '', 1),
+(12, 1, 'tv', 'MI TV A4 Pro', 12, 2, 'Resolution: HD Ready Android TV (1366x768) | Refresh Rate: 60 hertz\r\nConnectivity: 3 HDMI ports to connect set top box, Blu Ray players, gaming console | 2 USB ports to connect hard drives and other USB devices', 'http://[::1]/CI_EWM/uploads/ewaste/mi.JPG', '2021-01-09 09:51:58', 1, 'bye', 'byr', 0, 0, 0, '', '', 1),
+(13, 1, 'mobile', 'OnePlus 7', 24, 5, '10gb ram\r\n20mp front camera\r\n30mp backcamera\r\n10W fast charging\r\nFHD+ display\r\n', 'http://[::1]/CI_EWM/uploads/ewaste/oneplus.JPG', '2021-01-14 15:58:12', 0, '', '', 0, 0, 0, '', '', 1),
+(14, 1, 'tv', 'Redmi 4A', 12, 1, '4gb ram', 'http://[::1]/CI_EWM/uploads/ewaste/m314.JPG', '2021-01-16 17:57:57', 0, '', '', 0, 0, 0, '', '', 1),
+(15, 1, 'mobile', 'Redmi 4000', 12, 2, '48MP rear camera with ultra-wide, macro, depth sensor, portrait, night mode, ai scene recognition, hdr, pro mode | 13MP front camera\r\n16.5862 centimeters (6.53-inch) FHD+ display with multi-touch capacitive touchscreen with 2340 x 1080 pixels resolution | 19.5:9 aspect ratio\r\nMemory, Storage & SIM: 4GB RAM | 64GB internal memory expandable up to 512GB |', 'http://[::1]/CI_EWM/uploads/ewaste/nokia4.JPG', '2021-03-27 18:44:54', 1, '', '', 0, 0, 0, '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -78,7 +81,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`o_id`, `u_id`, `s_id`, `amount`, `date`) VALUES
-(5, 1, 0, 50000, '2021-03-21 19:18:55');
+(5, 1, 0, 50000, '2021-03-21 19:18:55'),
+(6, 1, 0, 50000, '2021-03-27 18:39:35'),
+(7, 1, 0, 30000, '2021-03-27 18:40:14');
 
 -- --------------------------------------------------------
 
@@ -103,7 +108,10 @@ CREATE TABLE `order_items` (
 
 INSERT INTO `order_items` (`id`, `o_id`, `p_id`, `s_id`, `u_id`, `quantity`, `amount`, `date`) VALUES
 (7, 5, 1, 1, 1, 1, 30000, '2021-03-21 19:18:55'),
-(8, 5, 2, 1, 1, 1, 20000, '2021-03-21 19:18:55');
+(8, 5, 2, 1, 1, 1, 20000, '2021-03-21 19:18:55'),
+(9, 6, 1, 1, 1, 1, 30000, '2021-03-27 18:39:35'),
+(10, 6, 2, 1, 1, 1, 20000, '2021-03-27 18:39:35'),
+(11, 7, 1, 1, 1, 1, 30000, '2021-03-27 18:40:14');
 
 -- --------------------------------------------------------
 
@@ -231,7 +239,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `fname`, `cname`, `role`, `contact`, `email`, `address`, `pword`, `profile_img`) VALUES
-(1, 'Rohan Shah', 'Rohan Corps', 'user', 8169885434, 'rohan27@somaiya.edu', 'Byculla, Mumbai', 'rohan', 'http://[::1]/CI_EWM/uploads/profilepic/img_avatar.png');
+(1, 'Rohan Shah', 'Rohan Corps', 'user', 8169885434, 'rohan27@somaiya.edu', 'Byculla, Mumbai', 'rohan', 'http://[::1]/CI_EWM/uploads/profilepic/user/KJSCE1.JPG');
 
 --
 -- Indexes for dumped tables
@@ -298,19 +306,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `ewaste`
 --
 ALTER TABLE `ewaste`
-  MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `products`
