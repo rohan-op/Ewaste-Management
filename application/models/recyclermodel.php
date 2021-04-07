@@ -64,6 +64,24 @@ class Recyclermodel extends MY_Model{
 								->update('recycler',$post);
 		}
 
+        public function getDetails($e_id,$table)
+        {
+		   	if( $table=='ewaste'  )
+		   	{
+			     $x = $this->db->select(['e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs','service_feedback'])
+							->where('e_id',$e_id)
+							->get('ewaste');
+				}
+				// else
+				// {
+				// 	$x=$this->db->select(['order_items.p_id','p_name','amount','p_type','p_img1','p_specs'])
+				// 			->where('order_items.p_id',$e_id)
+				// 			->join('products','products.p_id=order_items.p_id')
+				// 			->get('order_items');
+				// }
+
+			  return $x->row();
+         }
 		public function request($limit,$offset)
 		{
 			$this->db->limit($limit, $offset);
@@ -81,8 +99,14 @@ class Recyclermodel extends MY_Model{
 		public function status($limit,$offset)
 		{
 			$this->db->limit($limit, $offset);
-			$query=$this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id')));
+			$query=$this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback'=>''));
 			return $query->result();
+		}
+
+		public function addStatus($post,$eid)
+		{
+			return $this->db->where('e_id',$eid)
+								->update('ewaste',array('recycler_feedback'=>$post['recycler_feedback']));
 		}
 		public function countProducts()
         {
@@ -91,9 +115,22 @@ class Recyclermodel extends MY_Model{
         }
         public function countProductsStatus()
         {
-	        $x = $this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id')));
+	        $x = $this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback'=>''));
 	        return $x->num_rows();
         }
+
+        public function countRecycledProducts()
+        {
+        	 $x = $this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback !='=>''));
+	        return $x->num_rows();
+        }
+
+        public function recycled($limit,$offset)
+		{
+			$this->db->limit($limit, $offset);
+			$query=$this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback !='=>''));
+			return $query->result();
+		}
 
         
 }

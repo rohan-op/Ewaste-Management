@@ -53,6 +53,15 @@ class Recycler extends MY_Controller{
 			}
 	}
 
+    //More info on products
+	public function productDetails($eid,$option)
+ 	{
+ 		$this->load->model('recyclermodel');
+ 		$table='ewaste';
+ 		$details = $this->recyclermodel->getDetails($eid,$table);
+ 		$this->load->view("recycler/ewasteMoreDetails",compact('details','option'));
+ 	}
+
 	public function editProfile()
 	{
 		$this->load->model('recyclermodel');
@@ -155,6 +164,51 @@ class Recycler extends MY_Controller{
 
 	}
 	//Status Ends
+
+    //Update Status
+	public function updateStatus($e_id)
+ 	{
+ 		 return $this->load->view("recycler/updateStatusPage",compact('e_id'));
+
+ 	}
+
+ 	//update status of the product
+ 	public function statusCheck()
+ 	{
+ 		$this->load->model('recyclermodel');
+       $this->load->library('form_validation');
+			$this->form_validation->set_rules('recycler_feedback','Specify What You Did','required|max_length[3000]');
+
+	   $post = $this->input->post();
+			unset($post['submit']);
+			if($this->form_validation->run())
+			{
+			
+				$id = $this->session->userdata('id');
+				//$data['orig_name'] = $post['date'].$id.$data['file_ext'];
+				//$data['file_name'] = $post['date'].$id.$data['file_ext'];
+				//file name problem to be solved
+    //                 echo $post["e_id"];
+				// $this->servicemodel->addStatus($post,$post["e_id"]);
+				
+				$this->_flashNredirect($this->recyclermodel->addStatus($post,$post["e_id"]),'Congratulations! Product Status Updated Successfully','Oh Snap! Failed to Update Status of the Product, Please Try Again','statusPage','updateStatus/{$post["e_id"]}');
+			}
+			else
+			{
+				
+				$this->load->view('recycler/updateStatusPage',$post);
+			}
+ 	}
+
+ 	public function recycledProducts()
+    {
+    	$this->load->library('pagination');
+    	$this->load->model('recyclermodel');
+		$config = $this->getConfig("recycled/recycledProducts",10,$this->recyclermodel->countRecycledProducts());
+	 	$this->pagination->initialize($config);
+	 	$recycled = $this->recyclermodel->recycled($config['per_page'] ,$this->uri->segment(3));
+	 	$this->load->view("recycler/recycledProductsPage",compact('recycled'));
+    }
 
      
 	//FEEDBACK FUNCTION

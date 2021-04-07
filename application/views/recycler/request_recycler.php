@@ -30,11 +30,12 @@
                     </div>
                 </div>
                 <div>
-                    <form method="post">
-                    <div >    <button class="btn btn-info">More Info</button>   </div>
+                      <?php $option=1 ?>
+                    <div >   <?= anchor("recycler/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info']);?>   </div>
                     <br>
+                    <form method="post">
                     <button  name="accept" formaction="<?= base_url('recycler/accept') ?>" type="submit" class="btn btn-primary"  value="<?= $row->e_id ?>">Accept</button>
-                    <button class="btn btn-danger">Decline</button>
+                   
                     </form>
                 </div>  
         </div>

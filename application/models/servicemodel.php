@@ -158,7 +158,7 @@ class Servicemodel extends MY_Model{
         }
         public function countProductsStatus()
         {
-	        $x = $this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'buy_nobuy'=>'1'));
+	        $x = $this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'r_id'=>0,'buy_nobuy'=>'1'));
 	        return $x->num_rows();
         }
 
