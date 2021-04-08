@@ -138,6 +138,18 @@ class Servicemodel extends MY_Model{
 								->update('ewaste',array('problem'=>$post['problem'],'service_feedback'=>$post['service_feedback'], 's_creditpoints'=>$post['creditpoints']));
 		}
 
+		public function disableStatus($eid)
+		{
+			$disable = $this->db->select('service_feedback')
+						->where('e_id', $eid)
+						->get('ewaste');
+			if($disable->row()->service_feedback!='')
+				return TRUE;
+			else
+				return FALSE;
+
+		}
+
 		public function getUserID($eid)
 		{
 			$id = $this->db->select('u_id')

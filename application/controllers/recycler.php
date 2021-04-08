@@ -178,6 +178,7 @@ class Recycler extends MY_Controller{
  		$this->load->model('recyclermodel');
        $this->load->library('form_validation');
 			$this->form_validation->set_rules('recycler_feedback','Specify What You Did','required|max_length[3000]');
+		$this->form_validation->set_rules('creditpoints','Credit Points','required|numeric|less_than[6]');
 
 	   $post = $this->input->post();
 			unset($post['submit']);
@@ -185,13 +186,14 @@ class Recycler extends MY_Controller{
 			{
 			
 				$id = $this->session->userdata('id');
+				$u_id = $this->recyclermodel->getUserId($post["e_id"]);
 				//$data['orig_name'] = $post['date'].$id.$data['file_ext'];
 				//$data['file_name'] = $post['date'].$id.$data['file_ext'];
 				//file name problem to be solved
     //                 echo $post["e_id"];
 				// $this->servicemodel->addStatus($post,$post["e_id"]);
 				
-				$this->_flashNredirect($this->recyclermodel->addStatus($post,$post["e_id"]),'Congratulations! Product Status Updated Successfully','Oh Snap! Failed to Update Status of the Product, Please Try Again','statusPage','updateStatus/{$post["e_id"]}');
+				$this->_flashNredirect($this->recyclermodel->addStatus($post,$post["e_id"],$u_id),'Congratulations! Product Status Updated Successfully','Oh Snap! Failed to Update Status of the Product, Please Try Again','statusPage','updateStatus/{$post["e_id"]}');
 			}
 			else
 			{

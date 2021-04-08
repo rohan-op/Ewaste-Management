@@ -45,11 +45,18 @@
                     </div>
                 </div>
                 <div>
-                    <?php $option=0 ?>
+                    <?php $option=0;
+                    $status= $row->service_feedback; 
+                    $disable="";
+                    if($status!='')
+                          $disable="disabled";
+                     
+                    ?>
                     <div>
                         <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info']);?>
-
-                          <?= anchor("service/updateStatus/{$row->e_id}",'Update Status',['class'=>'btn btn-warning']);?>
+                        
+                          <a href="<?= base_url('service/updateStatus/{$row->e_id}') ?>" class="btn btn-warning <?= $disable ?>">Update Status</a>
+                       
                     </div>
                         <br>
                         <form method="post">

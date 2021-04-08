@@ -103,10 +103,29 @@ class Recyclermodel extends MY_Model{
 			return $query->result();
 		}
 
-		public function addStatus($post,$eid)
+		public function getUserID($eid)
 		{
+			$id = $this->db->select('u_id')
+							->where('e_id',$eid)
+							->get('ewaste');
+			return $id->row()->u_id;
+			//print_r($id->row()->u_id); exit;
+		}
+
+		public function addStatus($post,$eid,$u_id)
+		{
+
+			$points = $this->db->select('creditpoints')
+						->where('id', $u_id)
+						->get('user');
+			$total = $points->row()->creditpoints + $post['creditpoints'];
+			$user = array('creditpoints' => $total);
+			//print_r($user); exit;
+
+			$this->db->where('id',$u_id)
+						->update('user',$user);
 			return $this->db->where('e_id',$eid)
-								->update('ewaste',array('recycler_feedback'=>$post['recycler_feedback']));
+								->update('ewaste',array('recycler_feedback'=>$post['recycler_feedback'],'r_creditpoints'=>$post['creditpoints']));
 		}
 		public function countProducts()
         {

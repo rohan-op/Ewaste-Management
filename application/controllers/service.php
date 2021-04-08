@@ -148,6 +148,7 @@ class Service extends MY_Controller{
  	// Redirect toUpdate Status Page
  	public function updateStatus($e_id)
  	{
+ 		
  		 return $this->load->view("service/updateStatusPage",compact('e_id'));
 
  	}
