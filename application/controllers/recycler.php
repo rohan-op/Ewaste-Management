@@ -179,8 +179,14 @@ class Recycler extends MY_Controller{
        $this->load->library('form_validation');
 			$this->form_validation->set_rules('recycler_feedback','Specify What You Did','required|max_length[3000]');
 		$this->form_validation->set_rules('creditpoints','Credit Points','required|numeric|less_than[6]');
+		
 
-	   $post = $this->input->post();
+	   $post = $this->input->post();    	
+	    
+	   // {
+	   // 	   $this->form_validation->set_rules('Element'+$i,'Specify in (kgs) How Much the Selected Element is retrieved','required|numeric');
+	   // }
+	   // echo $post['Element1Value'];
 			unset($post['submit']);
 			if($this->form_validation->run())
 			{

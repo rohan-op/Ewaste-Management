@@ -120,7 +120,43 @@ class Recyclermodel extends MY_Model{
 						->get('user');
 			$total = $points->row()->creditpoints + $post['creditpoints'];
 			$user = array('creditpoints' => $total);
+			$gold=0;
+			$silver=0;
+			$palladium=0;
+			$copper=0;
+			$other_metals=0;
+			$other_non_metals=0;
 			//print_r($user); exit;
+			if(isset($post["Element1Value"]))
+				$gold=$post["Element1Value"];
+
+			if(isset($post["Element2Value"]))
+				$silver=$post["Element2Value"];
+
+			if(isset($post["Element3Value"]))
+				$palladium=$post["Element3Value"];
+
+			if(isset($post["Element4Value"]))
+				$copper=$post["Element4Value"];
+
+			if(isset($post["Element5Value"]))
+				$other_metals=$post["Element5Value"];
+
+			if(isset($post["Element6Value"]))
+				$other_non_metals=$post["Element6Value"];
+
+
+			$this->db->insert('recycled_products',array(
+
+				'e_id'=>$eid,
+				'r_id'=>$this->session->userdata('id'),
+				'gold'=>$gold,
+				'silver'=>$silver,
+				'palladium'=>$palladium,
+				'copper'=>$copper,
+				'other_metals'=>$other_metals,
+				'other_non_metals'=>$other_non_metals,
+			    ));
 
 			$this->db->where('id',$u_id)
 						->update('user',$user);
