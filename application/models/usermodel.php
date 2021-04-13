@@ -95,6 +95,16 @@ public function getOrderDetails($o_id)
 	return $x->result();
 }
 
+public function gethomeOrderDetails()
+{
+	$id= $this->session->userdata('id');
+	$x = $this->db->select(['quantity','amount','order_items.date','p_name','p_type','products.p_id','p_img1'])
+					->where('u_id',$id)
+					->limit(4)
+					->join('products','products.p_id = order_items.p_id')
+					->get('order_items');
+	return $x->result();
+}
 public function countUserDonations()
 {
 	$id = $this->session->userdata('id');
@@ -124,7 +134,18 @@ public function getDonationDetails($e_id)
 					->get('ewaste');
 	return $x->result();
 } 
+public function gethomeDonationDetails()
+{
+	$id = $this->session->userdata('id');
+	$x = $this->db->select(['e_type','e_name','e_quantity','date'])
+	->where('u_id',$id)
+	->limit(4)
+	//->join('service','service.id = ewaste.s_id')
+	//->join('recycler','recycler.id = ewaste.r_id')					
+	->get('ewaste');
+return $x->result();
 
+}
 
 //Profile Ends
 
@@ -152,6 +173,14 @@ public function getProducts($limit,$offset)
 							->limit($limit,$offset)
 							->get('products');
 	return  $products->result();
+}
+
+public function gethomeProducts()
+{
+	$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
+							->limit(3)
+							->get('products');
+	return $products->result();
 }
 
 public function countSearchProducts($string)

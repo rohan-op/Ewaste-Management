@@ -197,7 +197,7 @@ public function servicedProductDetails($eid)
  		$this->load->model('servicemodel');
  		$table='products';
  		$details=$this->servicemodel->getDetails($pid,$table);
- 		$this->load->view("service/soldHistoryMoreDetails",compact('details','option'));
+ 		$this->load->view("service/soldHistoryMoreDetails",compact('details'));
  	}
 	//Request Ends
     public function accept()

@@ -15,7 +15,11 @@ class User extends MY_Controller{
 	//Home Page
 	public function homePage()
 	{
-		$this->load->view("user/home_page");
+		$this->load->model('usermodel');
+		$products = $this->usermodel->gethomeProducts();
+		$orders = $this->usermodel->gethomeOrderDetails();
+		$donations = $this->usermodel->gethomeDonationDetails();
+		$this->load->view("user/home_page",compact('products','orders','donations'));
 	}
 	//Home Page Ends
 
