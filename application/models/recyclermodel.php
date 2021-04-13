@@ -64,6 +64,24 @@ class Recyclermodel extends MY_Model{
 								->update('recycler',$post);
 		}
 
+        public function getDetails($e_id,$table)
+        {
+		   	if( $table=='ewaste'  )
+		   	{
+			     $x = $this->db->select(['e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs','service_feedback'])
+							->where('e_id',$e_id)
+							->get('ewaste');
+				}
+				// else
+				// {
+				// 	$x=$this->db->select(['order_items.p_id','p_name','amount','p_type','p_img1','p_specs'])
+				// 			->where('order_items.p_id',$e_id)
+				// 			->join('products','products.p_id=order_items.p_id')
+				// 			->get('order_items');
+				// }
+
+			  return $x->row();
+         }
 		public function request($limit,$offset)
 		{
 			$this->db->limit($limit, $offset);
@@ -81,8 +99,69 @@ class Recyclermodel extends MY_Model{
 		public function status($limit,$offset)
 		{
 			$this->db->limit($limit, $offset);
-			$query=$this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id')));
+			$query=$this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback'=>''));
 			return $query->result();
+		}
+
+		public function getUserID($eid)
+		{
+			$id = $this->db->select('u_id')
+							->where('e_id',$eid)
+							->get('ewaste');
+			return $id->row()->u_id;
+			//print_r($id->row()->u_id); exit;
+		}
+
+		public function addStatus($post,$eid,$u_id)
+		{
+
+			$points = $this->db->select('creditpoints')
+						->where('id', $u_id)
+						->get('user');
+			$total = $points->row()->creditpoints + $post['creditpoints'];
+			$user = array('creditpoints' => $total);
+			$gold=0;
+			$silver=0;
+			$palladium=0;
+			$copper=0;
+			$other_metals=0;
+			$other_non_metals=0;
+			//print_r($user); exit;
+			if(isset($post["Element1Value"]))
+				$gold=$post["Element1Value"];
+
+			if(isset($post["Element2Value"]))
+				$silver=$post["Element2Value"];
+
+			if(isset($post["Element3Value"]))
+				$palladium=$post["Element3Value"];
+
+			if(isset($post["Element4Value"]))
+				$copper=$post["Element4Value"];
+
+			if(isset($post["Element5Value"]))
+				$other_metals=$post["Element5Value"];
+
+			if(isset($post["Element6Value"]))
+				$other_non_metals=$post["Element6Value"];
+
+
+			$this->db->insert('recycled_products',array(
+
+				'e_id'=>$eid,
+				'r_id'=>$this->session->userdata('id'),
+				'gold'=>$gold,
+				'silver'=>$silver,
+				'palladium'=>$palladium,
+				'copper'=>$copper,
+				'other_metals'=>$other_metals,
+				'other_non_metals'=>$other_non_metals,
+			    ));
+
+			$this->db->where('id',$u_id)
+						->update('user',$user);
+			return $this->db->where('e_id',$eid)
+								->update('ewaste',array('recycler_feedback'=>$post['recycler_feedback'],'r_creditpoints'=>$post['creditpoints']));
 		}
 		public function countProducts()
         {
@@ -91,9 +170,22 @@ class Recyclermodel extends MY_Model{
         }
         public function countProductsStatus()
         {
-	        $x = $this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id')));
+	        $x = $this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback'=>''));
 	        return $x->num_rows();
         }
+
+        public function countRecycledProducts()
+        {
+        	 $x = $this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback !='=>''));
+	        return $x->num_rows();
+        }
+
+        public function recycled($limit,$offset)
+		{
+			$this->db->limit($limit, $offset);
+			$query=$this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback !='=>''));
+			return $query->result();
+		}
 
         
 }

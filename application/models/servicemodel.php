@@ -122,11 +122,43 @@ class Servicemodel extends MY_Model{
                return $this->db->insert('products',$array);
 		}
 
-		public function addStatus($post,$eid)
+		public function addStatus($post,$eid,$u_id)
 		{
+			$points = $this->db->select('creditpoints')
+						->where('id', $u_id)
+						->get('user');
+			$total = $points->row()->creditpoints + $post['creditpoints'];
+			$user = array('creditpoints' => $total);
+			//print_r($user); exit;
+
+			$this->db->where('id',$u_id)
+						->update('user',$user);
+
 			return $this->db->where('e_id',$eid)
-								->update('ewaste',array('problem'=>$post['problem'],'service_feedback'=>$post['service_feedback']));
+								->update('ewaste',array('problem'=>$post['problem'],'service_feedback'=>$post['service_feedback'], 's_creditpoints'=>$post['creditpoints']));
 		}
+
+		public function disableStatus($eid)
+		{
+			$disable = $this->db->select('service_feedback')
+						->where('e_id', $eid)
+						->get('ewaste');
+			if($disable->row()->service_feedback!='')
+				return TRUE;
+			else
+				return FALSE;
+
+		}
+
+		public function getUserID($eid)
+		{
+			$id = $this->db->select('u_id')
+							->where('e_id',$eid)
+							->get('ewaste');
+			return $id->row()->u_id;
+			//print_r($id->row()->u_id); exit;
+		}
+
 		public function requestForward($post)
 		{
 			$this->db->update('ewaste',array('buy_nobuy'=>'0'),array('e_id'=>$post['forward']));
@@ -138,7 +170,7 @@ class Servicemodel extends MY_Model{
         }
         public function countProductsStatus()
         {
-	        $x = $this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'buy_nobuy'=>'1'));
+	        $x = $this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'r_id'=>0,'buy_nobuy'=>'1'));
 	        return $x->num_rows();
         }
 

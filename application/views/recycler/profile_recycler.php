@@ -59,8 +59,8 @@
             <?= anchor("recycler/editProfile",'Edit Profile',['class'=>'btn btn-warning']);?>   
             <?= anchor("recycler/changePassword",'Change Password',['class'=>'btn btn-warning']);?>   
             <br><br>
-            <?= anchor("recycler/",'Your Orders',['class'=>'btn btn-info']);?>
-            <?= anchor("recycler/",'Your Donations',['class'=>'btn btn-info']);?>
+            <?= anchor("recycler/recycledProducts",'Recycled Products',['class'=>'btn btn-info']);?>
+            
         </div>
         <br>
   </div>
