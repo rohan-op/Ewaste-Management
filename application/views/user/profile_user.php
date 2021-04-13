@@ -52,6 +52,11 @@
           <td><?= $user->address ?></td>
           <td> </td>
         </tr>
+        <tr>
+          <th>CreditPoints:&nbsp;</th>
+          <td><?= $user->creditpoints ?></td>
+          <td> </td>
+        </tr>
     	</table>
         <br>
         <div>

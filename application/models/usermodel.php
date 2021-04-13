@@ -5,7 +5,7 @@ class Usermodel extends MY_Model{
 public function profile()
 {
 	$id = $this->session->userdata('id');
-	$user = $this->db->select(['fname','cname','contact','email','address','profile_img'])
+	$user = $this->db->select(['fname','cname','contact','email','address','profile_img','creditpoints'])
 					->where('id',$id)
 					->get('user');
 					//print_r($user->result());exit;
@@ -235,6 +235,17 @@ public function getDetails($p_id)
 					->where('p_id',$p_id)
 					->get('products');
 	return $x->row();
+}
+
+public function getCreditPoints()
+{
+	$id = $this->session->userdata('id');
+	$x = $this->db->select('creditpoints')
+					->where('id',$id)
+					->get('user');
+	//print_r($x->row()->creditpoints); exit;
+	return $x->row()->creditpoints;
+
 }
 //Buying RF Ends
 

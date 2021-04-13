@@ -87,10 +87,21 @@ class Login extends MY_Controller{
 				$id = $this->loginmodel->validate_user_login($role,$email,$password);
 				if( $id )
 					{
-						$newdata = array(
+						if($role == 'user')
+						{
+							$newdata = array(
+											'id' => $id,
+											'role' => $role,
+											'creditpoints' => 0
+										);
+						}
+						else
+						{
+							$newdata = array(
 											'id' => $id,
 											'role' => $role
 										);
+						}
 						$this->session->set_userdata($newdata);
 						return redirect($role.'/profilePage');
 					}

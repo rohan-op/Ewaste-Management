@@ -1,6 +1,7 @@
 <?php include('header_user.php');?>
 <br>
 <body>
+  <?php $creditpoints = $this->session->userdata('creditpoints');?>
   <div class="container">
   <?php if($feedback = $this->session->flashdata('feedback')): ?> 
       <?php $class = $this->session->flashdata('class');?>   
@@ -133,10 +134,15 @@
               Sub Total Of All Items
               <span>RS <?php echo $this->cart->format_number($this->cart->total()); ?></span>
             </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+              Discount
+              <span>RS <?php echo $creditpoints ?></span>
+            </li>
             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
               Shipping
               <span>Gratis</span>
             </li>
+
             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
               <div>
                 <strong>The Total Amount</strong>
@@ -160,11 +166,7 @@
       <div class="mb-3">
         <div class="pt-4">
 
-          <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample"
-            aria-expanded="false" aria-controls="collapseExample">
-            Add a discount code (optional)
-            <span><i class="fas fa-chevron-down pt-1"></i></span>
-          </a>
+          <?= anchor("user/useCreditPoints",'Use Credit Points (optional), Click Here!',['class'=>'dark-grey-text d-flex justify-content-between']);?>
 
           <div class="collapse" id="collapseExample">
             <div class="mt-3">

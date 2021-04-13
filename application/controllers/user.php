@@ -260,7 +260,7 @@ class User extends MY_Controller{
 				        'name'    => $product[0]->p_name,
 				        'photo1'  => $product[0]->p_img1,
 				        'type'    => $product[0]->p_type,
-				        'cname'   => $product[0]->cname
+				        'cname'   => $product[0]->cname,
 					);
     	$this->cart->insert($data);
     	return redirect("user/cartPage");
@@ -303,6 +303,15 @@ class User extends MY_Controller{
  		return redirect("user/cartPage");
  		//print_r($data);
  	}
+
+ 	public function useCreditPoints()
+ 	{
+ 		$creditpoints = $this->usermodel->getCreditPoints();
+ 		//print_r($creditpoints);exit;
+ 		$this->session->set_userdata('creditpoints',$creditpoints);
+ 		return redirect("user/cartPage");
+ 	}
+
 	 public function payment()
 	 {
 		 $this->load->view('my_stripe',$_SESSION); 
