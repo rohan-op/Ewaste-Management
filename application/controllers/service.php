@@ -185,7 +185,7 @@ public function servicedProductDetails($eid)
  		$this->load->model('servicemodel');
  		
  		$details = $this->servicemodel->getServicedDetails($eid);
- 		//print_r($details[0]->p_name);exit;
+ 		
  		$this->load->view("service/servicedProductsMoreDetails",compact('details'));
  	}
  	//More Info on Sold Products

@@ -168,6 +168,16 @@ class Recyclermodel extends MY_Model{
 	        $x = $this->db->get_where('ewaste',array('r_id'=>'0','buy_nobuy'=>'0'));
 	        return $x->num_rows();
         }
+
+        public function getRecycledDetails($e_id)
+        {
+        	$x = $this->db->select(['recycled_products.e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs','gold','silver','palladium','copper','other_metals','other_non_metals'])
+						->where('recycled_products.e_id',$e_id)
+						->join('ewaste','ewaste.e_id=recycled_products.e_id')
+						->get('recycled_products');	
+
+		  return $x->row();
+        }
         public function countProductsStatus()
         {
 	        $x = $this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback'=>''));
