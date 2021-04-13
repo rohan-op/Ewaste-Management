@@ -136,7 +136,7 @@
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
               Discount
-              <span>RS <?php echo $creditpoints ?></span>
+              <span>RS <?php if($creditpoints>$this->cart->total()){$creditpoints=$this->cart->total();echo $creditpoints;}else{echo $creditpoints; }?></span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
               Shipping
@@ -150,7 +150,7 @@
                   <p class="mb-0">(including Taxes)</p>
                 </strong>
               </div>
-              <span><strong><?php echo $this->cart->format_number($this->cart->total()); ?></strong></span>
+              <span><strong><?php echo $this->cart->format_number($this->cart->total()-$creditpoints); ?></strong></span>
               <?php 
                 $_SESSION["payment_total"] = $this->cart->total();
                 //echo $_SESSION["payment_total"];

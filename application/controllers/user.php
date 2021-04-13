@@ -306,8 +306,13 @@ class User extends MY_Controller{
 
  	public function useCreditPoints()
  	{
+ 		$this->load->library('cart');
  		$creditpoints = $this->usermodel->getCreditPoints();
  		//print_r($creditpoints);exit;
+ 		if($creditpoints > $this->cart->total())
+ 		{
+ 			$creditpoints = $this->cart->total();
+ 		}
  		$this->session->set_userdata('creditpoints',$creditpoints);
  		return redirect("user/cartPage");
  	}
