@@ -7,8 +7,8 @@
         <li class="breadcrumb-item active">Buying</li>
     </ol>
     <br>
-    <br>
     <h2 class="text-primary">Refurbished Product</h2>
+    <br>
     <table>
       <tr>
         <td>

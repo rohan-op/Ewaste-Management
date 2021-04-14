@@ -52,12 +52,9 @@
           <td><?= $user->address ?></td>
           <td> </td>
         </tr>
-        <tr>
-          <th>CreditPoints:&nbsp;</th>
-          <td><?= $user->creditpoints ?></td>
-          <td> </td>
-        </tr>
+        
     	</table>
+      <p style="font-size: 120%"><b>Credit Points:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $user->creditpoints ?></p>
         <br>
         <div>
             <?= anchor("user/updateProfilePhoto",'Update Profile Photo',['class'=>'btn btn-primary']);?>
@@ -68,8 +65,6 @@
             <?= anchor("user/yourOrders",'Your Orders',['class'=>'btn btn-info']);?>
             <?= anchor("user/yourDonations",'Your Donations',['class'=>'btn btn-info']);?>
         </div>
-        <br>
 	</div>
 </body>
-<br>
 <?php include('footer.php');?>

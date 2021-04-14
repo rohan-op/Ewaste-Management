@@ -95,7 +95,20 @@
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now (<?php echo '₹'.$payment_total?>)</button>
                             </div>
                         </div>
-                             
+                        <div class="mb-3">
+                            <div class="pt-4">
+                                <br>
+                              <img class="mr-2" width="45px"
+                                src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                                alt="Visa">
+                              <img class="mr-2" width="45px"
+                                src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                                alt="American Express">
+                              <img class="mr-2" width="45px"
+                                src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                                alt="Mastercard">
+                            </div>
+                        </div>     
                     </form>
                 </div>
             </div>        
