@@ -88,7 +88,7 @@ public function getUserOrders($limit,$offset)
 
 public function getOrderDetails($o_id)
 {
-	$x = $this->db->select(['quantity','amount','p_name','p_type','products.p_id','p_img1'])
+	$x = $this->db->select(['quantity','amount','p_name','p_type','products.p_id','p_img1','products.p_specs'])
 					->where('o_id',$o_id)
 					->join('products','products.p_id = order_items.p_id')
 					->get('order_items');

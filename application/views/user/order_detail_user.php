@@ -16,38 +16,44 @@
         $count=$this->uri->segment(3);
         foreach ($order as $order): ?>
 
-        <div class="col-6" style="margin-bottom: 40px;">    
-            <div class="card border-primary mb-3" style="max-width: 25rem;border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;">        
-              <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?= $order->p_img1 ?>" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= $order->p_img1 ?>" alt="Second slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= $order->p_img1 ?>" alt="Third slide">
-                  </div>
+        <section class="text-gray-600 body-font overflow-hidden">
+          <div class="container px-5 py-24 mx-auto">
+            <div class="lg:w-4/5 mx-auto flex flex-wrap">
+              <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-65 object-cover object-center rounded" src="<?= $order->p_img1 ?>">
+              <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                <h2 class="text-sm title-font text-gray-500 tracking-widest"><?= $order->p_type; ?></h2>
+                <?= anchor("user/productDetails/{$order->p_id}",$order->p_name,['class'=>'text-gray-900 text-3xl title-font font-medium mb-1']);?>
+                <div class="flex mb-4">
+                  <span class="flex items-center">
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <span class="text-gray-600 ml-3">4 Reviews</span>
+                  </span>
                 </div>
-              </div>
-              <div class="card-body">
-                <h4 class="card-title"><?= $order->p_name; ?></h4>
-                <p class="card-text">Type:<strong><?= $order->p_type; ?></strong></p>
-                <p class="card-text">Quantity:<strong><?= $order->quantity; ?></strong></p>
-                <p class="card-text">Sub Total:<strong><?= $order->amount; ?></strong></p>
-                <div>
-                  <table>
-                    <tr>
-                      <td>
-                        <?= anchor("user/productDetails/{$order->p_id}",'More Details',['class'=>'btn btn-info']);?>
-                      </td>                  
-                    </tr>
-                  </table>
-                </div> 
+                <p class="leading-relaxed"><b>Specifications:</b> <?= $order->p_specs; ?></p>
+                <p class="leading-relaxed"><b>Quantity:</b> <?= $order->quantity; ?></p>
+                <p class="leading-relaxed"><b>Sub Total:</b> <?= $order->amount; ?></p>          
+                <p class="leading-relaxed"><b>Delivery Status:</b></p>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                </div>  
               </div>
             </div>
           </div>
+        </section>
 
             <?php endforeach; ?>
             <?php else: ?>
@@ -56,7 +62,6 @@
                 </tr>
             <?php endif; ?>   
         </div>
-  </div>
 </div>    
 </body>
 <?php include('footer.php');?>
