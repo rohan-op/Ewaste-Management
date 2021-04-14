@@ -6,46 +6,42 @@
 	        <li class="breadcrumb-item"><a href="#">User</a></li>
 	        <li class="breadcrumb-item active">Product Detail</li>
 	    </ol>
-	    <br>
-	    <table>
-	    	<tr>
-	    		<td>
-	    		<div class="col-24" style="margin-bottom: 40px;">    
-            		<div class="card border-primary mb-3" style="max-width: 25rem;border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;"> 
-			    		<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-			                <div class="carousel-inner">
-			                  <div class="carousel-item active">
-			                    <img class="d-block w-100" src="<?= $details->p_img1 ?>" alt="First slide">
-			                  </div>
-			                  <div class="carousel-item">
-			                    <img class="d-block w-100" src="<?= $details->p_img2 ?>" alt="Second slide">
-			                  </div>
-			                  <div class="carousel-item">
-			                    <img class="d-block w-100" src="<?= $details->p_img3 ?>" alt="Third slide">
-			                  </div>
-			                </div>
-			            </div>
-			        </div>
-			    </div>
-			    </td>
-			    <td>
-			    	<div class="col-5" style="margin-left: 20px;">
-			    	<h2><?= $details->p_name ?></h2>
-			    	<p><?= $details->p_type ?></p>
-			    	<p><span class="mr-1"><strong>$<?= $details->p_cost ?></strong></span></p>
-			    	<br>
-			    	<p class="pt-1"><?= $details->p_specs ?></p>
-        			<br>
-        			<p><strong>Seller:<?= $details->cname ?></strong></p>
-        			<br>
-        			<?= anchor("user/addtoCart/{$details->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
-	    			</div>
-			    </td>
-	    	</tr>
-	    	<tr>
-	    		
-	    	</tr>
-	    </table>
+	    <section class="text-gray-600 body-font overflow-hidden">
+          <div class="container px-5 py-24 mx-auto">
+            <div class="lg:w-4/5 mx-auto flex flex-wrap">
+              <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-66 object-cover object-center rounded" src="<?= $details->p_img1 ?>">
+              <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                <h2 class="text-sm title-font text-gray-500 tracking-widest"><?= $details->p_type ?></h2>
+                <h3 class="text-sm title-font text-gray-500 tracking-widest"><?= $details->p_name ?></h3>
+                <div class="flex mb-4">
+                  <span class="flex items-center">
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <span class="text-gray-600 ml-3">4 Reviews</span>
+                  </span>
+                </div>
+                <p class="leading-relaxed"><b>Specifications:</b> <?= $details->p_specs; ?></p>
+                <p class="leading-relaxed"><b>Seller:</b> <?= $details->cname ?></p>          
+                <p class="leading-relaxed"><b>Price:</b>$<?= $details->p_cost ?></p>
+                <?= anchor("user/addtoCart/{$details->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>  
+              </div>
+            </div>
+          </div>
+        </section>
+
 	</div>    
 </body>
 <?php include('footer.php');?>
