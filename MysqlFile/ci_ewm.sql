@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2021 at 08:58 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.28
+-- Generation Time: Apr 14, 2021 at 02:38 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -57,7 +57,7 @@ INSERT INTO `ewaste` (`e_id`, `u_id`, `e_type`, `e_name`, `e_age`, `e_quantity`,
 (10, 1, 'tv', 'Sony 21009', 20, 1, 'Screen blurred\r\npictures black', 'http://[::1]/CI_EWM/uploads/ewaste/tv.jpeg', '2021-04-06 12:24:18', 1, 'chalo', '3', 1, 'Donw with recycling', 3, 3, 0),
 (11, 1, 'mobile', 'Samsung M31', 24, 1, '8gb ram\r\n20mp front camera\r\n20 mp back camera\r\nandroid 10', 'http://[::1]/CI_EWM/uploads/ewaste/m31.JPG', '2021-01-09 09:48:45', 1, 'display', 'replaced display', 1, 'High temperature degradation', 0, 2, 0),
 (12, 1, 'tv', 'MI TV A4 Pro', 12, 2, 'Resolution: HD Ready Android TV (1366x768) | Refresh Rate: 60 hertz\r\nConnectivity: 3 HDMI ports to connect set top box, Blu Ray players, gaming console | 2 USB ports to connect hard drives and other USB devices', 'http://[::1]/CI_EWM/uploads/ewaste/mi.JPG', '2021-01-09 09:51:58', 1, 'Screen is blurr', 'Replaced the led tube', 1, 'Done with high temprature segmentation', 3, 1, 0),
-(13, 1, 'mobile', 'OnePlus 7', 24, 5, '10gb ram\r\n20mp front camera\r\n30mp backcamera\r\n10W fast charging\r\nFHD+ display\r\n', 'http://[::1]/CI_EWM/uploads/ewaste/oneplus.JPG', '2021-01-14 15:58:12', 1, '', '', 0, '', 0, 0, 1),
+(13, 1, 'mobile', 'OnePlus 7', 24, 5, '10gb ram\r\n20mp front camera\r\n30mp backcamera\r\n10W fast charging\r\nFHD+ display\r\n', 'http://[::1]/CI_EWM/uploads/ewaste/oneplus.JPG', '2021-01-14 15:58:12', 1, '', '', 1, '', 0, 0, 0),
 (14, 1, 'tv', 'Redmi 4A', 12, 1, '4gb ram', 'http://[::1]/CI_EWM/uploads/ewaste/m314.JPG', '2021-01-16 17:57:57', 1, '', '', 0, '', 0, 0, 1),
 (15, 1, 'mobile', 'Redmi 4000', 12, 2, '48MP rear camera with ultra-wide, macro, depth sensor, portrait, night mode, ai scene recognition, hdr, pro mode | 13MP front camera\r\n16.5862 centimeters (6.53-inch) FHD+ display with multi-touch capacitive touchscreen with 2340 x 1080 pixels resolution | 19.5:9 aspect ratio\r\nMemory, Storage & SIM: 4GB RAM | 64GB internal memory expandable up to 512GB |', 'http://[::1]/CI_EWM/uploads/ewaste/nokia4.JPG', '2021-03-27 18:44:54', 1, '', '', 0, '', 0, 0, 1);
 
@@ -98,19 +98,20 @@ CREATE TABLE `order_items` (
   `u_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
-  `date` varchar(20) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL
+  `date` varchar(20) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  `rating` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_items`
 --
 
-INSERT INTO `order_items` (`id`, `o_id`, `p_id`, `s_id`, `u_id`, `quantity`, `amount`, `date`) VALUES
-(7, 5, 1, 1, 1, 1, 30000, '2021-03-21 19:18:55'),
-(8, 5, 2, 1, 1, 1, 20000, '2021-03-21 19:18:55'),
-(9, 6, 1, 1, 1, 1, 30000, '2021-03-27 18:39:35'),
-(10, 6, 2, 1, 1, 1, 20000, '2021-03-27 18:39:35'),
-(11, 7, 1, 1, 1, 1, 30000, '2021-03-27 18:40:14');
+INSERT INTO `order_items` (`id`, `o_id`, `p_id`, `s_id`, `u_id`, `quantity`, `amount`, `date`, `rating`) VALUES
+(7, 5, 1, 1, 1, 1, 30000, '2021-03-21 19:18:55', 0),
+(8, 5, 2, 1, 1, 1, 20000, '2021-03-21 19:18:55', 0),
+(9, 6, 1, 1, 1, 1, 30000, '2021-03-27 18:39:35', 0),
+(10, 6, 2, 1, 1, 1, 20000, '2021-03-27 18:39:35', 0),
+(11, 7, 1, 1, 1, 1, 30000, '2021-03-27 18:40:14', 0);
 
 -- --------------------------------------------------------
 
@@ -128,23 +129,20 @@ CREATE TABLE `products` (
   `Progress` varchar(100) DEFAULT NULL,
   `p_age` int(10) NOT NULL,
   `date` text NOT NULL,
-  `Buy/NoBuy` varchar(10) DEFAULT NULL,
   `p_cost` int(10) DEFAULT NULL,
-  `Report` varchar(200) DEFAULT NULL,
   `p_img1` varchar(200) NOT NULL,
   `p_img2` varchar(200) NOT NULL,
-  `p_img3` varchar(200) NOT NULL,
-  `CreditPoints` int(10) DEFAULT NULL
+  `p_img3` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`p_id`, `s_id`, `p_name`, `p_type`, `p_specs`, `p_quantity`, `Progress`, `p_age`, `date`, `Buy/NoBuy`, `p_cost`, `Report`, `p_img1`, `p_img2`, `p_img3`, `CreditPoints`) VALUES
-(1, 1, 'IphoneX', 'Mobile Phone', 'Iphone', 5, NULL, 0, '', NULL, 30000, NULL, 'http://[::1]/CI_EWM/uploads/service/products/iphonex.png', '', '', NULL),
-(2, 1, 'One Plus', 'Mobile Phone', 'one plus', 5, NULL, 0, '', NULL, 20000, NULL, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', '', NULL),
-(6, 1, 'Nokia 5.3', 'mobile', 'Capture a whole range of new angles with the quad camera and ultra-wide 118° lens\r\nShoot like a pro with advanced AI imaging to bring your nighttime and portrait shots to life\r\nEnjoy videos and games with the powerful Qualcomm Snapdragon 665 processor and the impressive 6.55-inch HD+ screen\r\nStay charged for up to 2 days with the 4000 mAh battery and AI-assisted Adaptive Battery', 2, NULL, 10, '2021-03-17 19:53:30', NULL, 15000, NULL, 'http://[::1]/CI_EWM/uploads/ewaste/nokia3.JPG', '', '', NULL);
+INSERT INTO `products` (`p_id`, `s_id`, `p_name`, `p_type`, `p_specs`, `p_quantity`, `Progress`, `p_age`, `date`, `p_cost`, `p_img1`, `p_img2`, `p_img3`) VALUES
+(1, 1, 'IphoneX', 'Mobile Phone', 'Iphone', 5, NULL, 0, '', 30000, 'http://[::1]/CI_EWM/uploads/service/products/iphonex.png', '', ''),
+(2, 1, 'One Plus', 'Mobile Phone', 'one plus', 5, NULL, 0, '', 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', ''),
+(6, 1, 'Nokia 5.3', 'mobile', 'Capture a whole range of new angles with the quad camera and ultra-wide 118° lens\r\nShoot like a pro with advanced AI imaging to bring your nighttime and portrait shots to life\r\nEnjoy videos and games with the powerful Qualcomm Snapdragon 665 processor and the impressive 6.55-inch HD+ screen\r\nStay charged for up to 2 days with the 4000 mAh battery and AI-assisted Adaptive Battery', 2, NULL, 10, '2021-03-17 19:53:30', 15000, 'http://[::1]/CI_EWM/uploads/ewaste/nokia3.JPG', '', '');
 
 -- --------------------------------------------------------
 
