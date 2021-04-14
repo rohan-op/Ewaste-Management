@@ -152,7 +152,7 @@
               </div>
               <span><strong><?php echo $this->cart->format_number($this->cart->total()-$creditpoints); ?></strong></span>
               <?php 
-                $_SESSION["payment_total"] = $this->cart->total();
+                $_SESSION["payment_total"] = $this->cart->total()-$creditpoints;
                 //echo $_SESSION["payment_total"];
               ?>
             </li>
