@@ -7,31 +7,29 @@
         <li class="breadcrumb-item active">Buying</li>
     </ol>
     <br>
-    <br>
     <h2 class="text-primary">Refurbished Product</h2>
+    <br>
     <h3 class="text-primary">Search Results</h3>
+    <br>
+    <label>Sort By</label>     
+    <?= form_open('user/search',['class'=>'form-inline my-2 my-lg-0']) ?> 
     <table>
       <tr>
         <td>
-          <select class="custom-select">
-            <option selected="">Sort By</option>
-            <option value="1">Price:Highest to Lowest</option>
-            <option value="2">Price:Lowest to Highest</option>
-            <option value="3">Best Reviews</option>
-          </select>
+          <?php $options = array(1=>'Price:Lowest to Highest',2=>'Price:Highest to Lowest');?>
+          <?php echo form_dropdown('sortby',$options,'Sort By',['class'=>'custom-select']); ?>
         </td>
       </tr>
       <tr></tr>
       <tr>
         <td>
-        <?= form_open('user/search',['class'=>'form-inline my-2 my-lg-0']) ?>     
           <?php echo form_input(['name'=>'search','type'=>'text','class'=>'form-control mr-sm-2','placeholder'=>'Search','value'=>set_value('search')]); ?>      
           <?php echo form_submit(['name'=>'submit','class'=>'btn btn-outline-secondary','style'=>'color:black;','value'=>'Submit']); ?>      
-        <?= form_close(); ?>
         </td>
       </tr>
     </table>
-    <br>
+    <?= form_close(); ?>
+    <br><br>
         <div class="row">
         <?php if( count($products) ):
         $count=$this->uri->segment(3);

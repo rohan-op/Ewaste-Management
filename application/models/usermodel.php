@@ -171,6 +171,7 @@ public function getProducts($limit,$offset)
 {
 	$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
 							->limit($limit,$offset)
+							->order_by('p_cost','ASC')
 							->get('products');
 	return  $products->result();
 }
@@ -192,13 +193,55 @@ public function countSearchProducts($string)
 	return $x->num_rows();
 }
 
-public function getSearchProducts($limit,$offset,$string)
+//overloading
+public function countSearchProducts2()
 {
-	$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
+	$x = $this->db->select('p_id')
+					->get('products');
+	return $x->num_rows();
+}
+
+public function getSearchProducts($limit,$offset,$string,$sortby)
+{
+	if($sortby==1)
+	{
+		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
 							->like('p_name',$string)
 							->or_like('p_type',$string)
 							->limit($limit,$offset)
+							->order_by('p_cost', 'ASC')
 							->get('products');
+	}
+	else if($sortby==2)
+	{
+		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
+							->like('p_name',$string)
+							->or_like('p_type',$string)
+							->limit($limit,$offset)
+							->order_by('p_cost', 'DESC')
+							->get('products');
+	}
+
+	return  $products->result();
+}
+
+//overloading
+public function getSearchProducts2($limit,$offset,$sortby)
+{
+	if($sortby==1)
+	{
+		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
+							->limit($limit,$offset)
+							->order_by('p_cost', 'ASC')
+							->get('products');
+	}
+	else if($sortby==2)
+	{
+		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
+							->limit($limit,$offset)
+							->order_by('p_cost', 'DESC')
+							->get('products');
+	}
 	return  $products->result();
 }
 

@@ -225,16 +225,31 @@ class User extends MY_Controller{
  		$this->load->model('usermodel');
 	 	$post = $this->input->post();
 	 	$string = $post['search'];
-	 	return redirect("user/searchResults/$string/");
+	 	$sortby = $post['sortby'];
+	 	if($string=='')
+	 	{
+	 		return redirect("user/searchResults_/$sortby/");
+	 	}
+	 	return redirect("user/searchResults/$sortby/$string/");
  	}
 
- 	public function searchResults($string)
+ 	public function searchResults($sortby,$string)
  	{
  		$this->load->model('usermodel');
 	 	$this->load->library('pagination');
- 		$config = $this->getConfig("user/searchResults/$string",6,$this->usermodel->countSearchProducts($string));
+ 		$config = $this->getConfig("user/searchResults/$sortby/$string/",6,$this->usermodel->countSearchProducts($string));
 	 	$this->pagination->initialize($config);
-	 	$products = $this->usermodel->getSearchProducts($config['per_page'] ,$this->uri->segment(4),$string);
+	 	$products = $this->usermodel->getSearchProducts($config['per_page'] ,$this->uri->segment(5),$string,$sortby);
+	 	$this->load->view("user/search_user",compact('products'));
+ 	}
+
+ 	public function searchResults_($sortby)
+ 	{
+ 		$this->load->model('usermodel');
+	 	$this->load->library('pagination');
+ 		$config = $this->getConfig("user/searchResults_/$sortby/",6,$this->usermodel->countSearchProducts2());
+	 	$this->pagination->initialize($config);
+	 	$products = $this->usermodel->getSearchProducts2($config['per_page'] ,$this->uri->segment(4),$sortby);
 	 	$this->load->view("user/search_user",compact('products'));
  	}
  	//Buy RF Product Ends
