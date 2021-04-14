@@ -28,7 +28,7 @@
 			        </div>
 			    </div>
 			    </td>
-			    <td width="50%">
+			    <td width="500px">
 			    	<div class="col-5" style="margin-left: 100px;">
 			    	<h2><?= $details->e_name ?></h2>
 			    	<p><strong>Type: </strong><?= $details->e_type ?></p>
@@ -50,14 +50,20 @@
                     <input type="submit" name="accept"  class="btn btn-primary"  value="Accept" />
         			</form>
 
-        		<?php } else{    ?>
+        		<?php } else{  
+                    $status= $details->service_feedback; 
+                    $disable='';
+                    if($status!='')
+                          $disable='disabled';
+                     
+                     ?>
 
         			      <form method="post">
                         
                         <button  name="forward" formaction="<?= base_url('service/forwardRequest') ?>" type="submit" class="btn btn-primary"  value="<?= $details->e_id ?>">Forward</button>        
                     </form>
                     <br>
-                    <?= anchor("service/updateStatus/{$details->e_id}",'Update Status',['class'=>'btn btn-warning']);?>
+                    <?= anchor("service/updateStatus/{$details->e_id}",'Update Status',['class'=>'btn btn-warning '.$disable]);?>
                 <?php }  ?>
 	    			</div>
 			    </td>

@@ -45,7 +45,7 @@ class Servicemodel extends MY_Model{
         {
 		   	if( $table=='ewaste'  )
 		   	{
-			     $x = $this->db->select(['e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs'])
+			     $x = $this->db->select(['e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs','service_feedback'])
 							->where('e_id',$e_id)
 							->get('ewaste');
 				}

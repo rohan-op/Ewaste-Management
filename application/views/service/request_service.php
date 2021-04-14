@@ -84,7 +84,7 @@
                 </div>
                 <div>
                    <?php $option=1 ?>
-                  <div >   <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info']);?>   </div>
+                  <div >   <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info' ]);?>   </div>
                     <br>
                    <form action="<?= base_url('service/accept') ?>" method="post">
                    
