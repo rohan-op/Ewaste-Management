@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2021 at 02:38 PM
+-- Generation Time: Apr 14, 2021 at 09:07 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -140,9 +140,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`p_id`, `s_id`, `p_name`, `p_type`, `p_specs`, `p_quantity`, `Progress`, `p_age`, `date`, `p_cost`, `p_img1`, `p_img2`, `p_img3`) VALUES
-(1, 1, 'IphoneX', 'Mobile Phone', 'Iphone', 5, NULL, 0, '', 30000, 'http://[::1]/CI_EWM/uploads/service/products/iphonex.png', '', ''),
-(2, 1, 'One Plus', 'Mobile Phone', 'one plus', 5, NULL, 0, '', 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', ''),
-(6, 1, 'Nokia 5.3', 'mobile', 'Capture a whole range of new angles with the quad camera and ultra-wide 118° lens\r\nShoot like a pro with advanced AI imaging to bring your nighttime and portrait shots to life\r\nEnjoy videos and games with the powerful Qualcomm Snapdragon 665 processor and the impressive 6.55-inch HD+ screen\r\nStay charged for up to 2 days with the 4000 mAh battery and AI-assisted Adaptive Battery', 2, NULL, 10, '2021-03-17 19:53:30', 15000, 'http://[::1]/CI_EWM/uploads/ewaste/nokia3.JPG', '', '');
+(1, 1, 'IphoneX', 'Mobile Phone', 'Super Retina HD display, 5.8-inch (diagonal) all-screen OLED Multi-Touch display HDR display, A11 Bionic chip with 64-bit architecture, Neural engine, Embedded M11 motion coprocessor, 12MP wide-angle and telephoto cameras, Wide-angle: ƒ/1.8 aperture', 5, NULL, 0, '', 30000, 'http://[::1]/CI_EWM/uploads/service/products/iphonex.png', '', ''),
+(2, 1, 'One Plus 8', 'Mobile Phone', 'Glass front (Gorilla Glass 5), glass back (Gorilla Glass 5), aluminum frame, Dual SIM (Nano-SIM, dual stand-by), Qualcomm SM8250 Snapdragon 865 5G (7 nm+), Android 10, upgradable to Android 11, OxygenOS 11, Corning Gorilla Glass 5', 5, NULL, 0, '', 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', ''),
+(6, 1, 'Nokia 5.3', 'Mobile Phone', 'Capture a whole range of new angles with the quad camera and ultra-wide 118° lens\r\nShoot like a pro with advanced AI imaging to bring your nighttime and portrait shots to life\r\nEnjoy videos and games with the powerful Qualcomm Snapdragon 665 processor and the impressive 6.55-inch HD+ screen\r\nStay charged for up to 2 days with the 4000 mAh battery and AI-assisted Adaptive Battery', 2, NULL, 10, '2021-03-17 19:53:30', 15000, 'http://[::1]/CI_EWM/uploads/service/products/Nokia.jpg', '', '');
 
 -- --------------------------------------------------------
 
