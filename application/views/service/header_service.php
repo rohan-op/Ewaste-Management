@@ -12,6 +12,7 @@
             max-width: 33.333333%;
           }
   </style>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <title></title>
   <?= link_tag('assets/css/bootstrap.min.css'); ?>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -47,11 +48,5 @@
         <a class="nav-link" href="<?= base_url('login/logout')?>">Logout</a>
       </li>
     </ul>
-    <?= form_open('user/search',['class'=>'form-inline my-2 my-lg-0']) ?>     
-      <?php echo form_input(['name'=>'search','type'=>'text','class'=>'form-control mr-sm-2','style'=>'margin-bottom:7px;','placeholder'=>'Search','value'=>set_value('search')]); ?>      
-      <?php echo form_submit(['name'=>'submit','class'=>'btn btn-outline-secondary','style'=>'color:white;','value'=>'Search']); ?>      
-    <?= form_close(); ?>
-    <?php echo form_error('search',"<p class='navbar-text text-danger'",'</p>');?>
-    
   </div>
  </nav>

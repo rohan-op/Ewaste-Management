@@ -2,16 +2,10 @@
 <br>
 <body>
 <div class="container">
-    
-
-
     <ol class="breadcrumb" style="width: 250px;">
         <li class="breadcrumb-item"><a href="#">Service Center</a></li>
         <li class="breadcrumb-item active">Set Status</li>
     </ol>
-    <br>
-    <h2 class="text-primary">Set Status</h2>
-    <br>
     <?php if($error = $this->session->flashdata('feedback')): ?>    
       <div class="row">
         <div class="col-lg-6">
@@ -24,52 +18,36 @@
         </div>
       </div>
       <?php endif; ?>
-    <br>
-    <div class="row">
+  <section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <h2 class="text-primary">Set Status</h2><br>
+    <div class="flex flex-wrap -m-4">
          <?php          
            if(!empty($status))
            {
             foreach($status as $row)
             {
          ?>
-        <div class="col-6" style="margin-bottom: 50px;">
-                <div class="row">
-                    <div class="mycol4">
-                        <p>ID:<strong> <?php echo $row->e_id ;?></strong></p>
-                        <p>Device Type:<strong> <?php echo $row->e_type ;?></strong></p>
-                        <p>Date:<strong> <?php echo $row->date ;?></strong></p>
-                        <p>Quantity:<strong><?php echo $row->e_quantity ;?></strong></p>
-                    </div>
-                    <div class="col-4" style="margin-right: 10px;">
-                        <img src="<?= $row->e_img ?>" alt="testing image" height="135px" width="135px">
-                    </div>
-                </div>
-                <div>
-                    <?php $option=0;
-                    $status= $row->service_feedback; 
-                    $disable='';
-                    if($status!='')
-                          $disable='disabled';
-                     
-                    ?>
-                    <div>
-                        <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info echo $disable']);?>
-                        
-                     
-                            <?= anchor("service/updateStatus/{$row->e_id}",'Update Status',['class'=>'btn btn-warning '.$disable]);?> 
-                        
-                    </div>
-                        <br>
-                        <form method="post">
-                        
-                        <button  name="forward" formaction="<?= base_url('service/forwardRequest') ?>" type="submit" class="btn btn-primary"  value="<?= $row->e_id ?>">Forward</button>
-                        
-                        
-                    </form>
-                    </div>
-                     
-            
-        </div>
+        <?php $option=0;
+          $status= $row->service_feedback; 
+          $disable='';
+          if($status!='')
+            $disable='disabled'; ?>
+             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+              <a class="block relative h-53 rounded overflow-hidden">
+                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="<?= $row->e_img ?>">
+              </a>
+              <div class="mt-4">
+                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1"><?php echo $row->e_type ;?></h3>
+                <h2 class="text-gray-900 title-font text-lg font-medium"><?php echo $row->e_name ;?></h2>
+                <p class="mt-1">Quantity: <?php echo $row->e_quantity ;?></p>
+                <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info echo $disable']);?>
+                <br><br>
+                <?= anchor("service/updateStatus/{$row->e_id}",'Update Status',['class'=>'btn btn-warning '.$disable]);?>
+                <br><br>
+                <button  name="forward" formaction="<?= base_url('service/forwardRequest') ?>" type="submit" class="btn btn-primary"  value="<?= $row->e_id ?>">Forward</button>
+              </div>
+            </div>                    
          <?php
         }
         }
@@ -77,12 +55,13 @@
        echo "No result found";
         }
         ?>
-        
-    </div>
-        <!--this is in div row -->
-            <div>
-                <?= $this->pagination->create_links(); ?>
-            </div>
+        </div>
+  </div>
+</section>
+    
+    <div>
+        <?= $this->pagination->create_links(); ?>
+    </div>    
+
 </div>
-</body>
 <?php include('footer.php');?>

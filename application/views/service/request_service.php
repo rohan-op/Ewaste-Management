@@ -64,43 +64,26 @@
     <div class="row">
 
         <?php
-         
            if(!empty($request))
            {
             foreach($request as $row)
-            {
-              
-         ?>
-        <div class="col-6" style="margin-bottom: 50px;">
-                <div class="row">
-                    <div class="mycol4">
-                        <p>Device Type:<strong> <?php echo $row->e_type; ?> </strong></p>
-                        <p>Date:<strong> <?php echo $row->date; ?> </strong></p>
-                        <p>Quantity:<strong><?php echo $row->e_quantity; ?></strong></p>
-                    </div>
-                    <div class="col-4" style="margin-right: 10px;">
-                        <img src=<?= $row->e_img ?> alt="" height="135px" width="135px">
-                    </div>
-                </div>
-                <div>
-                   <?php $option=1 ?>
-                  <div >   <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info' ]);?>   </div>
-                    <br>
-                   <form action="<?= base_url('service/accept') ?>" method="post">
-                   
-                  
-                    <!--  <form action="<?= base_url('service/accept') ?>" method="post"> -->
-               
-
+            {  ?>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+              <a class="block relative h-53 rounded overflow-hidden">
+                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="<?= $row->e_img ?>">
+              </a>
+              <div class="mt-4">
+                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1"><?php echo $row->e_type ;?></h3>
+                <h2 class="text-gray-900 title-font text-lg font-medium"><?php echo $row->e_name ;?></h2>
+                <p class="mt-1">Quantity: <?php echo $row->e_quantity ;?></p>
+                <?php $option=1 ?>
+                <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info' ]);?>
+                <br><br>
+                <form action="<?= base_url('service/accept') ?>" method="post">                                                    
                     <input type="hidden" id="accept" name="hiddenAccept" value="<?= $row->e_id ?>">
-
-                    <input type="submit" name="accept"  class="btn btn-primary"  value="Accept" />      
-                                 
-                    
-
+                    <input type="submit" name="accept"  class="btn btn-primary"  value="Accept" />                                                           
                 </form>
-                </div>
-            
+              </div>
         </div>
         
         <?php
