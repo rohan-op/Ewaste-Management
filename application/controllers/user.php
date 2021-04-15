@@ -206,7 +206,7 @@ class User extends MY_Controller{
  	{
 	 	$this->load->model('usermodel');
 	 	$this->load->library('pagination');
-	 	$config = $this->getConfig("user/buyPage",6,$this->usermodel->countProducts());
+	 	$config = $this->getConfig("user/buyPage",8,$this->usermodel->countProducts());
 	 	$this->pagination->initialize($config);
 	 	$products = $this->usermodel->getProducts($config['per_page'] ,$this->uri->segment(3));
 	 	$this->load->view("user/buy_user",compact('products'));
@@ -237,7 +237,7 @@ class User extends MY_Controller{
  	{
  		$this->load->model('usermodel');
 	 	$this->load->library('pagination');
- 		$config = $this->getConfig("user/searchResults/$sortby/$string/",6,$this->usermodel->countSearchProducts($string));
+ 		$config = $this->getConfig("user/searchResults/$sortby/$string/",8,$this->usermodel->countSearchProducts($string));
 	 	$this->pagination->initialize($config);
 	 	$products = $this->usermodel->getSearchProducts($config['per_page'] ,$this->uri->segment(5),$string,$sortby);
 	 	$this->load->view("user/search_user",compact('products'));
@@ -247,7 +247,7 @@ class User extends MY_Controller{
  	{
  		$this->load->model('usermodel');
 	 	$this->load->library('pagination');
- 		$config = $this->getConfig("user/searchResults_/$sortby/",6,$this->usermodel->countSearchProducts2());
+ 		$config = $this->getConfig("user/searchResults_/$sortby/",8,$this->usermodel->countSearchProducts2());
 	 	$this->pagination->initialize($config);
 	 	$products = $this->usermodel->getSearchProducts2($config['per_page'] ,$this->uri->segment(4),$sortby);
 	 	$this->load->view("user/search_user",compact('products'));

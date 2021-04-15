@@ -5,11 +5,8 @@
     <ol class="breadcrumb" style="width: 250px;">
         <li class="breadcrumb-item"><a href="#">User</a></li>
         <li class="breadcrumb-item active">Buying</li>
-    </ol>
-    <br>
-    <h2 class="text-primary">Refurbished Product</h2>
-    <br>
-    <label for="exampleInputEmail1">Sort By</label>  
+    </ol><br>
+    <label for="exampleInputEmail1">Sort By / Search By </label> <br><br> 
     <?= form_open('user/search',['class'=>'form-inline my-2 my-lg-0']) ?> 
     <table>
       <tr>
@@ -17,12 +14,11 @@
           <?php $options = array(1=>'Price:Lowest to Highest',2=>'Price:Highest to Lowest');?>
           <?php echo form_dropdown('sortby',$options,'Sort By',['class'=>'custom-select']); ?>
         </td>
-      </tr>
-      <tr></tr>
-      <tr>
         <td>
-          <?php echo form_input(['name'=>'search','type'=>'text','class'=>'form-control mr-sm-2','placeholder'=>'Search','value'=>set_value('search')]); ?>      
-          <?php echo form_submit(['name'=>'submit','class'=>'btn btn-outline-secondary','style'=>'color:black;','value'=>'Submit']); ?>      
+          <?php echo form_input(['name'=>'search','type'=>'text','class'=>'form-control mr-sm-2','placeholder'=>'Name Or Category','value'=>set_value('search')]); ?>
+        </td>
+        <td>
+          <?php echo form_submit(['name'=>'submit','class'=>'btn btn-primary','style'=>'color:white;','value'=>'Submit']); ?> 
         </td>
       </tr>
     </table>
@@ -30,6 +26,7 @@
         <div class="row">
         <section class="text-gray-600 body-font">
           <div class="container px-5 py-24 mx-auto">
+            <h2 class="text-primary">Our Top Rated Products</h2><br>
             <div class="flex flex-wrap -m-4">
         <?php if( count($products) ):
         $count=$this->uri->segment(3);
