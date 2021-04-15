@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2021 at 09:07 PM
+-- Generation Time: Apr 15, 2021 at 01:20 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -58,8 +58,9 @@ INSERT INTO `ewaste` (`e_id`, `u_id`, `e_type`, `e_name`, `e_age`, `e_quantity`,
 (11, 1, 'mobile', 'Samsung M31', 24, 1, '8gb ram\r\n20mp front camera\r\n20 mp back camera\r\nandroid 10', 'http://[::1]/CI_EWM/uploads/ewaste/m31.JPG', '2021-01-09 09:48:45', 1, 'display', 'replaced display', 1, 'High temperature degradation', 0, 2, 0),
 (12, 1, 'tv', 'MI TV A4 Pro', 12, 2, 'Resolution: HD Ready Android TV (1366x768) | Refresh Rate: 60 hertz\r\nConnectivity: 3 HDMI ports to connect set top box, Blu Ray players, gaming console | 2 USB ports to connect hard drives and other USB devices', 'http://[::1]/CI_EWM/uploads/ewaste/mi.JPG', '2021-01-09 09:51:58', 1, 'Screen is blurr', 'Replaced the led tube', 1, 'Done with high temprature segmentation', 3, 1, 0),
 (13, 1, 'mobile', 'OnePlus 7', 24, 5, '10gb ram\r\n20mp front camera\r\n30mp backcamera\r\n10W fast charging\r\nFHD+ display\r\n', 'http://[::1]/CI_EWM/uploads/ewaste/oneplus.JPG', '2021-01-14 15:58:12', 1, '', '', 1, '', 0, 0, 0),
-(14, 1, 'tv', 'Redmi 4A', 12, 1, '4gb ram', 'http://[::1]/CI_EWM/uploads/ewaste/m314.JPG', '2021-01-16 17:57:57', 1, '', '', 0, '', 0, 0, 1),
-(15, 1, 'mobile', 'Redmi 4000', 12, 2, '48MP rear camera with ultra-wide, macro, depth sensor, portrait, night mode, ai scene recognition, hdr, pro mode | 13MP front camera\r\n16.5862 centimeters (6.53-inch) FHD+ display with multi-touch capacitive touchscreen with 2340 x 1080 pixels resolution | 19.5:9 aspect ratio\r\nMemory, Storage & SIM: 4GB RAM | 64GB internal memory expandable up to 512GB |', 'http://[::1]/CI_EWM/uploads/ewaste/nokia4.JPG', '2021-03-27 18:44:54', 1, '', '', 0, '', 0, 0, 1);
+(14, 1, 'tv', 'Redmi TV', 12, 1, 'They are powered by a 64-bit quad-core A55 processor paired with Mali G52 MP2 GPU, 2GB RAM, and 16GB of internal storage, and Auto Low Latency Mode. The Redmi Smart TV X series is equipped with 30W sound output that has support for DTS Virtual X', 'http://[::1]/CI_EWM/uploads/ewaste/tv.jpg', '2021-01-16 17:57:57', 1, '', '', 0, '', 0, 0, 1),
+(15, 1, 'mobile', 'Redmi 4000', 12, 2, '48MP rear camera with ultra-wide, macro, depth sensor, portrait, night mode, ai scene recognition, hdr, pro mode | 13MP front camera\r\n16.5862 centimeters (6.53-inch) FHD+ display with multi-touch capacitive touchscreen with 2340 x 1080 pixels resolution | 19.5:9 aspect ratio\r\nMemory, Storage & SIM: 4GB RAM | 64GB internal memory expandable up to 512GB |', 'http://[::1]/CI_EWM/uploads/ewaste/redmi.jpg', '2021-03-27 18:44:54', 1, '', '', 0, '', 0, 0, 1),
+(16, 1, 'laptop/pc', 'Dell Inspirion 15', 36, 1, 'Dell Inspiron 15 is a Windows 10 Home laptop with a 15.60-inch display that has a resolution of 1920x1080 pixels. It is powered by a Core i5 processor and it comes with 8GB of RAM. The Dell Inspiron 15 packs 1TB of HDD storage.', 'http://[::1]/CI_EWM/uploads/ewaste/dell.jpg', '2021-04-15 13:01:08', 0, '', '', 0, '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -307,7 +308,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `ewaste`
 --
 ALTER TABLE `ewaste`
-  MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `orders`
