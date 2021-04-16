@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2021 at 07:38 PM
+-- Generation Time: Apr 16, 2021 at 08:27 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -100,19 +100,20 @@ CREATE TABLE `order_items` (
   `quantity` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `Tracking` varchar(100) NOT NULL,
-  `date` varchar(20) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL
+  `date` varchar(20) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  `rating` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_items`
 --
 
-INSERT INTO `order_items` (`id`, `o_id`, `p_id`, `s_id`, `u_id`, `quantity`, `amount`, `Tracking`, `date`) VALUES
-(7, 5, 1, 1, 1, 1, 30000, '', '2021-03-21 19:18:55'),
-(8, 5, 2, 1, 1, 1, 20000, 'Delivered', '2021-03-21 19:18:55'),
-(9, 6, 1, 1, 1, 1, 30000, '', '2021-03-27 18:39:35'),
-(10, 6, 2, 1, 1, 1, 20000, 'Delivered', '2021-03-27 18:39:35'),
-(11, 7, 1, 1, 1, 1, 30000, '', '2021-03-27 18:40:14');
+INSERT INTO `order_items` (`id`, `o_id`, `p_id`, `s_id`, `u_id`, `quantity`, `amount`, `Tracking`, `date`, `rating`) VALUES
+(7, 5, 1, 1, 1, 1, 30000, '', '2021-03-21 19:18:55', 0),
+(8, 5, 2, 1, 1, 1, 20000, 'Delivered', '2021-03-21 19:18:55', 0),
+(9, 6, 1, 1, 1, 1, 30000, '', '2021-03-27 18:39:35', 0),
+(10, 6, 2, 1, 1, 1, 20000, 'Delivered', '2021-03-27 18:39:35', 0),
+(11, 7, 1, 1, 1, 1, 30000, '', '2021-03-27 18:40:14', 0);
 
 -- --------------------------------------------------------
 
@@ -132,17 +133,19 @@ CREATE TABLE `products` (
   `p_cost` int(10) DEFAULT NULL,
   `p_img1` varchar(200) NOT NULL,
   `p_img2` varchar(200) NOT NULL,
-  `p_img3` varchar(200) NOT NULL
+  `p_img3` varchar(200) NOT NULL,
+  `avg_rating` int(11) NOT NULL,
+  `no_reviews` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`p_id`, `s_id`, `p_name`, `p_type`, `p_specs`, `p_quantity`, `p_age`, `date`, `p_cost`, `p_img1`, `p_img2`, `p_img3`) VALUES
-(1, 1, 'IphoneX', 'Mobile Phone', 'Iphone', 5, 0, '', 30000, 'http://[::1]/CI_EWM/uploads/service/products/iphonex.png', '', ''),
-(2, 1, 'One Plus', 'Mobile Phone', 'one plus', 5, 0, '', 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', ''),
-(6, 1, 'Nokia 5.3', 'mobile', 'Capture a whole range of new angles with the quad camera and ultra-wide 118° lens\r\nShoot like a pro with advanced AI imaging to bring your nighttime and portrait shots to life\r\nEnjoy videos and games with the powerful Qualcomm Snapdragon 665 processor and the impressive 6.55-inch HD+ screen\r\nStay charged for up to 2 days with the 4000 mAh battery and AI-assisted Adaptive Battery', 2, 10, '2021-03-17 19:53:30', 15000, 'http://[::1]/CI_EWM/uploads/service/products/nokia.jpg', '', '');
+INSERT INTO `products` (`p_id`, `s_id`, `p_name`, `p_type`, `p_specs`, `p_quantity`, `p_age`, `date`, `p_cost`, `p_img1`, `p_img2`, `p_img3`, `avg_rating`, `no_reviews`) VALUES
+(1, 1, 'IphoneX', 'Mobile Phone', 'Iphone', 5, 0, '', 30000, 'http://[::1]/CI_EWM/uploads/service/products/iphonex.png', '', '', 0, 0),
+(2, 1, 'One Plus', 'Mobile Phone', 'one plus', 5, 0, '', 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', '', 0, 0),
+(6, 1, 'Nokia 5.3', 'mobile', 'Capture a whole range of new angles with the quad camera and ultra-wide 118° lens\r\nShoot like a pro with advanced AI imaging to bring your nighttime and portrait shots to life\r\nEnjoy videos and games with the powerful Qualcomm Snapdragon 665 processor and the impressive 6.55-inch HD+ screen\r\nStay charged for up to 2 days with the 4000 mAh battery and AI-assisted Adaptive Battery', 2, 10, '2021-03-17 19:53:30', 15000, 'http://[::1]/CI_EWM/uploads/service/products/nokia.jpg', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -167,7 +170,7 @@ CREATE TABLE `recycled_products` (
 --
 
 INSERT INTO `recycled_products` (`recycled_product_id`, `e_id`, `r_id`, `gold`, `silver`, `palladium`, `copper`, `other_metals`, `other_non_metals`) VALUES
-(1, 12, 1, 2, 2, 0, 0, 0, 0);
+(1, 12, 1, 50, 50, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 

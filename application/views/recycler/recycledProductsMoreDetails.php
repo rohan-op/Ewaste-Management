@@ -28,6 +28,34 @@
                 <p class="leading-relaxed"><b>Copper-></b><?= $details->copper ?>kg</p> &nbsp;
                 <p class="leading-relaxed"><b>Other Metals-></b><?= $details->other_metals ?>kg</p> &nbsp;
                 <p class="leading-relaxed"><b>Other Non-Metals-></b><?= $details->other_non_metals ?>kg</p>
+                <div id="piechart"></div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Gold', <?php echo json_encode($details->gold) ?>],
+  ['Silver', <?php echo json_encode($details->silver) ?>],
+  ['Palladium', <?php echo json_encode($details->palladium) ?>],
+  ['Copper', <?php echo json_encode($details->copper) ?>],
+  ['Other Metals', <?php echo json_encode($details->other_metal) ?>],
+  ['Other Non-Metals', <?php echo json_encode($details->other_non_metals) ?>]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Elements Retrieved After Recycling:', 'width':550, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+</script>
             </div>
             </div>
         </section>
