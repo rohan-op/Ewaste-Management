@@ -42,7 +42,7 @@
           <p class="mt-1">₹<?= $products->p_cost; ?></p>
           <?= anchor("user/addtoCart/{$products->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
           &nbsp;<br><br>
-          <?= anchor("user/productDetails/{$products->p_id}",'More Details',['class'=>'btn btn-info']);?>
+          <?= anchor("user/productDetails/{$products->p_id}/0",'More Details',['class'=>'btn btn-info']);?>
         </div>
       </div>
 

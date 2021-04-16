@@ -52,11 +52,6 @@
       </li>
     </ul>
 
-    <?= form_open('user/search',['class'=>'form-inline my-2 my-lg-0',]) ?>     
-      <?php echo form_input(['name'=>'search','type'=>'text','class'=>'form-control mr-sm-2','style'=>'margin-bottom:7px; width:120px','placeholder'=>'Search','value'=>set_value('search')]); ?>      
-      <?php echo form_submit(['name'=>'submit','class'=>'btn btn-outline-secondary','style'=>'color:white;','value'=>'Search']); ?>      
-    <?= form_close(); ?>
-    <?php echo form_error('search',"<p class='navbar-text text-danger'",'</p>');?>
     
 
   </div>

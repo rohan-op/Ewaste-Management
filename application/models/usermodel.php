@@ -88,7 +88,7 @@ public function getUserOrders($limit,$offset)
 
 public function getOrderDetails($o_id)
 {
-	$x = $this->db->select(['quantity','amount','p_name','p_type','products.p_id','p_img1','products.p_specs'])
+	$x = $this->db->select(['quantity','amount','p_name','p_type','products.p_id','p_img1','products.p_specs','Tracking'])
 					->where('o_id',$o_id)
 					->join('products','products.p_id = order_items.p_id')
 					->get('order_items');
@@ -127,12 +127,23 @@ public function getUserDonations($limit,$offset)
 
 public function getDonationDetails($e_id)
 {
-	$x = $this->db->select(['e_type','e_name','e_age','e_quantity','e_img','date','e_specs','service_feedback','recycler_feedback','s_creditpoints','r_creditpoints'])
+
+
+	$x = $this->db->select('*')
 					->where('e_id',$e_id)
-					//->join('service','service.id = ewaste.s_id')
-					//->join('recycler','recycler.id = ewaste.r_id')					
 					->get('ewaste');
-	return $x->result();
+	return $x->row();
+} 
+
+public function getDonationStatus($e_id)
+{
+	$x = $this->db->select('ewaste.*,service.*,service.cname as s_name,service.contact as s_contact,service.email as s_email,recycler.*,recycler.cname as r_name,recycler.contact as r_contact,recycler.email as r_email,recycled_products.*')
+					->where('ewaste.e_id',$e_id)
+					->join('service','service.id = ewaste.s_id')
+					->join('recycler','recycler.id = ewaste.r_id')	
+					->join('recycled_products','recycled_products.e_id= ewaste.e_id')
+					->get('ewaste');
+	return $x->row();
 } 
 public function gethomeDonationDetails()
 {

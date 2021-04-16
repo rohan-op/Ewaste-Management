@@ -29,6 +29,9 @@
         $count=$this->uri->segment(3);
         foreach ($order as $order): ?>
 
+         <?php if($order->Tracking!="Delivered"){
+          ?>
+          
         <div class="lg:w-1/3 md:w-1/2 p-4 w-full">
         <a class="block relative h-53 rounded overflow-hidden">
           <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="<?= $order->p_img1 ?>">
@@ -39,12 +42,12 @@
           <p class="mt-1">₹<?= $order->p_cost; ?></p>
 
 
-           <?= anchor("service/moreInfoSold/{$order->p_id}/1",'More Details',['class'=>'btn btn-info']);?>
+           <?= anchor("service/moreInfoSold/{$order->p_id}/1",'Details and Status',['class'=>'btn btn-warning']);?>
 
         </div>
       </div>
 
-            <?php endforeach; ?>
+            <?php } endforeach; ?>
             </div>
           </div>
         </section>

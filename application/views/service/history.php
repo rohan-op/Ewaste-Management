@@ -25,6 +25,8 @@
 			<?php if(count($orders)): ?>
 			<?php $count = $this->uri->segment(3)?>
 			<?php foreach($orders as $orders): ?>
+		  <?php if($orders->Tracking=="Delivered"){
+          ?>
 			<tr>
 				<td><?= ++$count ?></td>
 				<td><?= $orders->o_id ?></td>
@@ -33,7 +35,7 @@
 				<td><?= date('d M y H:i:s',strtotime($orders->date)) ?></td>
 				<td><?= anchor("service/moreInfoSold/{$orders->p_id}/0",'View Details',['class'=>'btn btn-info']);?></td>
 			</tr>
-		<?php endforeach; ?>
+		<?php } endforeach; ?>
 		<?php else: ?>
 				<tr>
 					<td colspan="3">No records found.</td>

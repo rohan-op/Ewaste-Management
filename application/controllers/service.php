@@ -254,7 +254,7 @@ public function servicedProductDetails($eid)
 		$this->load->model('servicemodel');
 		$this->load->library('form_validation');
 		$post = $this->input->post();
-		$this->form_validation->set_rules('tracking'.$post["orderId"].$post["productId"],'Tracking Status','required');
+		$this->form_validation->set_rules('tracking','Tracking Status','required');
 		
 			unset($post['submit']);
 				

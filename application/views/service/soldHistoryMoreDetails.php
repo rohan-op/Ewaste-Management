@@ -10,7 +10,7 @@
 	    <section class="text-gray-600 body-font overflow-hidden">
           <div class="container px-5 py-24 mx-auto">
             <div class="lg:w-4/5 mx-auto flex flex-wrap">
-              <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-1/3 h-66 object-cover object-center rounded" src="<?= $details->p_img1 ?>">
+              <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-1/2 h-66 object-cover object-center rounded" src="<?= $details->p_img1 ?>">
               <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                 <h2 class="text-sm title-font text-gray-500 tracking-widest"><?= $details->p_type ?></h2>
                 <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><?= $details->p_name ?></h1>                
@@ -22,19 +22,26 @@
                 <p class="leading-relaxed"><b>Contact Number:</b> <?= $details->contact; ?></p>      
                 <p class="leading-relaxed"><b>Email Id:</b> <?= $details->email; ?></p> 
                 <p class="leading-relaxed"><b>Delivery Address:</b> <?= $details->address; ?></p> 
-                <h3 class="text-sm title-font text-gray-500 tracking-widest">Current Status</h3> 
+                
                  <?php if($option==1){?>
 
                       <?php echo form_open('service/orderTracking'); ?>
         
          
-        
-                  <p class="mt-1">Ready for Dispatch</p><input type="radio" name="tracking>" value="Ready" <?php if($details->Tracking=="Ready"){ ?> checked=checked <?php } ?> />
+                  <h3 class="text-sm title-font text-gray-500 tracking-widest">Current Status</h3> 
+                  <p class="leading-relaxed">Ready for Dispatch 
+                  <input type="radio" name="tracking" value="Ready" <?php if($details->Tracking=="Ready"){ ?> checked=checked <?php } ?> />
+                       
+                  </p>
 
-                  <p class="mt-1"> Dispatched for Delivery</p> 
-                  <input type="radio" name="tracking" value="Dispatched" <?php if($details->Tracking=="Dispatched"){ ?> checked=checked <?php } ?> />
-                  <p class="mt-1"> Delivered</p> 
-                  <input type="radio" name="tracking" value="Delivered" <?php if($details->Tracking=="Delivered") { ?> checked=checked <?php } ?> />
+                  <p class="leading-relaxed"> Dispatched for Delivery
+                     <input type="radio" name="tracking" value="Dispatched" <?php if($details->Tracking=="Dispatched"){ ?> checked=checked <?php } ?> />
+                  </p> 
+                  
+                  <p class="leading-relaxed"> Delivered
+                        <input type="radio" name="tracking" value="Delivered" <?php if($details->Tracking=="Delivered") { ?> checked=checked <?php } ?> />
+                  </p> 
+                  
           &nbsp;<br>
              <input type="hidden"  name="orderId" value="<?= $details->o_id ?>">
              <input type="hidden"  name="productId" value="<?= $details->p_id ?>">

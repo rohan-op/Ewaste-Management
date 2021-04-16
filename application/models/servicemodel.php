@@ -156,7 +156,7 @@ class Servicemodel extends MY_Model{
 		public function updateTracking($oid,$pid,$post)
 		{
 			return $this->db->where(array('o_id'=>$oid,'p_id'=>$pid))
-								->update('order_items',array('Tracking'=>$post['tracking'.$pid.$oid]));
+								->update('order_items',array('Tracking'=>$post['tracking']));
 		}
 
 		public function disableStatus($eid)

@@ -152,9 +152,19 @@ class User extends MY_Controller{
 	public function donationDetails($e_id)
 	{
 		$donation = $this->usermodel->getDonationDetails($e_id);
-		//print_r($donation);exit;
+       
 		$this->load->view("user/donation_detail_user",compact('donation'));
+	  
 	}
+
+	public function donationStatus($e_id)
+	{
+		$donation = $this->usermodel->getDonationStatus($e_id);
+	  
+        $this->load->view("user/donate_status",compact('donation'));
+	}
+
+
 	//Profile Ends
  	
 
@@ -213,12 +223,12 @@ class User extends MY_Controller{
 	 	$this->load->view("user/buy_user",compact('products'));
  	}
 
- 	public function productDetails($pid)
+ 	public function productDetails($pid,$option)
  	{
  		$this->load->model('usermodel');
  		$details = $this->usermodel->getDetails($pid);
  		//print_r($details[0]->p_name);exit;
- 		$this->load->view("user/productdetail_user",compact('details'));
+ 		$this->load->view("user/productdetail_user",compact('details','option'));
  	}
 
  	public function search()

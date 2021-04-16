@@ -16,6 +16,7 @@
 				<th>Sr. No.</th>
 				<th>Name</th>
 				<th>Date</th>
+				<th>Details</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,8 +25,9 @@
 			<?php foreach($donations as $donations): ?>
 			<tr>
 				<td><?= ++$count ?></td>
-				<td><?= anchor("user/donationDetails/{$donations->e_id}",$donations->e_name) ?></td>
+				<td><?= $donations->e_name?></td>
 				<td><?= date('d M y H:i:s',strtotime($donations->date)) ?></td>
+				<td><?= anchor("user/donationDetails/{$donations->e_id}",'More Details',['class'=>'btn btn-warning']) ?></td>
 			</tr>
 		<?php endforeach; ?>
 		<?php else: ?>
