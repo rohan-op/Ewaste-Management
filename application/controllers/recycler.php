@@ -15,7 +15,11 @@ class Recycler extends MY_Controller{
 	//Home Page
 	public function homePage()
 	{
-		$this->load->view("recycler/home_page");
+		$this->load->model('recyclermodel');
+		$name = $this->recyclermodel->profile();
+		$recycled = $this->recyclermodel->Homerecycled();
+		$request=$this->recyclermodel->Homerequest();
+		$this->load->view("recycler/home_page",compact('name','recycled','request'));
 	}
 	//Home Page Ends
 

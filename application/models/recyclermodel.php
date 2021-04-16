@@ -88,6 +88,13 @@ class Recyclermodel extends MY_Model{
 			$query=$this->db->get_where('ewaste',array('r_id'=>'0','buy_nobuy'=>'0'));
 			return $query->result();
 		}
+		
+		public function Homerequest()
+		{
+			$this->db->limit(4);
+			$query=$this->db->get_where('ewaste',array('r_id'=>'0','buy_nobuy'=>'0'));
+			return $query->result();
+		}
 
 		public function acceptProduct($post)
         {
@@ -196,7 +203,12 @@ class Recyclermodel extends MY_Model{
 			$query=$this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback !='=>''));
 			return $query->result();
 		}
-
+		public function Homerecycled()
+		{
+			$this->db->limit(4);
+			$query=$this->db->get_where('ewaste',array('r_id'=>$this->session->userdata('id'),'recycler_feedback !='=>''));
+			return $query->result();
+		}
         
 }
 ?>

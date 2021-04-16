@@ -15,7 +15,12 @@ class Service extends MY_Controller{
 	//Home Page
 	public function homePage()
 	{
-		$this->load->view("service/home_page");
+		$this->load->model('servicemodel');
+	 	$serviced = $this->servicemodel->Homestatus();
+	 	$orders = $this->servicemodel->gethomeHistoryProducts();
+		$request=$this->servicemodel->Homerequest();
+		$name=$this->servicemodel->profile();
+		$this->load->view("service/home_page",compact('orders','serviced','request','name'));
 	}
 	//Home Page Ends
 
@@ -275,6 +280,7 @@ public function servicedProductDetails($eid)
 	 	$orders = $this->servicemodel->getHistoryProducts($config['per_page'] ,$this->uri->segment(3));
 	 	$this->load->view("service/history",compact('orders'));
     }
+
 
     public function servicedProducts()
     {

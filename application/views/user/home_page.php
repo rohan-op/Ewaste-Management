@@ -1,6 +1,9 @@
 <?php include('header_user.php'); ?>
 
 
+
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<div class="container">
 	  <br><br>
 	  <br> 
 	  <?php if($feedback = $this->session->flashdata('feedback')): ?> 
@@ -20,39 +23,75 @@
 	<div class="row">
 		<div class="col-lg-12">
 	<div class="jumbotron">
-	 <h1 class="display-3">Hello!</h1>
+	 <h1 class="display-3">Hello <?=$name->fname ?>!</h1>
 	  <p class="lead">Welcome to EWM, A web applications which allows you to buy refurbished products from the most entrusted sellers. It also provides you an opportunity to save the planet by recycling your E-waste in an organised and transperent way.</p>
 	  <hr class="my-4">
+	  <br>
+	  <?= anchor("user/editProfile",'Edit Profile',['class'=>'btn btn-warning']);?> 
 	  </div>
 	  </div>
 	  <br>
 	  <p class="lead">
 	</div>
 	
-	<h2 style="margin-left: 400px">Things You can Buy</h2>
-	<a href="buyPage" style="margin-left: 1350px">See More>></a>
 	<br>
-	
-	<div class="row">
-		<div class="col-lg-3">
-		<div class="card border-light mb-3" style="max-width: 24rem;">
-  	<div class="card-header"><b>Your orders</b></div>
-  	<div class="card-body">
-    	<h4 class="card-title">Recent Orders</h4>
+	<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap -m-12">
+      <div class="p-12 md:w-1/2 flex flex-col items-start">
+        <span class="inline-block py-1 px-2 rounded bg-green-50 text-green-500 text-xs font-medium tracking-widest">CATEGORY</span>
+        <h2 class="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-3 mb-4">Recent Orders</h2>
+		<?php $count=0;?>
+        <p class="leading-relaxed mb-1"><?php foreach($orders as $orders): ?>
+			
+			
+			<p><?= ++$count ?> &nbsp; <?=$orders->p_name ?>&nbsp;&nbsp;<?= $orders->amount ?>&nbsp;<?= date('d M y H:i:s',strtotime($orders->date)) ?></p>
+	<?php endforeach; ?></p>
+        <div class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
+          <a class="text-green-500 inline-flex items-center" href="yourOrders">See More
+            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          
+        </div>
+   
+      </div>
+      <div class="p-12 md:w-1/2 flex flex-col items-start">
+        <span class="inline-block py-1 px-2 rounded bg-green-50 text-green-500 text-xs font-medium tracking-widest">CATEGORY</span>
+        <h2 class="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-3 mb-4">Recent Donations</h2>
 		<?php $count=0; ?>
-    	<p class="card-text"><?php foreach($orders as $orders): ?>
+        <p class="leading-relaxed mb-1"><?php foreach($donations as $donations): ?>
 			
-			
-				<p><?= ++$count ?> &nbsp; <?=$orders->p_name ?>&nbsp;&nbsp;<?= $orders->amount ?>&nbsp;<?= date('d M y H:i:s',strtotime($orders->date)) ?></p>
-		<?php endforeach; ?></p>
-		<a href="yourOrders">See More>></a>
-  	</div>
-</div>
-</div>
+			<p><?= ++$count ?> <?= $donations->e_name ?> <?= date('d M y H:i:s',strtotime($donations->date)) ?></p>
 	
+	<?php endforeach; ?></p>
+	<br>
+        <div class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
+          <a class="text-green-500 inline-flex items-center" href="yourDonations">See More
+            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+         
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section> 
+<h1 style="font-size:60px;"><b>Things you can Buy</b></h1>
+<a href="buyPage" style="margin-left:1200px">See More>></a>
+<br>
+<br>
+<br>
+<div class="row">	
+		
 	<?php foreach ($products as $products): ?>
 	
-<div class="col-3">    
+<div class="col-4">    
 	<div class="card border-primary mb-3" style="max-width: 17rem;border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;">        
 	  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
@@ -91,26 +130,13 @@
 	<?php endforeach; ?>
 </div>
 	  </p>
-	<h2 style="margin-left: 400px">Things You can Donate</h2>
+	  <br>
+	<h2 style="font-size:60px">Things You can Donate</h2>
 	<br>
 	<div class="row">
-		<div class="col-lg-3">
-		<div class="card border-light mb-3" style="max-height: 15%;">
-  	<div class="card-header">Your Donations</div>
-  	<div class="card-body" style="max-height: 20%">
-    	<h4 class="card-title">Recent Donations</h4>
-		<?php $count=0; ?>
-    	<p class="card-text"><?php foreach($donations as $donations): ?>
-			
-				<p><?= ++$count ?> <?= $donations->e_name ?> <?= date('d M y H:i:s',strtotime($donations->date)) ?></p>
 		
-		<?php endforeach; ?></p>
-		<a href="yourDonations">See More>></a>
-  	</div>
-</div>
-</div>
 
-		<div class="col-lg-9">
+		<div class="col-lg-12">
 			  <!--Carousel Wrapper-->
   <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
@@ -257,6 +283,6 @@ Electronics are made of components that contain valuable raw materials. Recyclin
 	</tr>
 	</table>
 	
-
+</div>
 </div> 
 <?php include('footer.php'); ?>

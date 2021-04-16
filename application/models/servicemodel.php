@@ -104,11 +104,25 @@ class Servicemodel extends MY_Model{
 			
 			return $query->result();
 		}
+		public function Homerequest()
+		{
+			$this->db->limit(3);
+			$query=$this->db->get_where('ewaste',array('s_id'=>'0'));
+			
+			return $query->result();	
+		}
 		public function status($limit,$offset)
 		{
 			
 			 	$this->db->limit($limit, $offset);
 			 	$query=$this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'r_id'=>0,'buy_nobuy'=>1));
+			
+			return $query->result();
+		}
+		public function Homestatus()
+		{
+			$this->db->limit(3);
+			$query=$this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'r_id'=>0,'buy_nobuy'=>1));
 			
 			return $query->result();
 		}
@@ -201,6 +215,18 @@ class Servicemodel extends MY_Model{
          	   ->get('order_items');
          	  return $x->result();
          }
+
+		 public function gethomeHistoryProducts()
+		 {
+			$id=$this->session->userdata('id');
+			$x=$this->db->select(['o_id','u_id','products.p_id','p_name','amount','order_items.date'])
+			   ->where('order_items.s_id',$id)
+			   ->join('products','products.p_id=order_items.p_id')
+			   ->limit(4)
+			    ->order_by('order_items.date','DESC')
+			   ->get('order_items');
+			  return $x->result();
+		 }
 
 }
 ?>

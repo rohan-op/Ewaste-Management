@@ -19,7 +19,8 @@ class User extends MY_Controller{
 		$products = $this->usermodel->gethomeProducts();
 		$orders = $this->usermodel->gethomeOrderDetails();
 		$donations = $this->usermodel->gethomeDonationDetails();
-		$this->load->view("user/home_page",compact('products','orders','donations'));
+		$name = $this->usermodel->profile();
+		$this->load->view("user/home_page",compact('products','orders','donations','name'));
 	}
 	//Home Page Ends
 
