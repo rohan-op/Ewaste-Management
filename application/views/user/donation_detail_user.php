@@ -23,13 +23,34 @@
                 <p class="leading-relaxed"><b>Issued On:</b> <?= $donation[0]->date ?></p>
               </div>
                 <?php if($donation[0]->service_feedback!='') { ?>
-                    <p class="leading-relaxed"><b>Service Feedback:</b> <?= $donation[0]->service_feedback ?>&nbsp;</p>
-                    <p class="leading-relaxed"><b>Service CreditPoints:</b> <?= $donation[0]->s_creditpoints ?>&nbsp;</p>
+                    <div class="card text-white bg-info mb-3" style="max-width: 20rem; margin-right: 5%;margin-top: 5%;">
+                      <div class="card-header">Service Center Feedback</div>
+                      <div class="card-body">
+                        <p class="card-title">Feedback: <?= $donation[0]->service_feedback ?></p>
+                        <span class="flex items-center">
+                        Credits:&nbsp;<?php for($i=0;$i<$donation[0]->s_creditpoints;$i++)
+                        { echo "<svg fill='currentColor' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' class='w-4 h-4 text-yellow-500' viewBox='0 0 24 24'>
+                                  <path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'></path>
+                                </svg>";}?>
+                        </span>
+                      </div>
+                    </div>
+                    
                     <?php if($donation[0]->recycler_feedback!='') { ?>
-                        <p class="leading-relaxed"><b>Recycler Feedback:</b> <?= $donation[0]->recycler_feedback ?>&nbsp;</p>
-                        <p class="leading-relaxed"><b>Recycler CreditPoints:</b> <?= $donation[0]->r_creditpoints ?>&nbsp;</p>
+                        <div class="card text-white bg-success mb-3" style="max-width: 20rem; margin-right: 5%;margin-top: 5%;">
+                          <div class="card-header">Recycler Feedback</div>
+                          <div class="card-body">
+                            <p class="card-title">Feedback: <?= $donation[0]->recycler_feedback ?></p>
+                            <span class="flex items-center">
+                            Credits:&nbsp;<?php for($i=0;$i<$donation[0]->r_creditpoints;$i++)
+                            { echo "<svg fill='currentColor' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' class='w-4 h-4 text-yellow-500' viewBox='0 0 24 24'>
+                                      <path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'></path>
+                                    </svg>";}?>
+                            </span>
+                          </div>
+                        </div>                        
                     <?php }else{}?>
-                <?php }else{}?> 
+                <?php }?> 
             </div>
           </div>
         </section>
