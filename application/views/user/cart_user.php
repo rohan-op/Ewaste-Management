@@ -69,8 +69,8 @@
                     <div>
                       <?= anchor("user/deleteItem/".$items['rowid'],'Remove Item',['class'=>'btn btn-danger btn-sm']);?>
                     </div>
-                    <p class="mb-0"><span>PRICE: <strong id="summary"><?php echo $this->cart->format_number($items['price']); ?></strong></span></p class="mb-0">
-                    <p class="mb-0"><span>SUB TOTAL: <strong id="summary"><?php echo $this->cart->format_number($items['subtotal']); ?></strong></span></p class="mb-0">
+                    <p class="mb-0"><span>PRICE: ₹<strong id="summary"><?php echo $this->cart->format_number($items['price']); ?></strong></span></p class="mb-0">
+                    <p class="mb-0"><span>SUB TOTAL: ₹<strong id="summary"><?php echo $this->cart->format_number($items['subtotal']); ?></strong></span></p class="mb-0">
                   </div>
                 </div>
               </div>

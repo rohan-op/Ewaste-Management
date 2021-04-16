@@ -39,7 +39,7 @@
         <div class="mt-4">
           <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1"><?= $products->p_type; ?></h3>
           <h2 class="text-gray-900 title-font text-lg font-medium"><?= $products->p_name; ?></h2>
-          <p class="mt-1"><?= $products->p_cost; ?></p>
+          <p class="mt-1">₹<?= $products->p_cost; ?></p>
           <?= anchor("user/addtoCart/{$products->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
           &nbsp;<br><br>
           <?= anchor("user/productDetails/{$products->p_id}",'More Details',['class'=>'btn btn-info']);?>

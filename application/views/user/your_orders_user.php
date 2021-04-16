@@ -25,7 +25,7 @@
 			<?php foreach($orders as $orders): ?>
 			<tr>
 				<td><?= ++$count ?></td>
-				<td><?= $orders->amount ?></td>
+				<td>₹<?= $orders->amount ?></td>
 				<td><?= date('d M y H:i:s',strtotime($orders->date)) ?></td>
 				<td><?= anchor("user/orderDetails/{$orders->o_id}",'View Details',['class'=>'btn btn-info']) ?></td>
 			</tr>
