@@ -51,7 +51,7 @@ class Servicemodel extends MY_Model{
 				}
 				else
 				{
-					$x=$this->db->select(['order_items.p_id','p_name','amount','p_type','p_img1','p_specs','order_items.quantity','fname','cname','contact','email','address'])
+					$x=$this->db->select(['order_items.p_id','p_name','amount','p_type','p_img1','p_specs','order_items.quantity','fname','cname','contact','email','address','Tracking','o_id'])
 							->where('order_items.p_id',$e_id)
 							->join('products','products.p_id=order_items.p_id')
 							->join('user','user.id=order_items.u_id')

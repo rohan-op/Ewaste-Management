@@ -39,43 +39,7 @@
           <p class="mt-1">₹<?= $order->p_cost; ?></p>
 
 
-         <?php echo form_open('service/orderTracking');
-        
-           //  $options = array(
-           //  'Ready' => 'Ready for Dispatch',
-           //  'Dispatched' => 'Dispatched for Delivery',
-           //  'Delivered' => 'Delivered',
-
-           //  ); 
-          
-           // echo form_dropdown('tracking', $options, 'Order Tracking', ['class'=>'custom-select']); 
-         $ready = array(
-                  'name' => 'tracking',
-                  'value' => 'Ready',
-                  'checked' => TRUE,
-                  );
-
-                  $dispatched = array(
-                  'name' => 'tracking',
-                  'value' => 'Dispatched',
-                  );
-                  $delivered = array(
-                  'name' => 'tracking',
-                  'value' => 'Delivered',
-                  );
-                  ?>
-                  <p class="mt-1">Ready for Dispatch</p><input type="radio" name="tracking<?=$order->p_id ?><?=$order->o_id ?>" value="Ready" <?php if($order->Tracking=="Ready"){ ?> checked=checked <?php } ?> />
-
-                  <p class="mt-1"> Dispatched for Delivery</p> 
-                  <input type="radio" name="tracking<?=$order->p_id ?><?=$order->o_id ?>" value="Dispatched" <?php if($order->Tracking=="Dispatched"){ ?> checked=checked <?php } ?> />
-                  <p class="mt-1"> Delivered</p> 
-                  <input type="radio" name="tracking<?=$order->p_id ?><?=$order->o_id ?>" value="Delivered" <?php if($order->Tracking=="Delivered") { ?> checked=checked <?php } ?> />
-          &nbsp;<br>
-             <input type="hidden"  name="orderId" value="<?= $order->o_id ?>">
-             <input type="hidden"  name="productId" value="<?= $order->p_id ?>">
-        
-           <?php echo form_submit(['name'=>'submit','class'=>'btn btn-warning','value'=>'Save Status']); ?>
-           <?= anchor("service/moreInfoSold/{$order->p_id}",'More Details',['class'=>'btn btn-info']);?>
+           <?= anchor("service/moreInfoSold/{$order->p_id}/1",'More Details',['class'=>'btn btn-info']);?>
 
         </div>
       </div>

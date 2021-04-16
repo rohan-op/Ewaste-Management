@@ -31,7 +31,7 @@
 				<td><?= $orders->p_name?></td>
 				<td><?= $orders->amount ?></td>
 				<td><?= date('d M y H:i:s',strtotime($orders->date)) ?></td>
-				<td><?= anchor("service/moreInfoSold/{$orders->p_id}",'View Details',['class'=>'btn btn-info']);?></td>
+				<td><?= anchor("service/moreInfoSold/{$orders->p_id}/0",'View Details',['class'=>'btn btn-info']);?></td>
 			</tr>
 		<?php endforeach; ?>
 		<?php else: ?>

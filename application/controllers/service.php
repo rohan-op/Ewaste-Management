@@ -194,12 +194,12 @@ public function servicedProductDetails($eid)
  		$this->load->view("service/servicedProductsMoreDetails",compact('details'));
  	}
  	//More Info on Sold Products
- 	public function moreInfoSold($pid)
+ 	public function moreInfoSold($pid,$option)
  	{
  		$this->load->model('servicemodel');
  		$table='products';
  		$details=$this->servicemodel->getDetails($pid,$table);
- 		$this->load->view("service/soldHistoryMoreDetails",compact('details'));
+ 		$this->load->view("service/soldHistoryMoreDetails",compact('details','option'));
  	}
 	//Request Ends
     public function accept()
@@ -240,12 +240,12 @@ public function servicedProductDetails($eid)
 	}
 
 	//More Details of a Product in order
-	public function orderMoreDetails($pid)
+	public function orderMoreDetails($pid,$option)
 	{
        $this->load->model('servicemodel');
  		$table='products';
  		$details=$this->servicemodel->getDetails($pid,$table);
- 		$this->load->view("service/soldHistoryMoreDetails",compact('details'));
+ 		$this->load->view("service/soldHistoryMoreDetails",compact('details','option'));
 	}
 
 	//Order Tracking
