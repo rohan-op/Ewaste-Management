@@ -221,7 +221,7 @@ class Recycler extends MY_Controller{
     public function recycledProductDetails($e_id)
     {
         $this->load->model('recyclermodel');
-        $details = $this->recyclermodel->getRecycledDetails($e_id);
+        $details = $this->recyclermodel->getRecycledDetails($e_id); 
  		//print_r($details[0]->p_name);exit;
  		//print_r($details[0]);exit;
  		$this->load->view("recycler/recycledProductsMoreDetails",compact('details'));
