@@ -35,7 +35,7 @@
                 </div>
                 <p class="leading-relaxed"><b>Specifications:</b> <?= $details->p_specs; ?></p>
                 <p class="leading-relaxed"><b>Seller:</b> <?= $details->cname ?></p>          
-                <p class="leading-relaxed"><b>Price:</b>$<?= $details->p_cost ?></p>
+                <p class="leading-relaxed"><b>Price:</b> ₹<?= $details->p_cost ?></p>
                 <?= anchor("user/addtoCart/{$details->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>  
               </div>
             </div>

@@ -4,8 +4,8 @@
 	<div class="container">
 	    <ol class="breadcrumb" style="width: 400px;">
 	        <li class="breadcrumb-item"><a href="#">Service</a></li>
-	         <li class="breadcrumb-item"><a href="#">Serviced Product</a></li>
-	        <li class="breadcrumb-item active">Product Detail</li>
+	         <li class="breadcrumb-item"><a href="#">Order Status and Details</a></li> 
+	        <li class="breadcrumb-item active">Order Detail</li>
 	    </ol>
 	    <section class="text-gray-600 body-font overflow-hidden">
           <div class="container px-5 py-24 mx-auto">
@@ -15,8 +15,13 @@
                 <h2 class="text-sm title-font text-gray-500 tracking-widest"><?= $details->p_type ?></h2>
                 <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><?= $details->p_name ?></h1>                
                 <p class="leading-relaxed"><b>Specifications:</b> <?= $details->p_specs; ?></p>
-                <p class="leading-relaxed"><b>Amount:</b> <?= $details->amount ?></p>                      
-                <p class="leading-relaxed"><b>Quantity:</b> <?= $details->quantity; ?></p>                                   
+                <p class="leading-relaxed"><b>Amount:</b> ₹<?= $details->amount ?></p>                      
+                <p class="leading-relaxed"><b>Quantity:</b> <?= $details->quantity; ?></p>   
+                <h3 class="text-sm title-font text-gray-500 tracking-widest">Order Details</h3>
+                <p class="leading-relaxed"><b>Ordered By:</b> <?= $details->fname; ?></p>     
+                <p class="leading-relaxed"><b>Contact Number:</b> <?= $details->contact; ?></p>      
+                <p class="leading-relaxed"><b>Email Id:</b> <?= $details->email; ?></p> 
+                <p class="leading-relaxed"><b>Delivery Address:</b> <?= $details->address; ?></p>                        
               </div>
             </div>
           </div>

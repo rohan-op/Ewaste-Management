@@ -221,6 +221,43 @@ public function servicedProductDetails($eid)
 	}
 	//Status Ends
 
+    //Setting Status of the Orders Placed.
+	public function orderStatus()
+	{
+		$this->load->model('servicemodel');
+      	$this->load->library('pagination');
+        $config=$this->getConfig("service/orderStatus",3,$this->servicemodel->countHistoryProducts());
+        $this->pagination->initialize($config);
+	     $order = $this->servicemodel->getHistoryProducts($config['per_page'],$this->uri->segment(3));
+
+	      
+		$this->load->view("service/order_status",compact('order'));
+	}
+
+	//More Details of a Product in order
+	public function orderMoreDetails($pid)
+	{
+       $this->load->model('servicemodel');
+ 		$table='products';
+ 		$details=$this->servicemodel->getDetails($pid,$table);
+ 		$this->load->view("service/soldHistoryMoreDetails",compact('details'));
+	}
+
+	//Order Tracking
+	public function orderTracking()
+	{
+		$this->load->model('servicemodel');
+		$this->load->library('form_validation');
+		$post = $this->input->post();
+		$this->form_validation->set_rules('tracking'.$post["orderId"].$post["productId"],'Tracking Status','required');
+		
+			unset($post['submit']);
+				
+				$this->_flashNredirect($this->servicemodel->updateTracking($post["orderId"],$post["productId"],$post),'Product Tracking Updated ','Oh Snap! Failed to Update Tracking Product, Please Try Again','orderStatus','orderStatus');
+			
+
+	}
+
     //Sell Refurbish
     public function sellrefurbish()
     {

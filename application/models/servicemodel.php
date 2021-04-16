@@ -51,9 +51,10 @@ class Servicemodel extends MY_Model{
 				}
 				else
 				{
-					$x=$this->db->select(['order_items.p_id','p_name','amount','p_type','p_img1','p_specs','order_items.quantity'])
+					$x=$this->db->select(['order_items.p_id','p_name','amount','p_type','p_img1','p_specs','order_items.quantity','fname','cname','contact','email','address'])
 							->where('order_items.p_id',$e_id)
 							->join('products','products.p_id=order_items.p_id')
+							->join('user','user.id=order_items.u_id')
 							->get('order_items');
 				}
 
@@ -138,6 +139,12 @@ class Servicemodel extends MY_Model{
 								->update('ewaste',array('problem'=>$post['problem'],'service_feedback'=>$post['service_feedback'], 's_creditpoints'=>$post['creditpoints']));
 		}
 
+		public function updateTracking($oid,$pid,$post)
+		{
+			return $this->db->where(array('o_id'=>$oid,'p_id'=>$pid))
+								->update('order_items',array('Tracking'=>$post['tracking'.$pid.$oid]));
+		}
+
 		public function disableStatus($eid)
 		{
 			$disable = $this->db->select('service_feedback')
@@ -186,7 +193,7 @@ class Servicemodel extends MY_Model{
          public function getHistoryProducts($limit,$offset)
          {
          	$id=$this->session->userdata('id');
-         	$x=$this->db->select(['o_id','u_id','products.p_id','p_name','amount','order_items.date'])
+         	$x=$this->db->select(['o_id','u_id','products.p_id','p_name','amount','order_items.date','p_img1','p_type','p_specs','quantity','p_cost','Tracking'])
          	   ->where('order_items.s_id',$id)
          	   ->join('products','products.p_id=order_items.p_id')
          	   ->limit($limit,$offset)

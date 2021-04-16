@@ -2,9 +2,10 @@
 <br>
 <body>
 	<div class="container">
-	    <ol class="breadcrumb" style="width: 250px;">
+	    <ol class="breadcrumb" style="width: 400px;">
 	        <li class="breadcrumb-item"><a href="#">Service</a></li>
-	        <li class="breadcrumb-item active">Product Detail</li>
+	        <li class="breadcrumb-item"><a href="#">Set Status</a></li>
+	        <li class="breadcrumb-item active">More Product Detail</li>
 	    </ol>
 	    <section class="text-gray-600 body-font overflow-hidden">
           <div class="container px-5 py-24 mx-auto">
