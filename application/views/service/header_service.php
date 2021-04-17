@@ -33,16 +33,16 @@
         <a class="nav-link" href="<?= base_url('service/homePage')?>">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('service/requestPage')?>">Requests</a>
-      </li> 
-      <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('service/sellrefurbish')?>">Sell Refurbished Products</a>
-      </li>
+        <a class="nav-link" href="<?= base_url('service/requestPage')?>">E-waste Requests</a>
+      </li>       
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('service/statusPage')?>">Report Status</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('service/orderStatus')?>">Order Details and Status</a>
+        <a class="nav-link" href="<?= base_url('service/sellrefurbish')?>">Sell Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('service/orderStatus')?>">Orders</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('service/profilePage')?>">Profile</a>

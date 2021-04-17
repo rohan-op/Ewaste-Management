@@ -20,27 +20,7 @@
                <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-1/2 h-66 object-cover object-center rounded" src="<?= $donation->e_img ?>">
               <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                 <h2 class="text-sm title-font text-gray-500 tracking-widest"><?= $donation->e_type; ?></h2>
-                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><?= $donation->e_name ?></h1> 
-                <div class="flex mb-4">
-                  <span class="flex items-center">
-                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-green-500" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    
-                  </span>
-                </div>
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><?= $donation->e_name ?></h1>                 
                 <p class="leading-relaxed"><b>Specifications:</b> <?= $donation->e_specs; ?></p>
                 <p class="leading-relaxed"><b>Quantity:</b> <?= $donation->e_quantity; ?></p>
                 <p class="leading-relaxed"><b>Used(Months):</b> <?= $donation->e_age; ?></p>  
@@ -83,7 +63,7 @@
                 
                     <?php 
                   if($track==100){ ?>
-                       <?= anchor("user/donationStatus/{$donation->e_id}",'Report',['class'=>'btn btn-warning']) ; ?>
+                       <?= anchor("user/donationStatus/{$donation->e_id}",'Status Report',['class'=>'btn btn-warning']) ; ?>
                      <?php } ?>  
                 </div>  
               </div>

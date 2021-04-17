@@ -143,6 +143,7 @@ public function getDonationStatus($e_id)
 					->join('recycler','recycler.id = ewaste.r_id')	
 					->join('recycled_products','recycled_products.e_id= ewaste.e_id')
 					->get('ewaste');
+	
 	return $x->row();
 } 
 public function gethomeDonationDetails()

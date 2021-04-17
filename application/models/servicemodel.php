@@ -41,7 +41,7 @@ class Servicemodel extends MY_Model{
 			return $q->row();
 		}
 
-		public function getDetails($e_id,$table)
+		public function getDetails($e_id,$table) 
         {
 		   	if( $table=='ewaste'  )
 		   	{
@@ -213,6 +213,7 @@ class Servicemodel extends MY_Model{
          	   ->limit($limit,$offset)
 			   ->order_by('order_items.date','DESC')
          	   ->get('order_items');
+         	   //print_r($x->result());exit;
          	  return $x->result();
          }
 

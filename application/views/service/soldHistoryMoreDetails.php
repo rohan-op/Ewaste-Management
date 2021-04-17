@@ -22,7 +22,8 @@
                 <p class="leading-relaxed"><b>Contact Number:</b> <?= $details->contact; ?></p>      
                 <p class="leading-relaxed"><b>Email Id:</b> <?= $details->email; ?></p> 
                 <p class="leading-relaxed"><b>Delivery Address:</b> <?= $details->address; ?></p> 
-                
+                <p class="leading-relaxed"><b>order id:</b> <?= $details->o_id; ?></p>
+                <p class="leading-relaxed"><b>product id:</b> <?= $details->p_id; ?></p>
                  <?php if($option==1){?>
 
                       <?php echo form_open('service/orderTracking'); ?>
