@@ -31,7 +31,7 @@
 				<td><?= ++$count ?></td>
 				<td><?= $orders->o_id ?></td>
 				<td><?= $orders->p_name?></td>
-				<td><?= $orders->amount ?></td>
+				<td>₹<?= $orders->amount ?></td>
 				<td><?= date('d M y H:i:s',strtotime($orders->date)) ?></td>
 				<td><?= anchor("service/moreInfoSold/{$orders->p_id}/0",'View Details',['class'=>'btn btn-info']);?></td>
 			</tr>

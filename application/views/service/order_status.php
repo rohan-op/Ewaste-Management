@@ -26,12 +26,20 @@
             <h2 class="text-primary">Recent Orders</h2><br>
               <div class="flex flex-wrap -m-4">
         <?php if( count($order) ):
-        $count=$this->uri->segment(3);
+        //$count=$this->uri->segment(3);
         foreach ($order as $order): ?>
 
         <?php if($order->Tracking!="Delivered"){ ?>
           
             <div class="lg:w-1/3 md:w-1/2 p-4 w-full">
+               <?php 
+             $track='Yet to be Ready';
+
+              if($order->Tracking!='')
+                $track=$order->Tracking;
+
+            ?>
+           <span class="inline-block py-1 px-2 rounded bg-green-50 text-green-500 text-xs font-medium tracking-widest"><?= $track; ?></span>
             <a class="block relative h-53 rounded overflow-hidden">
               <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="<?= $order->p_img1 ?>">
             </a>
@@ -39,11 +47,12 @@
                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1"><?= $order->p_type; ?></h3>
                 <h2 class="text-gray-900 title-font text-lg font-medium"><?= $order->p_name; ?></h2>
                 <p class="mt-1">₹<?= $order->p_cost; ?></p>
-                 <?= anchor("service/moreInfoSold/{$order->p_id}/1",'Details and Status',['class'=>'btn btn-warning']);?>
+                 <?= anchor("service/moreInfoOrderStatus/{$order->o_id}/{$order->p_id}/1",'Details and Status',['class'=>'btn btn-warning']);?>
               </div>
             </div>
 
-        <?php } endforeach; ?>
+         
+            <?php } endforeach; ?>
             </div>
           </div>
         </section>

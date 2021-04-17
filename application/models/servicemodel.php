@@ -62,14 +62,10 @@ class Servicemodel extends MY_Model{
          }
          public function getServicedDetails($e_id)
 	   {
-	   	
-	  
-		     $x = $this->db->select(['e_id','e_name','e_quantity','e_age','e_type','e_img','e_specs'])
+	        $x = $this->db->select('*')
 						->where('e_id',$e_id)
 						->get('ewaste');
-			
-
-		  return $x->row();
+			 return $x->row();
 	   }
 
 
@@ -119,13 +115,7 @@ class Servicemodel extends MY_Model{
 			
 			return $query->result();
 		}
-		public function Homestatus()
-		{
-			$this->db->limit(3);
-			$query=$this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'r_id'=>0,'buy_nobuy'=>1));
-			
-			return $query->result();
-		}
+		
 		public function acceptProduct($post)
 		{
 			 $this->db->update('ewaste',
@@ -195,12 +185,41 @@ class Servicemodel extends MY_Model{
 	        return $x->num_rows();
         }
 
+        public function countServicedProducts()
+        {
+	        $x = $this->db->get_where('ewaste',array('s_id'=>$this->session->userdata('id'),'service_feedback!='=>""));
+	        return $x->num_rows();
+        }
+
+        public function getServicedProducts($limit,$offset)
+         {
+         	$id=$this->session->userdata('id');
+         	$x=$this->db->select('*')
+         	   ->where(array('s_id'=>$this->session->userdata('id'),'service_feedback!='=>""))
+         	   ->limit($limit,$offset)
+			   ->order_by('date','DESC')
+         	   ->get('ewaste');
+         	  return $x->result();
+         }
+         public function getHomeServicedProducts()
+		{
+			$this->db->limit(3);
+			$id=$this->session->userdata('id');
+         	$x=$this->db->select('*')
+         	   ->where(array('s_id'=>$this->session->userdata('id'),'service_feedback!='=>""))
+
+			   ->order_by('date','DESC')
+         	   ->get('ewaste');
+
+         	  return $x->result();		
+			
+		}
 
         public function countHistoryProducts()
         {
 	       $id = $this->session->userdata('id');
 	       $x = $this->db->select(['p_id'])
-				->where('s_id',$id)
+				->where(array('s_id'=>$id,'Tracking'=>"Delivered"))
 				->get('order_items');
 	       return $x->num_rows();
          }
@@ -208,7 +227,7 @@ class Servicemodel extends MY_Model{
          {
          	$id=$this->session->userdata('id');
          	$x=$this->db->select(['o_id','u_id','products.p_id','p_name','amount','order_items.date','p_img1','p_type','p_specs','quantity','p_cost','Tracking'])
-         	   ->where('order_items.s_id',$id)
+         	   ->where(array('order_items.s_id'=>$id,'Tracking'=>"Delivered"))
          	   ->join('products','products.p_id=order_items.p_id')
          	   ->limit($limit,$offset)
 			   ->order_by('order_items.date','DESC')
@@ -217,11 +236,42 @@ class Servicemodel extends MY_Model{
          	  return $x->result();
          }
 
+         public function countOrderStatus()
+        {
+	       $id = $this->session->userdata('id');
+	       $x = $this->db->select(['p_id'])
+				->where(array('s_id'=>$id,'Tracking !='=>"Delivered"))
+				->get('order_items');
+	       return $x->num_rows();
+         }
+         public function getOrderStatus($limit,$offset)
+         {
+         	$id=$this->session->userdata('id');
+         	$x=$this->db->select(['o_id','u_id','products.p_id','p_name','amount','order_items.date','p_img1','p_type','p_specs','quantity','p_cost','Tracking'])
+         	   ->where(array('order_items.s_id'=>$id,'Tracking !='=>"Delivered"))
+         	   ->join('products','products.p_id=order_items.p_id')
+         	   ->limit($limit,$offset)
+			   ->order_by('order_items.date','DESC')
+         	   ->get('order_items');
+         	  return $x->result();
+         }
+
+         public function getMoreDetailsOrderStatus($oid,$pid)
+         {
+         	$x=$this->db->select(['order_items.p_id','p_name','amount','p_type','p_img1','p_specs','order_items.quantity','fname','cname','contact','email','address','Tracking','o_id'])
+							->where(array('order_items.o_id'=>$oid,'order_items.p_id'=>$pid))
+							->join('products','products.p_id=order_items.p_id')
+							->join('user','user.id=order_items.u_id')
+							->get('order_items');
+
+			return $x->row();
+         }
+
 		 public function gethomeHistoryProducts()
 		 {
 			$id=$this->session->userdata('id');
 			$x=$this->db->select(['o_id','u_id','products.p_id','p_name','amount','order_items.date'])
-			   ->where('order_items.s_id',$id)
+			   ->where(array('order_items.s_id'=>$id,'Tracking'=>"Delivered"))
 			   ->join('products','products.p_id=order_items.p_id')
 			   ->limit(4)
 			    ->order_by('order_items.date','DESC')

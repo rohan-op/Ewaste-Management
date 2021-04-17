@@ -16,7 +16,7 @@ class Service extends MY_Controller{
 	public function homePage()
 	{
 		$this->load->model('servicemodel');
-	 	$serviced = $this->servicemodel->Homestatus();
+	 	$serviced = $this->servicemodel->getHomeServicedProducts();
 	 	$orders = $this->servicemodel->gethomeHistoryProducts();
 		$request=$this->servicemodel->Homerequest();
 		$name=$this->servicemodel->profile();
@@ -231,22 +231,23 @@ public function servicedProductDetails($eid)
 	{
 		$this->load->model('servicemodel');
       	$this->load->library('pagination');
-        $config=$this->getConfig("service/orderStatus",3,$this->servicemodel->countHistoryProducts());
+        $config=$this->getConfig("service/orderStatus",3,$this->servicemodel->countOrderStatus());
         $this->pagination->initialize($config);
-	     $order = $this->servicemodel->getHistoryProducts($config['per_page'],$this->uri->segment(3));
-
+	     $order = $this->servicemodel->getOrderStatus($config['per_page'],$this->uri->segment(3));
+         //print_r($order);
 	      
 		$this->load->view("service/order_status",compact('order'));
 	}
 
-	//More Details of a Product in order
-	public function orderMoreDetails($pid,$option)
-	{
-       $this->load->model('servicemodel');
- 		$table='products';
- 		$details=$this->servicemodel->getDetails($pid,$table);
+	//More Details of a Product in order and Status
+	
+	public function moreInfoOrderStatus($oid,$pid,$option)
+ 	{
+ 		$this->load->model('servicemodel');
+ 		
+ 		$details=$this->servicemodel->getMoreDetailsOrderStatus($oid,$pid);
  		$this->load->view("service/soldHistoryMoreDetails",compact('details','option'));
-	}
+ 	}
 
 	//Order Tracking
 	public function orderTracking()
@@ -286,9 +287,9 @@ public function servicedProductDetails($eid)
     {
     	$this->load->library('pagination');
     	$this->load->model('servicemodel');
-		$config = $this->getConfig("service/servicedProducts",10,$this->servicemodel->countProductsStatus());
+		$config = $this->getConfig("service/servicedProducts",10,$this->servicemodel->countServicedProducts());
 	 	$this->pagination->initialize($config);
-	 	$serviced = $this->servicemodel->status($config['per_page'] ,$this->uri->segment(3));
+	 	$serviced = $this->servicemodel->getServicedProducts($config['per_page'] ,$this->uri->segment(3));
 	 	$this->load->view("service/servicedProducts",compact('serviced'));
     }
 

@@ -10,24 +10,33 @@
     </ol>    
     <br>
     <h2 class="text-primary">Order Details</h2>
-    <section class="text-gray-600 body-font overflow-hidden">
+    <br>
+        <div class="row">
+        <?php if( count($order) ):
+        $countR=0;
+        $countDis=0;
+        $countDel=0;
+        $track="Yet to be Ready";
+        
+        foreach ($order as $order): ?>
+          <?php 
+            if($order->Tracking!='')
+                $track=$order->Tracking;
+          if($track=="Ready")
+            $countR+=1;
+          else if($track=="Dispatched")
+            $countDis+=1;
+          else if($track=="Delivered")
+            $countDel+=1;
+
+
+          ?>
+
+        <section class="text-gray-600 body-font overflow-hidden">
+
           <div class="container px-5 py-24 mx-auto">
+             <span class="inline-block py-1 px-2 rounded bg-green-50 text-green-500 text-xs font-medium tracking-widest"><?= $track; ?></span>
             <div class="lg:w-4/5 mx-auto flex flex-wrap">
-            <?php if( count($order) ):
-            $countR=0;
-            $countDis=0;
-            $countDel=0;
-            $track="";
-            foreach ($order as $order): ?>
-              <?php 
-              $track=$order->Tracking;
-              if($track=="Ready")
-                $countR+=1;
-              else if($track=="Dispatched")
-                $countDis+=1;
-              else
-                $countDel+=1;
-              ?>
               <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-65 object-cover object-center rounded" src="<?= $order->p_img1 ?>">
               <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0" style="margin-bottom: 5%">
                 <h2 class="text-sm title-font text-gray-500 tracking-widest"><?= $order->p_type; ?></h2>

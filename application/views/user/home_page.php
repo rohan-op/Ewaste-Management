@@ -83,7 +83,7 @@
   </div>
 </section> 
 <h1 style="font-size:60px;"><b>Things you can Buy</b></h1>
-<a href="buyPage" style="margin-left:1200px">See More>></a>
+<a href="buyPage"  style="margin-left:1100px">See More>></a>
 <br>
 <br>
 <br>
@@ -132,6 +132,8 @@
 	  </p>
 	  <br>
 	<h2 style="font-size:60px">Things You can Donate</h2>
+	<a href="donatePage" class="btn btn-success" style="margin-left:1100px">Donate Now!</a>
+	<br>
 	<br>
 	<div class="row">
 		
