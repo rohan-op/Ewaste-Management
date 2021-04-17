@@ -136,8 +136,29 @@ class User extends MY_Controller{
 	public function orderDetails($o_id)
 	{
 		$order = $this->usermodel->getOrderDetails($o_id);
+		$this->session->set_userdata('o_id',$o_id);
 		//print_r($order);exit;
 		$this->load->view("user/order_detail_user",compact('order'));
+	}
+
+	public function giveFeedback($p_id)
+	{
+		$this->session->set_userdata('p_id',$p_id);
+		$this->load->view("user/feedback_user");
+	}
+
+	public function updateFeedback()
+	{
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('review','Feedback','required|max_length[250]');
+	 	$this->form_validation->set_rules('rating','Rating','required');
+	 	$this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
+	 	$post = $this->input->post();
+	 	unset($post['submit']);
+	 	if($this->form_validation->run())
+	 	{
+	 		$this->_flashNredirect($this->usermodel->enterFeedback($post),'Feedback Provided Successfully','Failed to Provide Feedback, Please Try Again','yourOrders','yourOrders');
+	 	}
 	}
 
 	public function yourDonations()

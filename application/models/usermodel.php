@@ -105,6 +105,36 @@ public function gethomeOrderDetails()
 					->get('order_items');
 	return $x->result();
 }
+
+public function enterFeedback($post)
+{
+	$id = $this->session->userdata('id');
+	$p_id = $this->session->userdata('p_id');
+	$o_id = $this->session->userdata('o_id');
+
+	$this->db->where(array('u_id'=>$id,'p_id'=>$p_id,'o_id'=>$o_id))
+						->update('order_items',$post);
+
+	$no_reviews = $this->db->select()
+				->where(array('p_id'=>$p_id,'rating !='=>0))
+				->get('order_items');
+	//return $no_reviews->num_rows();
+
+	$average_reviews = $this->db->select_avg('rating')
+								->where(array('p_id'=>$p_id,'rating !='=>0))
+								->get('order_items');
+
+	//print_r($post); 
+	$post2 = array('avg_rating' => $average_reviews->row()->rating,'no_reviews'=>$no_reviews->num_rows() );
+
+	return $this->db->where('p_id',$p_id)
+						->update('products',$post2);
+	//print_r($post2); exit;
+	//print_r($p_id,$o_id);exit;
+	//return $this->db->where(array('u_id'=>$id,'p_id'=>$p_id,'o_id'=>$o_id))
+	//					->update('order_items',$post);
+}
+
 public function countUserDonations()
 {
 	$id = $this->session->userdata('id');
