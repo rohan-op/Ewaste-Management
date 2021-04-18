@@ -23,7 +23,7 @@
       </tr>
     </table>
     <?= form_close(); ?>
-        <div class="row">
+        
         <section class="text-gray-600 body-font">
           <div class="container px-5 py-24 mx-auto">
             <h2 class="text-primary">Our Top Rated Products</h2><br>
@@ -39,6 +39,22 @@
         <div class="mt-4">
           <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1"><?= $products->p_type; ?></h3>
           <h2 class="text-gray-900 title-font text-lg font-medium"><?= $products->p_name; ?></h2>
+          <div class="flex mb-4">
+                      <span class="flex items-center">
+
+                        <?php for($i=0;$i<$products->avg_rating;$i++)
+                          echo '<svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500" viewBox="0 0 24 24">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>';
+                        ?>                      
+
+                        <?php for($i=$products->avg_rating;$i<5;$i++)
+                          echo '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500" viewBox="0 0 24 24">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>';
+                        ?>
+                  </span>
+                </div>
           <p class="mt-1">₹<?= $products->p_cost; ?></p>
           <?= anchor("user/addtoCart/{$products->p_id}",'Add to Cart',['class'=>'btn btn-success']);?>
           &nbsp;<br><br>
@@ -55,7 +71,7 @@
                   <td colspan="3">No records found.</td>
                 </tr>
             <?php endif; ?>   
-        </div>
+        
 
       <div>
         <?= $this->pagination->create_links(); ?>

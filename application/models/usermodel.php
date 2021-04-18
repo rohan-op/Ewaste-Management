@@ -88,7 +88,7 @@ public function getUserOrders($limit,$offset)
 
 public function getOrderDetails($o_id)
 {
-	$x = $this->db->select(['quantity','amount','p_name','p_type','products.p_id','p_img1','products.p_specs','Tracking'])
+	$x = $this->db->select(['quantity','amount','p_name','p_type','products.p_id','p_img1','products.p_specs','Tracking','rating','review'])
 					->where('o_id',$o_id)
 					->join('products','products.p_id = order_items.p_id')
 					->get('order_items');
@@ -205,15 +205,18 @@ public function addEwaste($array)
 public function countProducts()
 {
 	$x = $this->db->select('p_id')
+					->where(array('avg_rating !='=>0))
+					->order_by('avg_rating','DESC')
 					->get('products');
 	return $x->num_rows();
 }
 
 public function getProducts($limit,$offset)
 {
-	$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
+	$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type','avg_rating'])
+							->where(array('avg_rating !='=>0))					
 							->limit($limit,$offset)
-							->order_by('p_cost','ASC')
+							->order_by('avg_rating','DESC')
 							->get('products');
 	return  $products->result();
 }
@@ -247,7 +250,7 @@ public function getSearchProducts($limit,$offset,$string,$sortby)
 {
 	if($sortby==1)
 	{
-		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
+		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type','avg_rating'])
 							->like('p_name',$string)
 							->or_like('p_type',$string)
 							->limit($limit,$offset)
@@ -256,7 +259,7 @@ public function getSearchProducts($limit,$offset,$string,$sortby)
 	}
 	else if($sortby==2)
 	{
-		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
+		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type','avg_rating'])
 							->like('p_name',$string)
 							->or_like('p_type',$string)
 							->limit($limit,$offset)
@@ -272,14 +275,14 @@ public function getSearchProducts2($limit,$offset,$sortby)
 {
 	if($sortby==1)
 	{
-		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
+		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type','avg_rating'])
 							->limit($limit,$offset)
 							->order_by('p_cost', 'ASC')
 							->get('products');
 	}
 	else if($sortby==2)
 	{
-		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type'])
+		$products = $this->db->select(['p_id','p_cost','p_img1','p_img2','p_img3','p_name','p_type','avg_rating'])
 							->limit($limit,$offset)
 							->order_by('p_cost', 'DESC')
 							->get('products');
@@ -306,7 +309,7 @@ public function buy($offset,$limit,$bool)
 
 public function getProduct($p_id)
 {
-	$x = $this->db->select(['p_id','s_id','p_quantity','p_cost','p_name','p_img1','p_type','service.cname'])
+	$x = $this->db->select(['p_id','s_id','p_quantity','p_cost','p_name','p_img1','p_type','service.cname','avg_rating'])
 					->where('p_id',$p_id)
 					->join('service','service.id = products.s_id')
 					->get('products');
@@ -315,11 +318,33 @@ public function getProduct($p_id)
 
 public function getDetails($p_id)
 {
-	$x = $this->db->select(['p_id','p_name','p_quantity','p_cost','p_type','p_img1','p_img2','p_img3','service.cname','p_specs'])
+	$x = $this->db->select(['p_id','p_name','p_quantity','p_cost','p_type','p_img1','p_img2','p_img3','service.cname','p_specs','avg_rating','no_reviews'])
 					->join('service','service.id = products.s_id')
 					->where('p_id',$p_id)
 					->get('products');
 	return $x->row();
+}
+
+public function reviewOfProduct($p_id)
+{
+	$x = $this->db->select(['rating','review','date'])
+					->where(array('p_id'=>$p_id,'Tracking'=>'Delivered','rating !='=>0))
+					->order_by('date','DESC')
+					->get('order_items',5);
+	return $x->result();
+}
+
+public function recommendProduct($p_id)
+{
+	$x = $this->db->select(['p_id','p_cost','p_name','p_img1','p_type','avg_rating'])
+					->where('p_id',$p_id)
+					->get('products');
+	//print_r($x->row()->p_type);exit;
+	$y = $this->db->select(['p_id','p_cost','p_name','p_img1','p_type','avg_rating'])
+					->where(array('p_id !='=>$p_id,'p_type'=>$x->row()->p_type))
+					->order_by('avg_rating','DESC')
+					->get('products',4);
+	return $y->result();
 }
 
 public function getCreditPoints()

@@ -248,8 +248,10 @@ class User extends MY_Controller{
  	{
  		$this->load->model('usermodel');
  		$details = $this->usermodel->getDetails($pid);
- 		//print_r($details[0]->p_name);exit;
- 		$this->load->view("user/productdetail_user",compact('details','option'));
+ 		$reviews = $this->usermodel->reviewOfProduct($pid);
+ 		$recommend = $this->usermodel->recommendProduct($pid);
+ 		//print_r($reviews);exit;
+ 		$this->load->view("user/productdetail_user",compact('details','option','reviews','recommend'));
  	}
 
  	public function search()

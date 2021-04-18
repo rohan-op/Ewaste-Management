@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2021 at 02:28 PM
+-- Generation Time: Apr 18, 2021 at 02:37 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -110,11 +110,11 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `o_id`, `p_id`, `s_id`, `u_id`, `quantity`, `amount`, `Tracking`, `date`, `rating`, `review`) VALUES
-(7, 5, 1, 1, 1, 1, 30000, 'Delivered', '2021-03-21 19:18:55', 0, ''),
-(8, 5, 2, 1, 1, 1, 20000, 'Delivered', '2021-03-21 19:18:55', 0, ''),
+(7, 5, 1, 1, 1, 1, 30000, 'Delivered', '2021-03-21 19:18:55', 5, 'amazing product love it'),
+(8, 5, 2, 1, 1, 1, 20000, 'Delivered', '2021-03-21 19:18:55', 4, 'good product could have been better, love the camera and the processor, best in the\r\nsegment. Hopefully they will improve the next generation durability as this one is too weak'),
 (9, 6, 1, 1, 1, 1, 30000, '', '2021-03-27 18:39:35', 0, ''),
-(10, 6, 2, 1, 1, 1, 20000, 'Delivered', '2021-03-27 18:39:35', 3, 'good'),
-(11, 7, 1, 1, 1, 1, 30000, '', '2021-03-27 18:40:14', 0, '');
+(10, 6, 2, 1, 1, 1, 20000, 'Delivered', '2021-03-27 18:39:35', 3, 'good product, wish that i could have got the delivery earlier though, product is sleek and utility wise it is no1'),
+(11, 7, 1, 1, 1, 1, 30000, 'Delivered', '2021-03-27 18:40:14', 3, 'very nice product must buy!');
 
 -- --------------------------------------------------------
 
@@ -144,9 +144,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`p_id`, `s_id`, `p_name`, `p_type`, `p_specs`, `p_quantity`, `p_age`, `date`, `p_cost`, `p_img1`, `p_img2`, `p_img3`, `avg_rating`, `no_reviews`) VALUES
-(1, 1, 'IphoneX', 'Mobile Phone', 'Iphone', 5, 0, '', 30000, 'http://[::1]/CI_EWM/uploads/service/products/iphonex.png', '', '', 0, 0),
-(2, 1, 'One Plus', 'Mobile Phone', 'one plus', 5, 0, '', 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', '', 3, 1),
-(6, 1, 'Nokia 5.3', 'mobile', 'Capture a whole range of new angles with the quad camera and ultra-wide 118° lens\r\nShoot like a pro with advanced AI imaging to bring your nighttime and portrait shots to life\r\nEnjoy videos and games with the powerful Qualcomm Snapdragon 665 processor and the impressive 6.55-inch HD+ screen\r\nStay charged for up to 2 days with the 4000 mAh battery and AI-assisted Adaptive Battery', 2, 10, '2021-03-17 19:53:30', 15000, 'http://[::1]/CI_EWM/uploads/service/products/nokia.jpg', '', '', 0, 0);
+(1, 1, 'IphoneX', 'Mobile Phone', 'Iphone', 5, 0, '', 30000, 'http://[::1]/CI_EWM/uploads/service/products/iphonex.png', '', '', 4, 2),
+(2, 1, 'One Plus', 'Mobile Phone', 'one plus', 5, 0, '', 20000, 'http://[::1]/CI_EWM/uploads/service/products/oneplus8.jpg', '', '', 4, 2),
+(6, 1, 'Nokia 5.3', 'Mobile Phone', 'Capture a whole range of new angles with the quad camera and ultra-wide 118° lens\r\nShoot like a pro with advanced AI imaging to bring your nighttime and portrait shots to life\r\nEnjoy videos and games with the powerful Qualcomm Snapdragon 665 processor and the impressive 6.55-inch HD+ screen\r\nStay charged for up to 2 days with the 4000 mAh battery and AI-assisted Adaptive Battery', 2, 10, '2021-03-17 19:53:30', 15000, 'http://[::1]/CI_EWM/uploads/service/products/nokia.jpg', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
