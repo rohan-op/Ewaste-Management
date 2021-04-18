@@ -41,7 +41,7 @@
 			<br>
 		<?php endforeach; ?></p>
         <div class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
-          <a class="text-green-500 inline-flex items-center" href="historyProducts">See More
+          <a class="text-green-500 inline-flex items-center" href="recycledProducts">See More
             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"></path>
               <path d="M12 5l7 7-7 7"></path>
@@ -61,7 +61,7 @@
 	<?php endforeach; ?></p>
 	<br>
         <div class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
-          <a class="text-green-500 inline-flex items-center" href="yourDonations">See More
+          <a class="text-green-500 inline-flex items-center" href="requestPage">See More
             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"></path>
               <path d="M12 5l7 7-7 7"></path>
