@@ -74,13 +74,13 @@
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <div style="color: white;">
         <p>
-           New York, NY 10012, US</p>
+           Mumbai-400004, Maharashtra, India.</p>
         <p>
-           info@example.com</p>
+           EWMhelp@gmail.com</p>
         <p>
-           + 01 234 567 88</p>
+           + 91 9870610685</p>
         <p>
-           + 01 234 567 89</p>
+           + 91 9082274066</p>
         </div>
       </div>
       <!-- Grid column -->
