@@ -37,7 +37,7 @@
 		<?php $count=0;?>
         <p class="leading-relaxed mb-1"><?php foreach($recycled as $recycled): ?>
 			
-			<p><?= ++$count ?>&nbsp;&nbsp;<?= $recycled->e_name?>&nbsp;&nbsp;<?= date('d M y H:i:s',strtotime($recycled->date)) ?>&nbsp;&nbsp;<?= anchor("recycler/recycledProductDetails/{$recycled->e_id}",'View Details',['class'=>'btn btn-info']);?></p>
+			<p><?= ++$count ?>&nbsp;&nbsp;<?= $recycled->e_name?>&nbsp;&nbsp;<?= anchor("recycler/recycledProductDetails/{$recycled->e_id}",'View Details',['class'=>'btn btn-info']);?></p>
 			<br>
 		<?php endforeach; ?></p>
         <div class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
@@ -57,7 +57,7 @@
 		<?php $count=0; ?>
         <p class="leading-relaxed mb-1">	<?php foreach($request as $request): ?>
 			
-			<p><?= ++$count ?>&nbsp;&nbsp;<?= $request->e_type?>&nbsp;&nbsp;<?= date('d M y H:i:s',strtotime($request->date)) ?>&nbsp;&nbsp;<?= anchor("recycler/productDetails/{$request->e_id}/{$option}",'More Details',['class'=>'btn btn-info']);?>&nbsp;&nbsp;<button  name="accept" formaction="<?= base_url('recycler/accept') ?>" type="submit" class="btn btn-primary"  value="<?= $request->e_id ?>">Accept</button></p><br>
+			<p><?= ++$count ?>&nbsp;&nbsp;<?= $request->e_type?>&nbsp;&nbsp;<?= date('d M y H:i:s',strtotime($request->date)) ?>&nbsp;&nbsp;<button  name="accept" formaction="<?= base_url('recycler/accept') ?>" type="submit" class="btn btn-primary"  value="<?= $request->e_id ?>">Accept</button></p><br>
 	<?php endforeach; ?></p>
 	<br>
         <div class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
