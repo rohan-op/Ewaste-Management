@@ -8,6 +8,7 @@
     <br>
     <?php echo form_open_multipart('user/donateEwaste'); ?>
     <?= form_hidden('date',date('Y-m-d H:i:s')) ?>
+    <?= form_hidden('buy_nobuy',1) ?>
     <fieldset>
       
       <h2 class="text-primary">Enter Details of E-waste</h2>
