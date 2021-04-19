@@ -138,6 +138,7 @@ class Servicemodel extends MY_Model{
 
 			$this->db->where('id',$u_id)
 						->update('user',$user);
+			$this->db->update('ewaste',array('buy_nobuy'=>'0'),array('e_id'=>$eid));
 
 			return $this->db->where('e_id',$eid)
 								->update('ewaste',array('problem'=>$post['problem'],'service_feedback'=>$post['service_feedback'], 's_creditpoints'=>$post['creditpoints']));
@@ -170,10 +171,10 @@ class Servicemodel extends MY_Model{
 			//print_r($id->row()->u_id); exit;
 		}
 
-		public function requestForward($post)
-		{
-			$this->db->update('ewaste',array('buy_nobuy'=>'0'),array('e_id'=>$post['forward']));
-		}
+		// public function requestForward($post)
+		// {
+		// 	$this->db->update('ewaste',array('buy_nobuy'=>'0'),array('e_id'=>$post['forward']));
+		// }
 		public function countProducts()
         {
 	        $x = $this->db->get_where('ewaste',array('s_id'=>'0'));

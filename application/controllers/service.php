@@ -175,7 +175,8 @@ class Service extends MY_Controller{
 				$id = $this->session->userdata('id');
 				$u_id = $this->servicemodel->getUserId($post["e_id"]);
 				//print_r($post['creditpoints']); exit;
-				$this->_flashNredirect($this->servicemodel->addStatus($post,$post["e_id"],$u_id),'Congratulations! Product Status Updated Successfully','Oh Snap! Failed to Update Status of the Product, Please Try Again','statusPage','updateStatus/{$post["e_id"]}');
+				$this->_flashNredirect($this->servicemodel->addStatus($post,$post["e_id"],$u_id),'Congratulations! Product Status Updated Successfully and Product is Transfered to Recyclers ','Oh Snap! Failed to Update Status of the Product, Please Try Again','statusPage','updateStatus/{$post["e_id"]}');
+				
 			}
 			else
 			{
@@ -335,8 +336,8 @@ public function servicedProductDetails($eid)
 	{
 		$this->load->model('servicemodel');
 		$post=$this->input->post();
+		print_r($post["forward"]);
 		$this->servicemodel->requestForward($post);
-		
 		return redirect('service/statusPage');
 	}
 	//FEEDBACK FUNCTION

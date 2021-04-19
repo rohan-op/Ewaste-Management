@@ -210,6 +210,7 @@ class User extends MY_Controller{
 			$this->form_validation->set_rules('e_quantity','Quantity of E-waste','required|is_natural_no_zero');
 			$this->form_validation->set_rules('e_specs','Specification','required|max_length[400]');
 			$this->form_validation->set_error_delimiters("<p class='text-danger'>","</p>");
+
 			$post = $this->input->post();
 			$post['buy_nobuy']=1;
 			unset($post['submit']);

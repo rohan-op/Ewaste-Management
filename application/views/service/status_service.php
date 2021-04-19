@@ -44,8 +44,8 @@
                 <?= anchor("service/productDetails/{$row->e_id}/{$option}",'More Details',['class'=>'btn btn-info echo $disable']);?>
                 <br><br>
                 <?= anchor("service/updateStatus/{$row->e_id}",'Update Status',['class'=>'btn btn-warning '.$disable]);?>
-                <br><br>
-                <button  name="forward" formaction="<?= base_url('service/forwardRequest') ?>" type="submit" class="btn btn-primary"  value="<?= $row->e_id ?>">Forward</button>
+              
+                
               </div>
             </div>                    
          <?php
