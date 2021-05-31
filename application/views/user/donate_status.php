@@ -41,12 +41,12 @@
                   <p class="leading-relaxed"><b>Recycler Feedback:</b> <?= $donation->recycler_feedback; ?></p>
                   <p class="leading-relaxed"><b>Credit Points Allotted:</b> <?= $donation->r_creditpoints; ?></p>
                    <h3 class="text-sm title-font text-gray-500 tracking-widest">Elements Retrieved</h3>
-                   <p class="leading-relaxed"><b>Gold-></b><?= $donation->gold ?>kg</p> 
-                <p class="leading-relaxed"><b>Silver-></b><?= $donation->silver ?>kg</p> 
-                <p class="leading-relaxed"><b>Palladium-></b><?= $donation->palladium ?>kg</p> 
-                <p class="leading-relaxed"><b>Copper-></b><?= $donation->copper ?>kg</p> 
-                <p class="leading-relaxed"><b>Other Metals-></b><?= $donation->other_metals ?>kg</p>
-                <p class="leading-relaxed"><b>Other Non-Metals-></b><?= $donation->other_non_metals ?>kg</p>
+                   <p class="leading-relaxed"><b>Gold-></b><?= $donation->gold ?>%</p> 
+                <p class="leading-relaxed"><b>Silver-></b><?= $donation->silver ?>%</p> 
+                <p class="leading-relaxed"><b>Palladium-></b><?= $donation->palladium ?>%</p> 
+                <p class="leading-relaxed"><b>Copper-></b><?= $donation->copper ?>%</p> 
+                <p class="leading-relaxed"><b>Other Metals-></b><?= $donation->other_metals ?>%</p>
+                <p class="leading-relaxed"><b>Other Non-Metals-></b><?= $donation->other_non_metals ?>%</p>
                 <?php } ?>
                 <h3 class="text-sm title-font text-gray-500 tracking-widest">Recycler Contact Details</h3>   
                 <p class="leading-relaxed"><b>Contact No:</b> <?= $donation->r_contact; ?></p>
